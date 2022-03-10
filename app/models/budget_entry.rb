@@ -1,6 +1,6 @@
 class BudgetEntry < ApplicationRecord
   belongs_to :budget
-  validates :category, :name, :date, :budget_id, presence: true, allow_blank: false
+  validates :category, :name, :date, presence: true, allow_blank: false
   validates :price, presence: true, allow_blank: true
 
   def price=(val)

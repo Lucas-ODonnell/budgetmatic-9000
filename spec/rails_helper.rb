@@ -44,6 +44,18 @@ RSpec.configure do |config|
     end
   end
 
+  module ActionDispatch
+  module Integration #:nodoc:
+    class Session
+      DEFAULT_HOST = "localhost"
+
+      def https?
+        true
+      end
+    end
+  end
+end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
