@@ -4,6 +4,7 @@ require 'database_cleaner/active_record'
 require_relative './spec_helper.rb'
 require_relative '../config/environment'
 require_relative 'support/factory_bot.rb'
+require_relative 'support/api_helpers.rb'
 
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -34,6 +35,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include ApiHelpers
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)

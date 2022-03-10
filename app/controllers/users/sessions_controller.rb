@@ -6,21 +6,19 @@ module Api
       private
 
       def respond_with(resource, _opts = {})
-        render json: { message: 'You are logged in.' }, status: :ok
+        if resource.persisted?
+          render json: { message: 'You are logged in.' }, status: 200
+          else
+          render json: { message: "Something went wrong" }, status: 401
+        end
       end
 
       def respond_to_on_destroy
-        log_out_success && return if current_user
-
-        log_out_failure
+        log_out_success && return 
       end
 
       def log_out_success
-        render json: { message: "You are logged out." }, status: :ok
-      end
-
-      def log_out_failure
-        render json: { message: "Hmm nothing happened."}, status: :unauthorized
+        render json: { message: "You are logged out." }, status: 205
       end
     end
   end
