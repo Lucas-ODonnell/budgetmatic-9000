@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'jsonapi-serializer'
 gem 'devise'
 gem 'devise-jwt'
+gem 'devise-jwt-cookie'
 gem 'rack-cors'
 gem 'figaro'
 

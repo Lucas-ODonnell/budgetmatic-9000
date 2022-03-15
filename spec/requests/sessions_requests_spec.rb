@@ -31,7 +31,7 @@ describe Users::SessionsController, type: :request do
         expect(response.status).to eq(401)
       end
       it 'returns an error message' do
-        expect(response.body).to include("Something went wrong")
+        expect(response.body).to include("Invalid Email or password")
       end
     end
   end
@@ -41,8 +41,8 @@ describe Users::SessionsController, type: :request do
         login_with_api(user)
         delete destroy_user_session_path
       end
-      it "Should return status 205" do
-        expect(response.status).to eq(205)
+      it "Should return status 204" do
+        expect(response.status).to eq(204)
       end
     end
   end

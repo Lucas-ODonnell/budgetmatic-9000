@@ -32,10 +32,10 @@ describe Users::RegistrationsController, type: :request do
         }
       end
       it "should return 200 if email is already in use" do
-        expect(response.status).to eq(200)
+        expect(response.status).to eq(422)
       end
       it "should return an error message if email is already in use" do
-        expect(response.body).to include("Email is already registered")
+        expect(response.body).to include("User couldn't be created. Email has already been taken")
       end
     end
   end

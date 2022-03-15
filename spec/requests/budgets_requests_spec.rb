@@ -12,9 +12,9 @@ RSpec.describe "Budgets", type: :request do
       }
     end
     context "GET /index" do
-      it "should redirect if user is not logged in" do
+      it "should return unauthorized if user is not logged in" do
         get api_v1_budgets_path
-        expect(response).to have_http_status(302)
+        expect(response).to have_http_status(401)
       end
       it "should show the index if user is logged in" do
         headers = { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
@@ -24,9 +24,9 @@ RSpec.describe "Budgets", type: :request do
       end
     end
     context "POST /create" do
-      it "should redirect if user is not logged in" do
+      it "should return unauthorized if user is not logged in" do
         post api_v1_budgets_path, params: budget_params
-        expect(response).to have_http_status(302)
+        expect(response).to have_http_status(401)
       end
 
       it "should cause an error if params are invalid" do

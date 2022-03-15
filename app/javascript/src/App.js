@@ -7,13 +7,13 @@ import Devise from './components/Pages/Devise/Devise';
 
 const App = () => {
 	const [authorizationToken, setAuthorizationToken] = useState();
-	const [signedIn, setSignedIn] = useState(false);
+	const [signedIn, setSignedIn] = useState(null);
 
 	useEffect(() => {
 		if (localStorage.Authorization !== undefined) {
 			const AuthorizedToken = localStorage.getItem('Authorization')
 			setAuthorizationToken(JSON.parse(AuthorizedToken))
-			setSignedIn(true);
+			setSignedIn(true)
 		}
 	}, [authorizationToken])
 	const global = {

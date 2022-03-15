@@ -17,9 +17,9 @@ RSpec.describe "BudgetEntries", type: :request do
       }
     end
     context "POST /create" do
-      it "should redirect if user is not logged in" do
+      it "should return unauthorized if user is not logged in" do
         post api_v1_budget_entries_path, params: budget_entries_params
-        expect(response).to have_http_status(302)
+        expect(response).to have_http_status(401)
       end
 
       it "should cause an error if params are invalid" do

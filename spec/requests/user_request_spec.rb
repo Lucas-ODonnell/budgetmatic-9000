@@ -22,8 +22,8 @@ RSpec.describe "Users", type: :request do
         headers = { 'Accept' => 'application/json' }
         get api_v1_user_path(user.id)
       end
-      it "should reroute if user can't be authenticated" do
-        expect(response).to have_http_status(302)
+      it "should return unauthorized if user can't be authenticated" do
+        expect(response).to have_http_status(401)
       end
     end
     context "PUT /update valid" do
@@ -43,8 +43,8 @@ RSpec.describe "Users", type: :request do
       before do
         put api_v1_user_path(user.id), params: { user: { email: user.email, name: "Billy Bob", password: user.password} }
       end
-      it "should reroute if user can't be authenticated" do
-        expect(response).to have_http_status(302)
+      it "should return unauthorized if user can't be authenticated" do
+        expect(response).to have_http_status(401)
       end
     end
     context "Delete /destroy" do
@@ -54,9 +54,9 @@ RSpec.describe "Users", type: :request do
         delete api_v1_user_path(user.id), headers: auth_headers
         expect(response).to have_http_status(204)
       end
-      it "should redirect if user isn't logged in" do
+      it "should return unauthorized if user isn't logged in" do
         delete api_v1_user_path(user.id)
-        expect(response).to have_http_status(302)
+        expect(response).to have_http_status(401)
       end
     end
   end
