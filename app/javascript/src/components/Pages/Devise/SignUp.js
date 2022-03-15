@@ -17,8 +17,9 @@ const SignUp = ({toggleSignUp, setAuthorizationToken}) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const newUser = { user: newUserData };
-		axios.post('/users', newUser)
+		axios.post('/signup', newUser)
 			.then(response => {
+			console.log(response)
 				if (response.headers.authorization === undefined) {
 					setNewUserData({
 						name: "",
@@ -28,6 +29,7 @@ const SignUp = ({toggleSignUp, setAuthorizationToken}) => {
 					})
 					return;
 				}
+				localStorage.setItem('currentUser', JSON.stringify(response.data.data))
 				localStorage.setItem('Authorization', JSON.stringify(response.headers.authorization));
 				setAuthorizationToken(JSON.parse(localStorage.getItem('Authorization')))
 				setNewUserData({
@@ -71,7 +73,7 @@ const SignUp = ({toggleSignUp, setAuthorizationToken}) => {
 					<input onChange={handleChange} type="password" name="password_confirmation" value={newUserData.password_confirmation}/>
 				</div>
 				<div className="submit-area">
-					<button className="submit" type="submit">Sign In</button>
+					<button className="submit" type="submit">Sign Up</button>
 				</div>
 				<div className="toggle">
 					<a href="#" onClick={toggleSignUp}>Sign In </a>

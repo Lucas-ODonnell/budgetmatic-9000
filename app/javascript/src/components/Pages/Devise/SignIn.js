@@ -15,8 +15,9 @@ const SignIn = ({toggleSignUp, setAuthorizationToken}) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const user = { user: userData }
-		axios.post('/users/sign_in', user)
+		axios.post('/login', user)
 			.then(response => {
+			console.log(response)
 				if (response.headers.authorization === undefined) {
 					setUserData({
 						email: "",
@@ -24,6 +25,7 @@ const SignIn = ({toggleSignUp, setAuthorizationToken}) => {
 					});
 					return;
 				}
+				localStorage.setItem('currentUser', JSON.stringify(response.data.data))
 				localStorage.setItem('Authorization', JSON.stringify(response.headers.authorization));
 				setAuthorizationToken(JSON.parse(localStorage.getItem('Authorization')));
 				setUserData({
