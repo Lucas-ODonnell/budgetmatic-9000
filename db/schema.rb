@@ -34,14 +34,6 @@ ActiveRecord::Schema.define(version: 2022_03_14_232334) do
     t.index ["user_id"], name: "index_budgets_on_user_id"
   end
 
-  create_table "jwt_denylists", force: :cascade do |t|
-    t.string "jti", null: false
-    t.datetime "exp", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["jti"], name: "index_jwt_denylists_on_jti"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "name", default: "", null: false
