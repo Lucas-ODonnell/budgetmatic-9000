@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react';
 import AppContext from './context/AppContext';
 import Budget from './components/Pages/Budget/Budget';
 import Devise from './components/Pages/Devise/Devise';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+library.add(fas)
 
 const App = () => {
 	const [authorizationToken, setAuthorizationToken] = useState();
@@ -20,7 +24,9 @@ const App = () => {
 	const global = {
 		currentUser: currentUser,
 		authorizationToken: authorizationToken,
-		setSignedIn: setSignedIn
+		setSignedIn: setSignedIn,
+		signedIn: signedIn,
+		FontAwesomeIcon: FontAwesomeIcon
 	}
 
 	return (
@@ -28,7 +34,7 @@ const App = () => {
 			{!signedIn ?
 			<Devise {...{setAuthorizationToken, setCurrentUser}}/>
 			:
-				<Budget />
+			<Budget />
 			}
 		</AppContext.Provider>
 	)

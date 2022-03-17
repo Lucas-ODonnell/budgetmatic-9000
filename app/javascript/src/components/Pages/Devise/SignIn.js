@@ -18,6 +18,7 @@ const SignIn = ({toggleSignUp, setAuthorizationToken}) => {
 		axios.post('/login', user)
 			.then(response => {
 			console.log(response)
+			console.log(response.data)
 				if (response.headers.authorization === undefined) {
 					setUserData({
 						email: "",

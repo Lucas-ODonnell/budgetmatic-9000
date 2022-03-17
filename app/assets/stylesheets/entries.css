@@ -1,0 +1,61 @@
+.entries-container {
+	display: flex;
+	justify-content: center;
+}
+
+.entries-content {
+	margin-top: 5em;
+	width: 95%;
+	max-width: 70rem;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	border-radius: 4px;
+	overflow: hidden;
+	background-color: #f0f0f0;
+	height: 50vh;
+	max-height: 50vh;
+	overflow: auto;
+}
+
+.entry-col {
+	text-align: center;
+}
+
+.food {
+	background-color: var(--food);
+}
+
+.utilities {
+	background-color: var(--utilities);
+}
+
+.housing {
+	background-color: var(--housing);
+}
+
+.transportation {
+	background-color: var(--housing);
+}
+
+.insurance {
+	background-color: var(--insurance);
+}
+
+.medical {
+	background-color: var(--medical);
+}
+
+.investments {
+	background-color: var(--investments);
+}
+
+.personal {
+	background-color: var(--personal);
+}
+
+.entertainment {
+	background-color: var(--entertainment);
+}
+
+.misc {
+	background-color: var(--misc);
+}

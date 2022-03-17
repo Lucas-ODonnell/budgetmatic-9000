@@ -2,6 +2,12 @@ module Api
   module V1
     class BudgetEntriesController < ApplicationController
       before_action :authenticate_user!
+      def index
+        budget = current_user.budget
+        budget_entries = BudgetEntry.where(budget_id: budget.id)
+        render json: BudgetEntrySerializer.new(budget_entries).serializable_hash.to_json
+      end
+
       def create
         budget = Budget.find_by(user_id: current_user.id)
         budget_entry = BudgetEntry.new(budget_entry_params)

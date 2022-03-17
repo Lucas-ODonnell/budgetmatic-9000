@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :budgets, only: [:index, :create, :update, :destroy]
-      resources :budget_entries, only: [:create, :update, :destroy]
+      resources :budget_entries, only: [:index, :create, :update, :destroy]
       resources :users, only: [:show, :update, :destroy]
       get '/current_user', to: 'current_user#index'
     end

@@ -16,6 +16,7 @@
 	overflow: hidden;
 	background-color: #f0f0f0;
 	height: 95vh;
+	overflow-y: scroll;
 }
 
 .budget-signout {
@@ -33,6 +34,31 @@
 .budget-header h1 {
 	font-size: 3rem;
 	font-weight: bold;
-	color: car(--borderColor);
+	color: var(--borderColor);
 }
+
+.budget-entry {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 3em;
+	cursor: pointer;
+	color: #a7a7a7;
+
+}
+
+.budget-entry .icon {
+	font-size: 1.5rem;
+	margin-right: .5em;
+}
+
+.budget-entry::after {
+	content: '';
+	flex: 1;
+	margin-left: 1em;
+	margin-right: 2em;
+	height: 2px;
+	background-color: #a7a7a7;
+}
+
 
