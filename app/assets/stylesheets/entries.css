@@ -20,6 +20,18 @@
 	text-align: center;
 }
 
+.entry-col button {
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+.entry-col button:hover {
+	color: white;
+	background-color: black;
+}
+
 .food {
 	background-color: var(--food);
 }

@@ -23,6 +23,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@types/react-onclickoutside": "^6.7.4",
     "webpack-dev-server": "^3"
   }
 }

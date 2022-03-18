@@ -47,7 +47,7 @@ const Budget = () => {
 						:
 						<div></div>
 						}
-						<EntriesIndex {...{global, refreshKey, currentBudget}}/>
+						<EntriesIndex {...{global,refreshKey, currentBudget, FontAwesomeIcon, setRefreshKey}}/>
 					</div>
 				</div>
 			</div>

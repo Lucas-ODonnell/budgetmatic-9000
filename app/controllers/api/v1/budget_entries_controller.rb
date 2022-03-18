@@ -5,6 +5,13 @@ module Api
       def index
         budget = current_user.budget
         budget_entries = BudgetEntry.where(budget_id: budget.id)
+        if params.include?(:filter)
+          if params[:filter] = "category"
+            budget_entries = budget_entries.filter_category(params[:value])
+          end
+          else
+          budget_entries = budget_entries.this_month
+        end
         render json: BudgetEntrySerializer.new(budget_entries).serializable_hash.to_json
       end
 

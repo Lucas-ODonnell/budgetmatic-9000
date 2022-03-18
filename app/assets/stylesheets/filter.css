@@ -1,0 +1,31 @@
+.filter-options {
+	display: flex;
+	justify-content: space-between;
+	padding: .5em 1em;
+}
+
+.dd-list {
+	position: fixed;
+	z-index: 999;
+}
+
+.drop-down-title {
+	cursor: pointer;
+}
+
+.drop-down-title p {
+	font-weight: bold;
+}
+
+.dd-list {
+	margin-top: .2em;
+}
+
+.dd-list-item button {
+	width: 100%;
+}
+
+.dd-list-item div {
+	display: flex;
+	justify-content: space-between;
+}
