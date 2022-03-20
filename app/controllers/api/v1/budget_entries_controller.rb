@@ -5,11 +5,9 @@ module Api
       def index
         budget = current_user.budget
         budget_entries = BudgetEntry.where(budget_id: budget.id)
-        if params.include?(:filter)
-          if params[:filter] = "category"
-            budget_entries = budget_entries.filter_category(params[:value])
-          end
-          else
+        if request.query_string.present? 
+          budget_entries = helpers.filter_results(budget_entries)
+        else
           budget_entries = budget_entries.this_month
         end
         render json: BudgetEntrySerializer.new(budget_entries).serializable_hash.to_json
@@ -20,6 +18,7 @@ module Api
         budget_entry = BudgetEntry.new(budget_entry_params)
         budget_entry.date = Date.today
         budget_entry.budget_id = budget.id
+        budget_entry.user_id = current_user.id
         if budget_entry.save
           render json: BudgetEntrySerializer.new(budget_entry).serializable_hash.to_json
           else

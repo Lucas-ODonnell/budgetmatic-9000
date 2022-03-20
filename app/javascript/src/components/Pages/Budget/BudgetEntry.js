@@ -66,7 +66,7 @@ const BudgetEntry = ({global,setRefreshKey}) => {
 									type="radio" 
 									checked={budgetEntry.category === 'transportation'} 
 									onChange={handleChange}
-									/>transportation
+									/>Transportation
 								<input 
 									name="category" 
 									value="insurance" 

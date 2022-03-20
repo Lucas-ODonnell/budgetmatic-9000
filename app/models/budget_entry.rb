@@ -1,5 +1,6 @@
 class BudgetEntry < ApplicationRecord
   belongs_to :budget
+  belongs_to :user
   validates :category, :name, :date, presence: true, allow_blank: false
   validates :price, presence: true, allow_blank: true
   before_create :format_category
@@ -19,5 +20,6 @@ class BudgetEntry < ApplicationRecord
   def format_category
     self.category = self.category.capitalize
   end
+
 end
 

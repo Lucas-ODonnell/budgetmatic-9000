@@ -10,4 +10,8 @@ class BudgetEntrySerializer
     price = object.price/100.0
     ApplicationHelper.number_to_currency(price)
   end
+
+  attribute :int_price do |object|
+    object.price
+  end
 end

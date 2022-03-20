@@ -1,20 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import colors from './colors';
 import Filter from './Filter';
+import colors from './colors';
 
-const EntriesIndex = ({global, FontAwesomeIcon,refreshKey,currentBudget, setRefreshKey}) => {
+const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
+	const [entryRefreshKey, setEntryRefreshKey] = useState(0);
 	const [entries, setEntries] = useState([]);
+	const [tags, setTags] = useState([]);
+	const [query, setQuery] = useState("");
+	const [total, setTotal] = useState(0)
+	const [months, setMonths] = useState({
+		start: "January",
+		end: "December"
+	});
 	const config = {
 		headers: { Authorization: global.authorizationToken }
 	}
 
+
 	useEffect(()=> {
-		axios.get('/api/v1/budget_entries.json', config)
+		getBudgetEntries()
+	}, [refreshKey, entryRefreshKey]);
+
+	const getBudgetEntries = () => {
+		setTotal(0)
+		axios.get(`/api/v1/budget_entries${query}`, config)
 			.then(response => {
 				const array = []
 				const objects = response.data.data
-				objects.forEach(object => array.push(object))
+				objects.forEach(object => {
+					let thisPrice = object.attributes.int_price;
+					setTotal(total => total + thisPrice)
+					array.push(object);
+					})
 				setEntries(array)
 			})
 			.catch(response => {
@@ -22,12 +40,29 @@ const EntriesIndex = ({global, FontAwesomeIcon,refreshKey,currentBudget, setRefr
 					global.setSignedIn(false);
 				}
 			})
-	}, [refreshKey]);
+	}
+
+	const handleMonthsChange = (e) => {
+		e.preventDefault();
+		setMonths({...months, [e.target.name]: e.target.value})
+	}
+
+	const handleFilterSubmit = (e) => {
+		e.preventDefault();
+		let thisQuery = "?"
+		tags.forEach((tag,index) => (
+			thisQuery += `category${index}=${tag}&`
+		))
+		//let queryFragment = Object.keys(months).map(key => key + '=' + months[key]).join('&');
+		//query += queryFragment
+	  setQuery(thisQuery)	
+		setEntryRefreshKey(oldKey => oldKey + 1)
+	}
 
 	const handleDelete = (id) => {
 		axios.delete(`/api/v1/budget_entries/${id}`, config)
 			.then(response => {
-				setRefreshKey(oldKey => oldKey + 1)
+				setEntryRefreshKey(oldKey => oldKey + 1)
 			})
 			.catch(response => {
 				console.log(response)
@@ -51,7 +86,6 @@ const EntriesIndex = ({global, FontAwesomeIcon,refreshKey,currentBudget, setRefr
 		<section>
 			<div className="entries-container">
 				<div className="entries-content">
-				<Filter />	
 					<table>
 						<thead>
 							<tr>
@@ -66,11 +100,9 @@ const EntriesIndex = ({global, FontAwesomeIcon,refreshKey,currentBudget, setRefr
 							{entryList}
 						</tbody>
 					</table>
-					<div className="total-cost">
-						Total: {currentBudget.total_cost}
-					</div>
 				</div>
 			</div>
+			<Filter {...{total, tags, setTags, handleFilterSubmit, handleMonthsChange, months}} />
 		</section>
 	)
 }

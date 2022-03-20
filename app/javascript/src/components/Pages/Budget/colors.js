@@ -4,6 +4,7 @@ const colors = {
 			"Housing":"housing",
 			"Medical": "medical",
 			"Transportation":"transportation",
+			"Investments":"investments",
 				"Insurance":"insurance",
 				"Personal":"personal",
 				"Entertainment":"entertainment",

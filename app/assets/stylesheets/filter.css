@@ -1,31 +1,78 @@
-.filter-options {
+.filter-container {
+	display: flex;
+	justify-content: center;
+	margin-top: .1em;
+}
+
+.filter-content {
+	width: 95%;
+	max-width: 70rem;
+}
+.cost-row {
 	display: flex;
 	justify-content: space-between;
-	padding: .5em 1em;
+	align-items: center;
 }
 
-.dd-list {
-	position: fixed;
-	z-index: 999;
+.filter-button {
+	margin-top: 1em;
 }
 
-.drop-down-title {
-	cursor: pointer;
+.total {
+	margin-left: 1em;
 }
 
-.drop-down-title p {
-	font-weight: bold;
+.tag-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid grey;
+  border-radius: 4px;
+  color: black
 }
 
-.dd-list {
-	margin-top: .2em;
+.tag-container input {
+  width: 100%;
+  min-width: 50%;
+  border: none;
+  border-radius: 4px;
+	align-self: center;
+	padding: .3em .5em;
 }
 
-.dd-list-item button {
-	width: 100%;
+.tag {
+  display: flex;
+  align-items: center;
+  border: 1px solid orange;
+  border-radius: 4px;
+  background-color: orange;
+  white-space: nowrap;
+  color: white;
 }
 
-.dd-list-item div {
-	display: flex;
-	justify-content: space-between;
+.tag button {
+  display: flex;
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+  color: white;
 }
+
+.filter-months {
+}
+
+.filter-months input {
+	border-radius: 4px;
+	border: 1px solid grey;
+	color: grey;
+	margin-right: .5em;
+	padding: .3em .5em;
+}
+
+.filter-months button {
+	border-radius: 4px;
+	padding: .3em .5em;
+}
+
+

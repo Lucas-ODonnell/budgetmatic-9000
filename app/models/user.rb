@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :jwt_authenticatable,
     :registerable, jwt_revocation_strategy: self
   has_one :budget, dependent: :destroy
+  has_many :budget_entries, through: :budget, dependent: :destroy
   validates :name, :password, :email, presence: true, allow_blank: false
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@,\s]+@[^@,\s]+\.[^@,\s]+\z/

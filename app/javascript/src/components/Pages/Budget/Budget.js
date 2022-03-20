@@ -13,18 +13,23 @@ const Budget = () => {
 	const [currentBudget, setCurrentBudget] = useState({});
 
 	useEffect(()=> {
+		getBudget();
+	},[refreshKey])
+
+	const getBudget = () => {
 		const config = {
 			headers: { Authorization: global.authorizationToken }
 		}
 		axios.get('/api/v1/budgets.json', config)
 			.then(response => {
-			setCurrentBudget(response.data.data.attributes)
+			console.log(response)
+				setCurrentBudget(response.data.data.attributes)
 			})
 			.catch(response => {
-			console.log(response);
+				console.log(response);
 			}
-			)
-	},[refreshKey])
+		)
+	}
 
 	return (
 		<section>

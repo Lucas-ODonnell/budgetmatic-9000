@@ -32,10 +32,4 @@ RSpec.describe BudgetEntry, type: :model do
       end
     end
   end
-  describe "budget_entry associations" do
-    it "belongs to one budget" do
-      budget_entry = BudgetEntry.reflect_on_association(:budget)
-      expect(budget_entry.macro).to eq(:belongs_to)
-    end
-  end
 end

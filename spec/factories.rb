@@ -18,5 +18,6 @@ FactoryBot.define do
     price { "$67.32" }
     date { Faker::Date.in_date_period(month:2)}
     budget
+    user
   end
 end

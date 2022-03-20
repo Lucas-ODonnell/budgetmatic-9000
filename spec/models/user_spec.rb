@@ -31,10 +31,4 @@ RSpec.describe User, type: :model do
       end
     end
   end
-  describe "user associations" do
-    it "can have one budgets" do
-      user = User.reflect_on_association(:budget)
-      expect(user.macro).to eq(:has_one)
-    end
-  end
 end

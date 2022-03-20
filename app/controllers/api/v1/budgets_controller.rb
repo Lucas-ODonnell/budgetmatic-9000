@@ -4,7 +4,6 @@ module Api
       before_action :authenticate_user!
       def index
         budget = Budget.where(user_id: current_user.id).first
-        budget.set_total
         render json: BudgetSerializer.new(budget).serializable_hash.to_json
       end
 
