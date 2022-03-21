@@ -6,9 +6,13 @@ module Api
         budget = current_user.budget
         budget_entries = BudgetEntry.where(budget_id: budget.id)
         if request.query_string.present? 
-          budget_entries = helpers.filter_results(budget_entries)
-        else
-          budget_entries = budget_entries.this_month
+          if params[:start].empty? || params[:end].empty?
+            budget_entries = budget_entries.this_month
+            budget_entries = helpers.filter_categories(budget_entries)
+            else
+            budget_entries = helpers.filter_date(budget_entries)
+            budget_entries = helpers.filter_categories(budget_entries)
+          end
         end
         render json: BudgetEntrySerializer.new(budget_entries).serializable_hash.to_json
       end
@@ -25,16 +29,7 @@ module Api
           render json: budget_entry.errors.full_messages, status: 422
         end
       end
-
-      def update
-        budget_entry = BudgetEntry.find(params[:id])
-        if budget_entry.update(budget_entry_params)
-          render json: BudgetEntrySerializer.new(budget_entry).serializable_hash.to_json
-          else
-          render json: budget_entry.errors.full_messages, status: 422
-        end
-      end
-
+      
       def destroy
         budget_entry = BudgetEntry.find(params[:id])
         if budget_entry.destroy

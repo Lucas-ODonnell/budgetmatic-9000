@@ -9,9 +9,9 @@ const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
 	const [tags, setTags] = useState([]);
 	const [query, setQuery] = useState("");
 	const [total, setTotal] = useState(0)
-	const [months, setMonths] = useState({
-		start: "January",
-		end: "December"
+	const [date, setDate] = useState({
+		start: "",
+		end: ""
 	});
 	const config = {
 		headers: { Authorization: global.authorizationToken }
@@ -32,7 +32,7 @@ const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
 					let thisPrice = object.attributes.int_price;
 					setTotal(total => total + thisPrice)
 					array.push(object);
-					})
+				})
 				setEntries(array)
 			})
 			.catch(response => {
@@ -42,9 +42,9 @@ const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
 			})
 	}
 
-	const handleMonthsChange = (e) => {
+	const handleDateChange = (e) => {
 		e.preventDefault();
-		setMonths({...months, [e.target.name]: e.target.value})
+		setDate({...date, [e.target.name]: e.target.value})
 	}
 
 	const handleFilterSubmit = (e) => {
@@ -53,9 +53,10 @@ const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
 		tags.forEach((tag,index) => (
 			thisQuery += `category${index}=${tag}&`
 		))
-		//let queryFragment = Object.keys(months).map(key => key + '=' + months[key]).join('&');
-		//query += queryFragment
-	  setQuery(thisQuery)	
+		console.log(date);
+		let queryFragment = Object.keys(date).map(key => key + '=' + date[key]).join('&');
+		thisQuery += queryFragment
+		setQuery(thisQuery)	
 		setEntryRefreshKey(oldKey => oldKey + 1)
 	}
 
@@ -102,7 +103,7 @@ const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
 					</table>
 				</div>
 			</div>
-			<Filter {...{total, tags, setTags, handleFilterSubmit, handleMonthsChange, months}} />
+			<Filter {...{total, tags, setTags, handleFilterSubmit, handleDateChange, date}} />
 		</section>
 	)
 }

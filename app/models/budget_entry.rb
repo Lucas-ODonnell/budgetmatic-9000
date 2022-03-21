@@ -5,8 +5,8 @@ class BudgetEntry < ApplicationRecord
   validates :price, presence: true, allow_blank: true
   before_create :format_category
 
-  scope :this_month, -> { where('date > ?', Time.current.beginning_of_month) }
-  scope :time_range, lambda {|start_date, end_date| where("date >= ? AND date <= ?", start_date, end_date )}
+  scope :this_month, -> { where('date >= ? AND date <= ?', Time.current.beginning_of_month, Time.current.end_of_month) }
+  scope :filter_date_range, lambda {|start_date, end_date| where("date >= ? AND date <= ?", start_date, end_date )}
   scope :filter_category, lambda {|category| where("category = ?", category)}
 
   def price=(val)

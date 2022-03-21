@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Filter = ({total,tags, setTags, handleFilterSubmit, handleMonthsChange, months}) => {
+const Filter = ({total,tags, setTags, handleFilterSubmit, handleDateChange, date}) => {
 	const [isKeyReleased, setIsKeyReleased] = useState(false);
 	const [input, setInput] = useState('');
 
@@ -61,16 +61,16 @@ const Filter = ({total,tags, setTags, handleFilterSubmit, handleMonthsChange, mo
 					</div>
 					<div className="filter-months">
 						<input 
-							type="text" 
+							type="date" 
 							name="start" 
-							value={months.start} 
-							onChange={handleMonthsChange}
+							value={date.start} 
+							onChange={handleDateChange}
 							/>
 						<input 
-							type="text"
+							type="date"
 							name="end" 
-							value={months.end} 
-							onChange={handleMonthsChange}
+							value={date.end} 
+							onChange={handleDateChange}
 							/>
 						<button className="submit" type="submit">Filter</button>
 					</div>

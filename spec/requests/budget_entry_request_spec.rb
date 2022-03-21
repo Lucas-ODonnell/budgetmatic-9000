@@ -36,23 +36,6 @@ RSpec.describe "BudgetEntries", type: :request do
         expect(response).to have_http_status(200)
       end
     end
-    context "PUT /update" do
-      before(:each) do
-        @budget_entry = create(:budget_entry)
-      end
-      it "should cause an error if params are invalid" do
-        headers = { 'Accept' => 'application/json' }
-        auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, @user)
-        put api_v1_budget_entry_path(@budget_entry.id), headers: auth_headers, params: { budget_entry: { category: "Utilities", name: "", price: "$3.43" } }
-        expect(response).to have_http_status(422)
-      end
-      it "should pass of params are valid" do
-        headers = { 'Accept' => 'application/json' }
-        auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, @user)
-        put api_v1_budget_entry_path(@budget_entry.id), headers: auth_headers, params: { budget_entry: { category: "Utilities", name: "Electric", price: "$79.89" } }
-        expect(response).to have_http_status(200)
-      end
-    end
     context "Delete /Destroy" do
       it "should delete a budget entry" do
         @budget_entry = create(:budget_entry)
