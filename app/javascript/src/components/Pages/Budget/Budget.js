@@ -2,15 +2,19 @@ import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import AppContext from '../../../context/AppContext';
 import SignOut from '../../SignOut';
-import BudgetEntry from './BudgetEntry';
-import EntriesIndex from './EntriesIndex';
+import Tabs from '../Tabs/Tabs';
+import TabContent from '../Tabs/TabContent';
+import ShowCurrentBudget from './ShowCurrentBudget';
+import NewBudgetForm from './NewBudgetForm';
 
 const Budget = () => {
 	const global = useContext(AppContext);
 	const FontAwesomeIcon = global.FontAwesomeIcon;
-	const [showForm, setShowForm] = useState(false);
+	const [showBudgetEntry, setShowBudgetEntry] = useState(false);
+	const [showBudgetForm, setShowBudgetForm] = useState(false);
 	const [refreshKey, setRefreshKey] = useState(0);
 	const [currentBudget, setCurrentBudget] = useState({});
+	const [activeTab, setActiveTab] = useState("tab1");
 
 	useEffect(()=> {
 		getBudget();
@@ -22,7 +26,7 @@ const Budget = () => {
 		}
 		axios.get('/api/v1/budgets.json', config)
 			.then(response => {
-			console.log(response)
+				console.log(response)
 				setCurrentBudget(response.data.data.attributes)
 			})
 			.catch(response => {
@@ -30,29 +34,33 @@ const Budget = () => {
 			}
 		)
 	}
-
 	return (
 		<section>
 			<div className="background-form">
 				<div className="budget-container">
 					<div className = "budget-content">
-						<SignOut />
-						<div className = "budget-header">
-							<h1>{currentBudget.name}</h1>
-						</div>
-						<div className = "budget-entry" onClick={()=>{setShowForm(!showForm)}}>
-							<div className="icon" >
-								{ showForm ? <FontAwesomeIcon icon="fas fa-caret-down" /> : <FontAwesomeIcon icon="fas fa-caret-right" />}
+						<div className="budget-nav">
+							<div>
+								<Tabs {...{activeTab, setActiveTab}}/>
 							</div>
-							<p >New Budget Entry</p>
+							<div>
+								<NewBudgetForm {...{showBudgetForm, setShowBudgetForm, FontAwesomeIcon, global, setRefreshKey}}/>
+															</div>
+							<div>
+								<SignOut />
+							</div>
 						</div>
-						{
-						showForm ? 
-						<BudgetEntry {...{global, setRefreshKey}}/>
-						:
-						<div></div>
-						}
-						<EntriesIndex {...{global,refreshKey, currentBudget, FontAwesomeIcon, setRefreshKey}}/>
+						<div className="outlet">
+							<TabContent id="tab1" activeTab={activeTab}>
+								<ShowCurrentBudget {...{currentBudget, showBudgetEntry, setShowBudgetEntry, global, FontAwesomeIcon, setRefreshKey, refreshKey}}/>
+							</TabContent>
+							<TabContent id="tab2" activeTab={activeTab}>
+								<p>Tab 2 works!</p>
+							</TabContent>
+							<TabContent id="tab3" activeTab={activeTab}>
+								<p>Tab 3 works!</p>
+							</TabContent>
+						</div>
 					</div>
 				</div>
 			</div>

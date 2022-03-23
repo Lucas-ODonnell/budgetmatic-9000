@@ -1,0 +1,27 @@
+.tab-nav {
+	display: flex;
+}
+
+.tab-nav li {
+	border: 1px solid var(--buttonColor);
+	font-weight: bold;
+	padding: .2em .3em;
+	background-color: var(--buttonColor);
+	color: white;
+}
+
+.tab-nav li:hover {
+	background-color: white;
+	color: var(--buttonColor);
+}
+
+.tab-nav li.active {
+	background-color: black;
+}
+
+.outlet {
+	dispay: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}

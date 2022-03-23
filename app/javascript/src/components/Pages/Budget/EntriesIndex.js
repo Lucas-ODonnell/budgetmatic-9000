@@ -53,7 +53,6 @@ const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
 		tags.forEach((tag,index) => (
 			thisQuery += `category${index}=${tag}&`
 		))
-		console.log(date);
 		let queryFragment = Object.keys(date).map(key => key + '=' + date[key]).join('&');
 		thisQuery += queryFragment
 		setQuery(thisQuery)	

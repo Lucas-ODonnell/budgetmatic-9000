@@ -19,10 +19,12 @@
 	overflow-y: scroll;
 }
 
-.budget-signout {
+.budget-nav {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
+	align-items: flex-start;
 }
+
 
 .budget-header {
 	display: flex;
@@ -45,6 +47,20 @@
 	cursor: pointer;
 	color: #a7a7a7;
 
+}
+
+.new-budget {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 3em;
+	cursor: pointer;
+	color: #a7a7a7;
+}
+
+.new-budget .icon {
+	font-size: 1.5rem;
+	margin-right: .5em;
 }
 
 .budget-entry .icon {
