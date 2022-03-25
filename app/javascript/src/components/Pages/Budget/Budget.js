@@ -24,21 +24,22 @@ const Budget = () => {
 
 	const getBudget = () => {
 		const config = {
-			headers: { Authorization: global.authorizationToken }
-		}
+		headers: { Authorization: global.authorizationToken }
+	}
 		axios.get('/api/v1/budgets.json', config)
 			.then(response => {
-			response.data.data.forEach(object => setBudgets(budgets => [...budgets, object]))
+				setBudgets([])
+				response.data.data.forEach(object => setBudgets(budgets => [...budgets, object]))
 			})
 			.catch(response => {
 				console.log(response);
 			}
-		)
+			)
 	}
 	const allBudgets = budgets.map((budget, index) => {
 		return (
 			<TabContent id={index} activeTab={activeTab} key={index}>
-				<ShowBudgetEntryContent {...{budget, showBudgetEntry, setShowBudgetEntry, global, FontAwesomeIcon, setEntryRefreshKey, entryRefreshKey, filterRefreshKey, setFilterRefreshKey}}/>
+				<ShowBudgetEntryContent {...{budget, showBudgetEntry, setShowBudgetEntry, global, FontAwesomeIcon, setEntryRefreshKey, entryRefreshKey, filterRefreshKey, setFilterRefreshKey, setBudgetRefreshKey}}/>
 			</TabContent>
 		)
 	})
@@ -52,15 +53,16 @@ const Budget = () => {
 								<Tabs {...{budgets, activeTab, setActiveTab}}/>
 							</div>
 							<div>
-								<ShowBudgetForm {...{showBudgetForm, setShowBudgetForm, FontAwesomeIcon, global,setBudgetRefreshKey}}/>
-															</div>
-							<div>
 								<SignOut />
 							</div>
 						</div>
+						<div>
+							<ShowBudgetForm {...{showBudgetForm, setShowBudgetForm, FontAwesomeIcon, global,setBudgetRefreshKey}}/>
+						</div>
+
 						<div className="outlet">
-						{allBudgets}
-													</div>
+							{allBudgets}
+						</div>
 					</div>
 				</div>
 			</div>

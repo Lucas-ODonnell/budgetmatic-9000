@@ -1,5 +1,6 @@
 .tab-nav {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .tab-nav li {
@@ -8,6 +9,7 @@
 	padding: .2em .3em;
 	background-color: var(--buttonColor);
 	color: white;
+	cursor: pointer;
 }
 
 .tab-nav li:hover {

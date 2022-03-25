@@ -96,6 +96,7 @@ button {
 	border: 1px solid var(--buttonColor);
 	transition: background-color .5s ease-out;
 	transition: color .5s ease-out;
+	cursor: pointer
 }
 
 button:hover {

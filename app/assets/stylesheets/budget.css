@@ -22,21 +22,46 @@
 .budget-nav {
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-start;
+	flex-wrap: wrap;
 }
 
 
 .budget-header {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 	padding-top: 3em;
 	padding-bottom: 1em;
+}
+
+.budget-options {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.budget-options button {
+	color: black;
+	background-color: transparent;
+	border: none;
+	font-size: 1.3rem;
+}
+
+.budget-options button:hover{
+	color: #988AB1;
+	background-color: transparent;
 }
 
 .budget-header h1 {
 	font-size: 3rem;
 	font-weight: bold;
 	color: var(--borderColor);
+	overflow-wrap: break-word;
+	cursor: pointer;
+}
+
+.budget-header h1:hover {
+	color: #660000;
 }
 
 .budget-entry {
@@ -56,6 +81,7 @@
 	margin-left: 3em;
 	cursor: pointer;
 	color: #a7a7a7;
+	margin-top: 1em;
 }
 
 .new-budget .icon {
@@ -77,4 +103,21 @@
 	background-color: #a7a7a7;
 }
 
+.budget-signout button {
+	background-color: #660000;
+	border: 1px solid #660000;
+}
 
+.budget-signout button:hover {
+	background-color: white;
+	color: #660000;
+}
+
+.update-form {
+	display: flex;
+}
+
+.update-form button {
+	margin-left: 1em;
+	border-radius: 4px;
+}
