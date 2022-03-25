@@ -3,22 +3,22 @@ module Api
     class BudgetEntriesController < ApplicationController
       before_action :authenticate_user!
       def index
-        budget = current_user.budget
+        budget = Budget.where(id: params[:id])[0]
         budget_entries = BudgetEntry.where(budget_id: budget.id)
-        if request.query_string.present? 
-          if params[:start].empty? || params[:end].empty?
-            budget_entries = budget_entries.this_month
-            budget_entries = helpers.filter_categories(budget_entries)
-            else
-            budget_entries = helpers.filter_date(budget_entries)
-            budget_entries = helpers.filter_categories(budget_entries)
-          end
+        if params[:start].nil? || params[:end].nil?
+          budget_entries = budget_entries.this_month
+        elsif params[:start].empty? || params[:end].empty?
+          budget_entries = budget_entries.this_month
+          budget_entries = helpers.filter_categories(budget_entries)
+          else
+          budget_entries = helpers.filter_date(budget_entries)
+          budget_entries = helpers.filter_categories(budget_entries)
         end
         render json: BudgetEntrySerializer.new(budget_entries).serializable_hash.to_json
       end
 
       def create
-        budget = Budget.find_by(user_id: current_user.id)
+        budget = Budget.where(id: params[:id])[0]
         budget_entry = BudgetEntry.new(budget_entry_params)
         budget_entry.date = Date.today
         budget_entry.budget_id = budget.id
@@ -29,7 +29,7 @@ module Api
           render json: budget_entry.errors.full_messages, status: 422
         end
       end
-      
+
       def destroy
         budget_entry = BudgetEntry.find(params[:id])
         if budget_entry.destroy

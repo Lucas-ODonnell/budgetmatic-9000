@@ -1,7 +1,7 @@
 import React from 'react';
-import BudgetForm from './BudgetForm';
+import CreateBudget from './CreateBudget';
 
-const NewBudgetForm = ({showBudgetForm, setShowBudgetForm, FontAwesomeIcon, global, setRefreshKey}) => {
+const ShowBudgetForm = ({showBudgetForm, setShowBudgetForm, FontAwesomeIcon, global, setBudgetRefreshKey}) => {
 	return (
 		<>
 			<div className = "new-budget" onClick={()=>{setShowBudgetForm(!showBudgetForm)}}>
@@ -12,7 +12,7 @@ const NewBudgetForm = ({showBudgetForm, setShowBudgetForm, FontAwesomeIcon, glob
 			</div>
 			{
 			showBudgetForm ? 
-			<BudgetForm {...{global, setRefreshKey}}/>
+			<CreateBudget {...{global, setBudgetRefreshKey}}/>
 			:
 			<div></div>
 			}
@@ -20,4 +20,4 @@ const NewBudgetForm = ({showBudgetForm, setShowBudgetForm, FontAwesomeIcon, glob
 	)
 }
 
-export default NewBudgetForm;
+export default ShowBudgetForm;

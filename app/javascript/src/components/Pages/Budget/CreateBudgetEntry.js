@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
-const BudgetEntry = ({global,setRefreshKey}) => {
+const CreateBudgetEntry = ({budget,global,setEntryRefreshKey}) => {
 	const [budgetEntry, setBudgetEntry] = useState({
 		category: "food",
 		name: "",
-		price: ""
+		price: "",
+		id: budget.id
 	})
 
 	const handleChange = (e) => {
@@ -18,14 +19,14 @@ const BudgetEntry = ({global,setRefreshKey}) => {
 		const config = {
 			headers: { Authorization: global.authorizationToken }
 		}
-		axios.post('/api/v1/budget_entries', budgetEntry, config)
+		axios.post("/api/v1/budget_entries", budgetEntry, config)
 			.then(response => {
 				setBudgetEntry({
 					category: "food",
 					name: "",
 					price: ""
 				})
-				setRefreshKey(oldKey => oldKey + 1)
+				setEntryRefreshKey(oldKey => oldKey + 1)
 			})
 			.catch(response=> {
 				console.log(response)
@@ -139,4 +140,4 @@ const BudgetEntry = ({global,setRefreshKey}) => {
 	)
 }
 
-export default BudgetEntry;
+export default CreateBudgetEntry;

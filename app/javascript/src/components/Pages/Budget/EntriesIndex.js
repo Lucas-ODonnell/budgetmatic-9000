@@ -3,8 +3,8 @@ import axios from 'axios';
 import Filter from './Filter';
 import colors from './colors';
 
-const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
-	const [entryRefreshKey, setEntryRefreshKey] = useState(0);
+const EntriesIndex = ({budget, setEntryRefreshKey, entryRefreshKey,global, FontAwesomeIcon, setFilterRefreshKey, filterRefreshKey}) => {
+	const id = `?id=${budget.id}&`;
 	const [entries, setEntries] = useState([]);
 	const [tags, setTags] = useState([]);
 	const [query, setQuery] = useState("");
@@ -17,15 +17,15 @@ const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
 		headers: { Authorization: global.authorizationToken }
 	}
 
-
 	useEffect(()=> {
 		getBudgetEntries()
-	}, [refreshKey, entryRefreshKey]);
+	}, [filterRefreshKey, entryRefreshKey]);
 
 	const getBudgetEntries = () => {
 		setTotal(0)
-		axios.get(`/api/v1/budget_entries${query}`, config)
+		axios.get(`/api/v1/budget_entries${id}${query}`, config)
 			.then(response => {
+				setQuery(`?id=${budget.id}&`)
 				const array = []
 				const objects = response.data.data
 				objects.forEach(object => {
@@ -49,14 +49,14 @@ const EntriesIndex = ({refreshKey,global, FontAwesomeIcon}) => {
 
 	const handleFilterSubmit = (e) => {
 		e.preventDefault();
-		let thisQuery = "?"
+		let thisQuery = ""
 		tags.forEach((tag,index) => (
 			thisQuery += `category${index}=${tag}&`
 		))
 		let queryFragment = Object.keys(date).map(key => key + '=' + date[key]).join('&');
 		thisQuery += queryFragment
 		setQuery(thisQuery)	
-		setEntryRefreshKey(oldKey => oldKey + 1)
+		setFilterRefreshKey(oldKey => oldKey + 1)
 	}
 
 	const handleDelete = (id) => {

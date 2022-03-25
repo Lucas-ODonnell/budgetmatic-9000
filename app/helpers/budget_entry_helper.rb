@@ -1,10 +1,15 @@
 module BudgetEntryHelper
   def filter_categories(budget_entries)
+    categories = [
+      "Food", "Utilities", "Housing", "Transportation", "Insurance",
+      "Medical", "Investments", "Personal", "Entertainment", "Misc"
+    ]
     category = []
     params.each do |_k,v|
-      category << budget_entries.filter_category(v.capitalize)
+      next unless categories.include?(v.capitalize)
+      category << budget_entries.filter_category(v.capitalize) 
     end
-    unless category.first.empty?
+    unless category.empty?
     budget_entries = category.flatten
     else
     budget_entries

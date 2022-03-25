@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const BudgetForm = ({global,setRefreshKey}) => {
+const CreateBudget = ({global,setBudgetRefreshKey}) => {
 	const [budget, setBudget] = useState({
 		name: ""
 	})
@@ -20,7 +20,7 @@ const BudgetForm = ({global,setRefreshKey}) => {
 				setBudget({
 					name: ""
 				})
-				setRefreshKey(oldKey => oldKey + 1)
+				setBudgetRefreshKey(oldKey => oldKey + 1)
 			})
 			.catch(response=> {
 				console.log(response)
@@ -45,4 +45,4 @@ const BudgetForm = ({global,setRefreshKey}) => {
 	)
 }
 
-export default BudgetForm;
+export default CreateBudget;

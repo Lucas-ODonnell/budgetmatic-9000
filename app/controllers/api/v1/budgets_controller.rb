@@ -3,8 +3,8 @@ module Api
     class BudgetsController < ApplicationController
       before_action :authenticate_user!
       def index
-        budget = Budget.where(user_id: current_user.id).first
-        render json: BudgetSerializer.new(budget).serializable_hash.to_json
+        budgets = Budget.where(user_id: current_user.id)
+        render json: BudgetSerializer.new(budgets).serializable_hash.to_json
       end
 
       def create
