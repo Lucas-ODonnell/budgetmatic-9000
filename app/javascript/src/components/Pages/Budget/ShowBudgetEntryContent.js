@@ -44,7 +44,7 @@ const ShowBudgetEntryContent = ({budget, showBudgetEntry, setShowBudgetEntry, gl
 				<>
 					<h1 onClick={()=>{setEditBudget(true)}}>{budget.attributes.name}</h1>
 					<div className="budget-options">
-						<button onClick={()=>{handleBudgetDelete()}}><FontAwesomeIcon icon="fas fa-times"/></button>
+						<button onClick={()=>{global.setShow(true); global.setDeleteFunction(()=>()=> handleBudgetDelete())}}><FontAwesomeIcon icon="fas fa-times"/></button>
 					</div>
 					</>
 				:

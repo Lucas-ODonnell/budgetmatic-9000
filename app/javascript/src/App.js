@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import AppContext from './context/AppContext';
 import Budget from './components/Pages/Budget/Budget';
 import Devise from './components/Pages/Devise/Devise';
+import DeleteConfirmation from './components/DeleteConfirmation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +12,8 @@ const App = () => {
 	const [authorizationToken, setAuthorizationToken] = useState();
 	const [signedIn, setSignedIn] = useState(false);
 	const [currentUser, setCurrentUser] = useState({})
+	const [show, setShow] = useState(false);
+	const [deleteFunction, setDeleteFunction] = useState(()=> () => {return});
 
 	useEffect(() => {
 		if (localStorage.Authorization !== undefined) {
@@ -21,12 +24,17 @@ const App = () => {
 			setSignedIn(true)
 		}
 	}, [authorizationToken])
+
 	const global = {
 		currentUser: currentUser,
 		authorizationToken: authorizationToken,
 		setSignedIn: setSignedIn,
 		signedIn: signedIn,
-		FontAwesomeIcon: FontAwesomeIcon
+		FontAwesomeIcon: FontAwesomeIcon,
+		show: show,
+		setShow: setShow,
+		deleteFunction: deleteFunction,
+		setDeleteFunction: setDeleteFunction
 	}
 
 	return (
@@ -34,7 +42,10 @@ const App = () => {
 			{!signedIn ?
 			<Devise {...{setAuthorizationToken, setCurrentUser}}/>
 			:
+			<>
+			<DeleteConfirmation />
 			<Budget />
+			</>
 			}
 		</AppContext.Provider>
 	)

@@ -4,10 +4,10 @@
 }
 
 .tab-nav li {
-	border: 1px solid var(--buttonColor);
+	border: 1px solid black;
 	font-weight: bold;
-	padding: .2em .3em;
-	background-color: var(--buttonColor);
+	padding: .5em 1em;
+	background-color: black;
 	color: white;
 	cursor: pointer;
 }
@@ -18,7 +18,15 @@
 }
 
 .tab-nav li.active {
-	background-color: black;
+	background-color: #f0f0f0;
+	color: black;
+	border-bottom: transparent;
+}
+
+.tab-nav li.active {
+	background-color: #f0f0f0;
+	color: black;
+	border: transparent;
 }
 
 .outlet {
