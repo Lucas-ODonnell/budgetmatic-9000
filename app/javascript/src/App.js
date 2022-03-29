@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import { Routes, Route } from 'react-router-dom';
 import AppContext from './context/AppContext';
 import Budget from './components/Pages/Budget/Budget';
 import Devise from './components/Pages/Devise/Devise';
+import Analysis from './components/Pages/Analysis/Analysis';
+import Profile from './components/Pages/Profile/Profile';
 import DeleteConfirmation from './components/DeleteConfirmation';
+import Navigation from './components/Navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -39,14 +43,21 @@ const App = () => {
 
 	return (
 		<AppContext.Provider value={global}>
-			{!signedIn ?
-			<Devise {...{setAuthorizationToken, setCurrentUser}}/>
-			:
-			<>
-			<DeleteConfirmation />
-			<Budget />
-			</>
-			}
+			<div className="background-form">
+				{!signedIn ?
+				<Devise {...{setAuthorizationToken, setCurrentUser}}/>
+				:
+				<>
+					<Navigation />
+					<DeleteConfirmation/>
+					<Routes>
+						<Route exact path="/" element={<Budget />}/>
+						<Route exact path="profile" element={<Profile />}/>
+						<Route exact path="/analysis" element={<Analysis />}/>
+					</Routes>
+					</>
+				}
+			</div>
 		</AppContext.Provider>
 	)
 }

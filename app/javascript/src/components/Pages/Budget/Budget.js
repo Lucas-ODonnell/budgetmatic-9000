@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import AppContext from '../../../context/AppContext';
-import SignOut from '../../SignOut';
 import Tabs from '../Tabs/Tabs';
 import TabContent from '../Tabs/TabContent';
 import ShowBudgetEntryContent from './ShowBudgetEntryContent';
@@ -45,15 +44,11 @@ const Budget = () => {
 	})
 	return (
 		<section>
-			<div className="background-form">
 				<div className="budget-container">
 					<div className = "budget-content">
 						<div className="budget-nav">
 							<div>
 								<Tabs {...{budgets, activeTab, setActiveTab}}/>
-							</div>
-							<div>
-								<SignOut />
 							</div>
 						</div>
 						<div>
@@ -65,7 +60,6 @@ const Budget = () => {
 						</div>
 					</div>
 				</div>
-			</div>
 		</section>
 	)
 }

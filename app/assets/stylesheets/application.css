@@ -140,7 +140,9 @@ td {
 	padding: 1em 0 1em 0;
 }
 
-
+.background-form {
+	background-color: var(--borderColor);
+}
 
 @media 
 only screen and (max-width: 810px),

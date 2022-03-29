@@ -1,6 +1,4 @@
-.background-form {
-	background-color: var(--borderColor);
-}
+
 .budget-container {
 	display: flex;
 	justify-content: center;
@@ -106,6 +104,8 @@
 .budget-signout button {
 	background-color: #660000;
 	border: 1px solid #660000;
+	border-radius: 4px;
+	padding: .3em .5em;
 }
 
 .budget-signout button:hover {
