@@ -15,3 +15,90 @@
 	height: 95vh;
 	overflow-y: scroll;
 }
+
+.profile-top-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.profile-base-info {
+	box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+	border-radius: 4px;
+	padding: 1em 2em;
+	margin: 1em 2em;
+	width: 45%;
+}
+
+.profile-base-info p {
+	font-size: 1.5rem;
+}
+
+.profile-base-info span {
+	font-weight: bold;
+}
+
+.delete-profile button {
+	padding: 1em 2em;
+	margin: 1em 2em;
+	border-radius: 4px;
+	font-size: 1.5rem;
+	background-color: #660000;
+	color: white;
+	border: 1px solid #660000;
+}
+
+.delete-profile button:hover {
+	color: white;
+	background-color: black;
+}
+
+.update-profile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 3em;
+	cursor: pointer;
+	color: #a7a7a7;
+	margin-top: 3em;
+}
+
+
+.profile-update-container {
+	display: flex;
+	justify-content: center;
+}
+
+.profile-update-content {
+	height: 25vh;
+	width: 80%;
+	max-width: 50rem;
+}
+
+.profile-update-form .field {
+	margin-bottom: 1em;
+}
+
+.profile-update-form label {
+	color: #a7a7a7;
+}
+
+.profile-update-form .input {
+	width: 100%;
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid var(--highlightColor);
+	font-size: 1.5rem;
+}
+
+.profile-update-form .profile-update-submit {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 3em;
+}
+
+.profile-update-form .profile-update-submit button {
+	border-radius: 4px;
+	font-size: 1rem;
+	padding: .3em .5em;
+}

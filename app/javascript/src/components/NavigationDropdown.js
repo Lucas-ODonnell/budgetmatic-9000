@@ -10,6 +10,7 @@ const NavigationDropdown = ({setCurrentSection}) => {
 
 	const handleOnClick = (item) => {
 			setSelection([item])
+			setOpen(false);
 	}
 
 	const isItemInSelection = (item) => {

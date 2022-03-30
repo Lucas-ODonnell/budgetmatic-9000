@@ -2,23 +2,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include Devise::JWT::RevocationStrategies::JTIMatcher
-  devise :database_authenticatable, :jwt_authenticatable,
+  devise :database_authenticatable, :jwt_authenticatable, :validatable,
     :registerable, jwt_revocation_strategy: self
   has_many :budgets, dependent: :destroy
   has_many :budget_entries, through: :budgets, dependent: :destroy
-  validates :name, :password, :email, presence: true, allow_blank: false
+  validates :name, :email, presence: true, allow_blank: false
   validates :email, uniqueness: true
   validates_format_of :email, :with => /\A[^@,\s]+@[^@,\s]+\.[^@,\s]+\z/
-  validates :password, length: { minimum: 6 }
-
-  after_create :create_budget
-
-  def create_budget
-    id = self.id
-    name = self.name
-    Budget.create(name: "#{name}'s budget", user_id: id)
-  end
-  
   end
 
 #how the jti token is revoked

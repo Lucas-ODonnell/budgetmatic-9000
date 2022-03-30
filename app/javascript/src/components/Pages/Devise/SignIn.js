@@ -26,7 +26,6 @@ const SignIn = ({toggleSignUp, setAuthorizationToken}) => {
 					});
 					return;
 				}
-				localStorage.setItem('currentUser', JSON.stringify(response.data.data))
 				localStorage.setItem('Authorization', JSON.stringify(response.headers.authorization));
 				setAuthorizationToken(JSON.parse(localStorage.getItem('Authorization')));
 				setUserData({

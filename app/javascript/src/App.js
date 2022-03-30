@@ -24,13 +24,11 @@ const App = () => {
 			const AuthorizedToken = localStorage.getItem('Authorization')
 			const CurrentUser = localStorage.getItem('currentUser')
 			setAuthorizationToken(JSON.parse(AuthorizedToken))
-			setCurrentUser(JSON.parse(CurrentUser))
 			setSignedIn(true)
 		}
 	}, [authorizationToken])
 
 	const global = {
-		currentUser: currentUser,
 		authorizationToken: authorizationToken,
 		setSignedIn: setSignedIn,
 		signedIn: signedIn,
