@@ -38,7 +38,7 @@ module Api
       private
 
       def budget_params
-        params.require(:budget).permit(:name)
+        params.require(:budget).permit(:name, :monthly_budget)
       end
     end
   end

@@ -113,11 +113,8 @@
 	color: #660000;
 }
 
-.update-form {
-	display: flex;
-}
 
 .update-form button {
-	margin-left: 1em;
 	border-radius: 4px;
+	margin-right: 1em;
 }

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import NumberFormat from 'react-number-format';
 
 const CreateBudget = ({global,setBudgetRefreshKey}) => {
 	const [budget, setBudget] = useState({
-		name: ""
+		name: "",
+		monthly_budget: ""
 	})
 
 	const handleChange = (e) => {
@@ -18,7 +20,8 @@ const CreateBudget = ({global,setBudgetRefreshKey}) => {
 		axios.post('/api/v1/budgets', budget, config)
 			.then(response => {
 				setBudget({
-					name: ""
+					name: "",
+					monthly_budget: ""
 				})
 				setBudgetRefreshKey(oldKey => oldKey + 1)
 			})
@@ -35,6 +38,18 @@ const CreateBudget = ({global,setBudgetRefreshKey}) => {
 							<label>Name </label>
 							<input onChange={handleChange} value={budget.name} className="input" type="text" name="name"/>
 						</div>
+						<div className="field">
+							<label>Monthly Income </label>
+							<NumberFormat
+								className="input"
+								name="monthly_budget"
+								value={budget.monthly_budget}
+								thousandSeparator={true}
+								decimalScale={2}
+								prefix={'$'}
+								onChange={handleChange}
+								/>
+							</div>
 						<div className="budget-entry-submit">
 							<button className="submit" type="submit">Submit</button>
 						</div>

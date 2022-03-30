@@ -9,6 +9,7 @@ const EntriesIndex = ({budget, setEntryRefreshKey, entryRefreshKey,global, FontA
 	const [tags, setTags] = useState([]);
 	const [query, setQuery] = useState("");
 	const [total, setTotal] = useState(0)
+	const [income, setIncome] = useState(0)
 	const [date, setDate] = useState({
 		start: "",
 		end: ""
@@ -22,9 +23,11 @@ const EntriesIndex = ({budget, setEntryRefreshKey, entryRefreshKey,global, FontA
 	}, [filterRefreshKey, entryRefreshKey]);
 
 	const getBudgetEntries = () => {
-		setTotal(0)
+		setTotal(0);
+		setIncome(0);
 		axios.get(`/api/v1/budget_entries${id}${query}`, config)
 			.then(response => {
+			  setIncome(budget.attributes.int_monthly_budget)
 				setQuery(`?id=${budget.id}&`)
 				const array = []
 				const objects = response.data.data
@@ -102,7 +105,7 @@ const EntriesIndex = ({budget, setEntryRefreshKey, entryRefreshKey,global, FontA
 					</table>
 				</div>
 			</div>
-			<Filter {...{total, tags, setTags, handleFilterSubmit, handleDateChange, date}} />
+			<Filter {...{total, income, tags, setTags, handleFilterSubmit, handleDateChange, date}} />
 		</section>
 	)
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Filter = ({total,tags, setTags, handleFilterSubmit, handleDateChange, date}) => {
+const Filter = ({total, income, tags, setTags, handleFilterSubmit, handleDateChange, date}) => {
 	const [isKeyReleased, setIsKeyReleased] = useState(false);
 	const [input, setInput] = useState('');
 
@@ -56,7 +56,15 @@ const Filter = ({total,tags, setTags, handleFilterSubmit, handleDateChange, date
 								/>
 						</div>
 						<div className="total">
-							Total: {(total/100.0).toLocaleString("en-US", {style:"currency", currency: "USD"})}
+							<div>
+								<span>Income:</span> {(income/100.0).toLocaleString("en-US", {style: "currency", currency: "USD"})}
+							</div>
+							<div>
+								<span>Total Expenditure:</span> {(total/100.0).toLocaleString("en-US", {style:"currency", currency: "USD"})}
+							</div>
+							<div>
+								<span>Money Left:</span> {((income-total)/100.0).toLocaleString("en-US", { style:"currency", currency: "USD"})}
+							</div>
 						</div>
 					</div>
 					<div className="filter-months">

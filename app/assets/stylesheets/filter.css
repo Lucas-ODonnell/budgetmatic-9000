@@ -20,7 +20,16 @@
 }
 
 .total {
+	margin-top: 1em;
 	margin-left: 1em;
+}
+
+.total div {
+	margin-bottom: .2em;
+}
+
+.total span {
+	font-weight: bold;
 }
 
 .tag-container {
