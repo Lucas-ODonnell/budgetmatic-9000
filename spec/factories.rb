@@ -9,6 +9,7 @@ FactoryBot.define do
 
   factory :budget do
     name { Faker::Name.name }
+    monthly_budget { "7,000" }
     user
   end
 

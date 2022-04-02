@@ -7,7 +7,8 @@ RSpec.describe "Budgets", type: :request do
     let(:budget_params) do
       {
         budget: {
-          name: "My Budget"
+          name: "My Budget",
+          monthly_budget: "7000"
         }
       }
     end
@@ -39,7 +40,7 @@ RSpec.describe "Budgets", type: :request do
       it "should be valid otherwise" do
         headers = { 'Accept' => 'application/json' }
         auth_headers = Devise::JWT::TestHelpers.auth_headers(headers, @user)
-        post api_v1_budgets_path, headers: auth_headers, params: budget_params       
+        post api_v1_budgets_path, headers: auth_headers, params: budget_params
         expect(response).to have_http_status(200)
       end
     end

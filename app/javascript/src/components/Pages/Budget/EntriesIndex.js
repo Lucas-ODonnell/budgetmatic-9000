@@ -27,6 +27,7 @@ const EntriesIndex = ({budget, setEntryRefreshKey, entryRefreshKey,global, FontA
 		setIncome(0);
 		axios.get(`/api/v1/budget_entries${id}${query}`, config)
 			.then(response => {
+			console.log(response)
 			  setIncome(budget.attributes.int_monthly_budget)
 				setQuery(`?id=${budget.id}&`)
 				const array = []

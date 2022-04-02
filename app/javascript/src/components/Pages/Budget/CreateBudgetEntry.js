@@ -7,7 +7,7 @@ const CreateBudgetEntry = ({budget,global,setEntryRefreshKey}) => {
 		category: "food",
 		name: "",
 		price: "",
-		id: budget.id
+		budget_id: budget.id
 	})
 
 	const handleChange = (e) => {
@@ -25,7 +25,7 @@ const CreateBudgetEntry = ({budget,global,setEntryRefreshKey}) => {
 					category: "food",
 					name: "",
 					price: "",
-					id: budget.id
+					budget_id: budget.id
 				})
 				setEntryRefreshKey(oldKey => oldKey + 1)
 			})

@@ -3,7 +3,7 @@ module Api
     class BudgetEntriesController < ApplicationController
       before_action :authenticate_user!
       def index
-        budget = Budget.where(id: params[:id])[0]
+        budget = Budget.find(params[:id])
         budget_entries = BudgetEntry.where(budget_id: budget.id)
         if params[:start].nil? || params[:end].nil?
           budget_entries = budget_entries.this_month
@@ -18,10 +18,8 @@ module Api
       end
 
       def create
-        budget = Budget.where(id: params[:id])[0]
         budget_entry = BudgetEntry.new(budget_entry_params)
         budget_entry.date = Date.today
-        budget_entry.budget_id = budget.id
         budget_entry.user_id = current_user.id
         if budget_entry.save
           render json: BudgetEntrySerializer.new(budget_entry).serializable_hash.to_json
@@ -42,7 +40,7 @@ module Api
       private
 
       def budget_entry_params
-        params.require(:budget_entry).permit(:category, :name, :price)
+        params.require(:budget_entry).permit(:category, :name, :price, :budget_id)
       end
     end
   end
