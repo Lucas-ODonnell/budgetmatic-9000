@@ -7,10 +7,10 @@
 	margin-top: 5em;
 	width: 95%;
 	max-width: 70rem;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	box-shadow: 0 2px 5px rgb(0,0,0);
 	border-radius: 4px;
 	overflow: hidden;
-	background-color: #f0f0f0;
+	background-color: var(--backgroundColor);
 	height: 50vh;
 	max-height: 50vh;
 	overflow: auto;
@@ -21,9 +21,10 @@
 }
 
 .entry-col button {
-	background-color: white;
-	color: black;
+	background-color: transparent;
+	color: white;
 	font-weight: bold;
+	font-size: 1rem;
 	border-radius: 4px;
 }
 

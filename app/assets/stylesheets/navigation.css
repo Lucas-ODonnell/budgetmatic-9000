@@ -7,15 +7,27 @@
 .nav-content {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	padding: 0 2em 0 2em;
 	width: 100%;
-	padding: 1em 2em;
-	background-color: var(--borderColor);
+	background-color: var(--backgroundColor);
 	font-size: 1.5rem;
 	font-weight: bold;
+	height: 10vh;
 }
 
 .nav-left {
 	cursor: pointer
+}
+
+.nav-left .dd-header {
+	color: white;
+	font-size: 2rem;
+}
+
+.nav-center h1 {
+	color: white;
+	font-size: 2rem;
 }
 
 .nav-pages {
@@ -23,26 +35,21 @@
 	flex-direction: column;
 	position: absolute;
 	z-index: 999;
-	background-color: var(--borderColor);
-	padding: 1em 2em;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 	border-radius: 4px;
 }
 
-.nav-pages div {
-	margin-bottom: 1em;
-}
-
 .nav-pages a {
-	color: white;
+	color: black;
 	text-decoration: none;
 }
 
-.nav-pages a:hover {
-	color: #660000;
+.nav-pages span {
+	color: black;
 }
 
-.nav-pages span {
-	color: white;
+.nav-page {
+	background-color: var(--buttonPrimary);
+	padding: .2em .3em;
 }
 

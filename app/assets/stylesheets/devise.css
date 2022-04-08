@@ -1,20 +1,22 @@
 .background-form {
-	background-color: var(--borderColor);
 }
 .devise-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	background-color: var(--mainBodyColor);
 }
 
 .devise-content {
 	width: 80%;
 	max-width: 70rem;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	box-shadow: 0 2px 5px rgb(0,0,0);
 	border-radius: 4px;
 	overflow: hidden;
-	background-color: #f0f0f0;
+	background-color: var(--backgroundColor);
+	height: 80vh;
+	overflow: auto;
 }
 
 .devise-header {
@@ -27,7 +29,7 @@
 .devise-header h1 {
 	font-size: 3rem;
 	font-weight: bold;
-	color: var(--borderColor);
+	color: white;
 }
 
 .devise-form {
@@ -43,8 +45,9 @@
 	margin-bottom: 2em;
 	background: transparent;
 	border: none;
-	border-bottom: 1px solid var(--highlightColor);
+	border-bottom: 1px solid white;
 	font-size: 1.5rem;
+	color: white
 }
 
 .submit-area {
@@ -57,8 +60,18 @@
 	font-size: 2rem;
 	border-radius: 4px;
 	padding: .5em 0 .5em 0;
+	background-color: var(--buttonPrimary);
+	color: black;
+}
+
+.submit-area button:hover {
+	background-color: var(--buttonSecondary);
 }
 
 .toggle {
 	margin-top: 5em;
+}
+
+.toggle a {
+	color: white;
 }

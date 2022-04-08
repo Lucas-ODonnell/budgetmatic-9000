@@ -3,6 +3,7 @@
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	background-color: var(--mainBodyColor);
 }
 
 .profile-content {
@@ -11,7 +12,7 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 	border-radius: 4px;
 	overflow: hidden;
-	background-color: #f0f0f0;
+	background-color: var(--backgroundColor);
 	height: 95vh;
 	overflow-y: scroll;
 }
@@ -20,14 +21,17 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 .profile-base-info {
-	box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+	box-shadow: 0 2px 5px rgb(0,0,0);
 	border-radius: 4px;
 	padding: 1em 2em;
 	margin: 1em 2em;
-	width: 45%;
+	width: 50%;
+	color: white;
+	word-wrap: break-word;
 }
 
 .profile-base-info p {
@@ -80,15 +84,16 @@
 }
 
 .profile-update-form label {
-	color: #a7a7a7;
+	color: white;
 }
 
 .profile-update-form .input {
 	width: 100%;
 	background: transparent;
 	border: none;
-	border-bottom: 1px solid var(--highlightColor);
+	border-bottom: 1px solid white;
 	font-size: 1.5rem;
+	color: white;
 }
 
 .profile-update-form .profile-update-submit {
@@ -98,6 +103,7 @@
 }
 
 .profile-update-form .profile-update-submit button {
+	background-color: var(--buttonPrimary);
 	border-radius: 4px;
 	font-size: 1rem;
 	padding: .3em .5em;

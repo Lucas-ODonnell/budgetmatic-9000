@@ -3,6 +3,7 @@
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	background-color: var(--mainBodyColor);
 }
 
 .analysis-content {
@@ -11,7 +12,8 @@
 	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 	border-radius: 4px;
 	overflow: hidden;
-	background-color: #f0f0f0;
+	background-color: var(--backgroundColor);
 	height: 95vh;
 	overflow-y: scroll;
+	color: white;
 }

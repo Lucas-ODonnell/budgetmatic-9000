@@ -22,6 +22,7 @@
 .total {
 	margin-top: 1em;
 	margin-left: 1em;
+	color: white;
 }
 
 .total div {
@@ -83,6 +84,13 @@
 .filter-months button {
 	border-radius: 4px;
 	padding: .3em .5em;
+	background-color: var(--buttonPrimary);
+	color: black;
+}
+
+.filter-months button:hover {
+	background-color: black;
+	color: var(--buttonPrimary);
 }
 
 

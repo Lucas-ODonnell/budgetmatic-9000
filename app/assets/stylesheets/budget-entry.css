@@ -13,30 +13,41 @@
 	margin-bottom: 1em;
 }
 
-.budget-entry-form .category-row-1 {
+.budget-entry-form .category-row{
 	margin-bottom: .2em;
 }
 
+
 .budget-entry-form label {
-	color: #a7a7a7;
+	color: white;
+}
+
+.budget-entry-form input {
+	color: white;
 }
 
 .budget-entry-form .input {
 	width: 100%;
 	background: transparent;
 	border: none;
-	border-bottom: 1px solid var(--highlightColor);
+	border-bottom: 1px solid white;
 	font-size: 1.5rem;
 }
 
-.budget-entry-form .budget-entry-submit {
+.budget-entry-submit {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 3em;
 }
 
-.budget-entry-form .budget-entry-submit button {
+.budget-entry-submit button {
 	border-radius: 4px;
 	font-size: 1rem;
 	padding: .3em .5em;
+	background-color: var(--buttonPrimary);
+	color: black;
+}
+
+.budget-entry-submit button:hover {
+	background-color: var(--buttonSecondary);
 }

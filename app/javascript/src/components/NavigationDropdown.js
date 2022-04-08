@@ -36,15 +36,15 @@ const NavigationDropdown = ({setCurrentSection}) => {
 			</div>
 			{open && (
 				<div className="nav-pages">
-					<div>
+					<div className="nav-page">
 						<Link to="/" onClick={() => handleOnClick("Budgets")}>Budgets</Link >
 						<span>{isItemInSelection("Budgets") && <global.FontAwesomeIcon icon="fas fa-check"/>}</span>
 					</div>
-					<div>
+					<div className="nav-page">
 						<Link to="/profile" onClick={() => handleOnClick("Profile")}>Profile</Link>
 						<span>{isItemInSelection("Profile") && <global.FontAwesomeIcon icon="fas fa-check"/>}</span>
 					</div>
-					<div>
+					<div className="nav-page">
 						<Link to="/analysis" onClick={() => handleOnClick("Analysis")}>Analysis</Link>
 						<span>{isItemInSelection("Analysis") && <global.FontAwesomeIcon icon="fas fa-check"/>}</span>
 					</div>

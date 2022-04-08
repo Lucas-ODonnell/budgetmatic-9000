@@ -40,79 +40,89 @@ const CreateBudgetEntry = ({budget,global,setEntryRefreshKey}) => {
 					<form onSubmit={handleSubmit} className="budget-entry-form">
 						<div className="field">
 							<label>Category </label>
-							<div className="category-row-1">
+							<div className="category-row">
 								<input 
 									name="category" 
 									value="food" 
 									type="radio" 
 									checked={budgetEntry.category === 'food'} 
 									onChange={handleChange}
-									/>Food							
+									/>
+								<label>Food</label>						
 								<input 
 									name="category" 
 									value="utilities" 
 									type="radio"  
 									checked={budgetEntry.category === 'utilities'} 
 									onChange={handleChange}
-									/>Utilities
+									/>
+								<label>Utilities</label>
 								<input 
 									name="category" 
 									value="housing" 
 									type="radio" 
 									checked={budgetEntry.category === 'housing'} 
 									onChange={handleChange} 
-									/>Housing
+									/>
+								<label>Housing</label>
 								<input 
 									name="category" 
 									value="transportation" 
 									type="radio" 
 									checked={budgetEntry.category === 'transportation'} 
 									onChange={handleChange}
-									/>Transportation
+									/>
+								<label>Transportation</label>
 								<input 
 									name="category" 
 									value="insurance" 
 									type="radio" 
 									checked={budgetEntry.category === 'insurance'} 
 									onChange={handleChange}
-									/>Insurance
+									/>
+								<label>Insurance</label>
 							</div>
-							<div>
+							<div className="category-row">
 								<input 
 									name="category" 
 									value="medical" 
 									type="radio" 
 									checked={budgetEntry.category === 'medical'} 
 									onChange={handleChange}
-									/>Medical						
+									/>
+								<label>Medical</label>			
 								<input 
 									name="category" 
 									value="investments" 
 									type="radio"  
 									checked={budgetEntry.category === 'investments'} 
 									onChange={handleChange}
-									/>Investments
+									/>
+								<label>Investments</label>
 								<input 
 									name="category" 
 									value="personal" 
 									type="radio" 
 									checked={budgetEntry.category === 'personal'} 
 									onChange={handleChange} 
-									/>Personal
+									/>
+								<label>Personal</label>
 								<input 
 									name="category" 
 									value="entertainment" 
 									type="radio" 
 									checked={budgetEntry.category === 'entertainment'} 
 									onChange={handleChange}
-									/>Entertainment
+									/>
+								<label>Entertainment</label>
 								<input 
 									name="category" 
 									value="misc" 
 									type="radio" 
 									checked={budgetEntry.category === 'misc'} 
 									onChange={handleChange}
-									/>Misc
+									/>
+							<label>Misc</label>
 							</div>
 						</div>
 						<div className="field">

@@ -7,26 +7,15 @@
 	border: 1px solid black;
 	font-weight: bold;
 	padding: .5em 1em;
-	background-color: black;
-	color: white;
+	background-color: var(--buttonPrimary);
+	color: black;
 	cursor: pointer;
 }
 
-.tab-nav li:hover {
-	background-color: white;
-	color: var(--buttonColor);
-}
-
 .tab-nav li.active {
-	background-color: #f0f0f0;
+	background-color: var(--buttonSecondary);
 	color: black;
 	border-bottom: transparent;
-}
-
-.tab-nav li.active {
-	background-color: #f0f0f0;
-	color: black;
-	border: transparent;
 }
 
 .outlet {

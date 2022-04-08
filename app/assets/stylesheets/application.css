@@ -1,21 +1,21 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
 /* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+v2.0 | 20110126
+License: none (public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -66,13 +66,18 @@ table {
 	box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+
+html {
+	font-family: 'Lato', sans-serif;
+}
+
 
 :root {
-	--buttonColor: #344e41;
-	--borderColor: #a3b18a;
-	--highlightColor: #588157;
-	--altOne: #3a5a40;
-	--altTwo: #dad7cd;
+	--backgroundColor: #1f1a24;
+	--mainBodyColor: #121212;
+	--buttonPrimary: #bb86fc;
+	--buttonSecondary: #03dac5;
 	--food: #005f73;
 	--utilities: #0a9396;
 	--housing: #001219;
@@ -111,19 +116,18 @@ input:focus {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-	color: #4a4a4ad;
 	width: 100%;
 }
 
 th, td {
-	  padding: .7em .9em;
+	padding: .7em .9em;
 	vertical-align: middle;
 }
 
 thead {
-  background-color: var(--highlightColor);
-  color: #fff;
-  font-size: 1rem;
+	background-color: var(--mainBodyColor);
+	color: #fff;
+	font-size: 1rem;
 	position: sticky;
 	top: 0;
 }
@@ -146,22 +150,22 @@ td {
 
 @media 
 only screen and (max-width: 810px),
- {
+{
 
 	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 
 		display: block; 
 	}
-	
+
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr { 
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
 	}
-	
+
 	tr { border: 1px solid #ccc; }
-		
+
 	td { 
 		/* Behave  like a "row" */
 		border: none;
@@ -169,7 +173,7 @@ only screen and (max-width: 810px),
 		position: relative;
 		padding-left: 50%; 
 	}
-	
+
 	td:before { 
 		/* Now like a table header */
 		position: absolute;
@@ -181,8 +185,8 @@ only screen and (max-width: 810px),
 		white-space: nowrap;
 	}
 
-	/*
-	Label the data
+/*
+Label the data
 	*/
 	td:nth-of-type(1):before { content: "Category"; }
 	td:nth-of-type(2):before { content: "Name"; }
