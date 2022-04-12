@@ -31,5 +31,18 @@ RSpec.describe BudgetEntry, type: :model do
         expect(@valid_budget_entry).to_not be_valid
       end
     end
+    context "budget_entry methods" do
+      describe "def format_category" do
+        it "should automatically format the category to be capitalized" do
+          expect(@valid_budget_entry.category).to eq("Food")
+        end
+      end
+      describe "def price" do
+        it "should convert a string price value to integer in cents" do
+          expect(@valid_budget_entry.price).to eq(6732)
+        end
+      end
+
+    end
   end
 end

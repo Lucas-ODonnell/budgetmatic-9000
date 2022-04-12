@@ -14,12 +14,10 @@ const SignOut = () => {
 			.then(response =>{
 				console.log(response)
 				global.setSignedIn(false);
-				localStorage.clear()
 			})
 			.catch(response => {
 				console.log(response);
 				global.setSignedIn(false);
-				localStorage.clear();
 			})
 	}
 

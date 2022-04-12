@@ -14,7 +14,7 @@ FactoryBot.define do
   end
 
   factory :budget_entry do
-    category { "Food" }
+    category { "food" }
     name { Faker::Name.name}
     price { "$67.32" }
     date { Faker::Date.in_date_period(month:2)}

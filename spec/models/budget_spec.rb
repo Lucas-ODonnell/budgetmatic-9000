@@ -26,4 +26,12 @@ RSpec.describe Budget, type: :model do
     end
   end
 
+  context "budget methods" do
+    describe "def monthly_budget" do
+      let(:budget) {create(:budget)}
+      it " should convert a dollar amount string to an integer in cents" do
+        expect(budget.monthly_budget).to eq(700000)
+      end
+    end
+  end
 end
