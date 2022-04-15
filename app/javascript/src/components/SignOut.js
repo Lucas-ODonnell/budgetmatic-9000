@@ -3,9 +3,9 @@ import axios from 'axios';
 import AppContext from '../context/AppContext';
 
 const SignOut = () => {
-	const global = useContext(AppContext);
+	const { setSignedIn, authorizationToken} = useContext(AppContext);
 	const config = {
-		headers: { Authorization: global.authorizationToken }
+		headers: { Authorization: authorizationToken }
 	}
 
 	const handleSignOut = (e) => {
@@ -13,11 +13,11 @@ const SignOut = () => {
 		axios.delete('/logout', config)
 			.then(response =>{
 				console.log(response)
-				global.setSignedIn(false);
+				setSignedIn(false);
 			})
 			.catch(response => {
 				console.log(response);
-				global.setSignedIn(false);
+				setSignedIn(false);
 			})
 	}
 

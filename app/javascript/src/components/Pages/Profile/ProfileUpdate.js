@@ -1,6 +1,34 @@
 import React from 'react';
+import axios from 'axios';
 
-const ProfileUpdate = ({userInfo, handleChange, handleUpdate}) => {
+const ProfileUpdate = ({config, currentUser, fetchProfile, setShowUpdateForm}) => {
+	const [userInfo, setUserInfo] = useState({
+		name: "",
+		email: ""
+	})
+
+	const handleChange = (e) => {
+		e.preventDefault();
+		setUserInfo({...userInfo, [e.target.name]: e.target.value})
+	}
+
+	const handleUpdate = (e) => {
+		e.preventDefault();
+		const edited = Object.fromEntries(
+			Object.entries(userInfo).filter(([key, value]) => value !== ""));
+		axios.put(`/api/v1/users/${currentUser.id}`, edited, config)
+			.then(response => {
+				fetchProfile();
+				setShowUpdateForm(false);
+				setUserInfo({
+					name: "",
+					email: "" 
+				})
+			})
+			.catch(response => {
+				console.log(response)
+			})
+	}
 	return (
 		<section>
 			<div className="profile-update-container">

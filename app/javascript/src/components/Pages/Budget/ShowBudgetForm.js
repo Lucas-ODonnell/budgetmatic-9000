@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import AppContext from '../../../context/AppContext';
 import CreateBudget from './CreateBudget';
 
-const ShowBudgetForm = ({showBudgetForm, setShowBudgetForm, FontAwesomeIcon, global, setBudgetRefreshKey}) => {
+const ShowBudgetForm = () => {
+	const { FontAwesomeIcon } = useContext(AppContext);
+	const [showBudgetForm, setShowBudgetForm] = useState(false);
+
 	return (
 		<section>
 			<div className = "new-budget" onClick={()=>{setShowBudgetForm(!showBudgetForm)}}>
@@ -12,7 +16,7 @@ const ShowBudgetForm = ({showBudgetForm, setShowBudgetForm, FontAwesomeIcon, glo
 			</div>
 			{
 			showBudgetForm ? 
-			<CreateBudget {...{global, setBudgetRefreshKey}}/>
+			<CreateBudget />
 			:
 			<div></div>
 			}

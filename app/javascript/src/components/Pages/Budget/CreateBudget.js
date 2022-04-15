@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AppContext from '../../../context/AppContext';
 import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
-const CreateBudget = ({global,setBudgetRefreshKey}) => {
+const CreateBudget = () => {
+	const { authorizationToken, setRenderKey } = useContext(AppContext);
 	const [budget, setBudget] = useState({
 		name: "",
 		monthly_budget: ""
@@ -15,7 +17,7 @@ const CreateBudget = ({global,setBudgetRefreshKey}) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const config = {
-			headers: { Authorization: global.authorizationToken }
+			headers: { Authorization: authorizationToken }
 		}
 		axios.post('/api/v1/budgets', budget, config)
 			.then(response => {
@@ -23,7 +25,7 @@ const CreateBudget = ({global,setBudgetRefreshKey}) => {
 					name: "",
 					monthly_budget: ""
 				})
-				setBudgetRefreshKey(oldKey => oldKey + 1)
+				setRenderKey(oldKey => oldKey + 1)
 			})
 			.catch(response=> {
 				console.log(response)

@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import AppContext from '../../../context/AppContext';
+import BudgetContext from '../../../context/BudgetContext';
 import axios from 'axios';
 import Filter from './Filter';
 import colors from './colors';
 
-const EntriesIndex = ({budget, setEntryRefreshKey, entryRefreshKey,global, FontAwesomeIcon, setFilterRefreshKey, filterRefreshKey}) => {
-	const id = `?id=${budget.id}&`;
+const EntriesIndex = () => {
+	const { authorizationToken, setSignedIn, FontAwesomeIcon, renderKey, setRenderKey} = useContext(AppContext);
+	const { currentBudget } = useContext(BudgetContext);
+	const id = `?id=${currentBudget.id}&`;
 	const [entries, setEntries] = useState([]);
 	const [tags, setTags] = useState([]);
 	const [query, setQuery] = useState("");
@@ -15,21 +19,21 @@ const EntriesIndex = ({budget, setEntryRefreshKey, entryRefreshKey,global, FontA
 		end: ""
 	});
 	const config = {
-		headers: { Authorization: global.authorizationToken }
+		headers: { Authorization: authorizationToken }
 	}
 
 	useEffect(()=> {
 		getBudgetEntries()
-	}, [filterRefreshKey, entryRefreshKey]);
+	}, [renderKey]);
 
 	const getBudgetEntries = () => {
 		setTotal(0);
 		setIncome(0);
 		axios.get(`/api/v1/budget_entries${id}${query}`, config)
 			.then(response => {
-			console.log(response)
-			  setIncome(budget.attributes.int_monthly_budget)
-				setQuery(`?id=${budget.id}&`)
+				console.log(response)
+				setIncome(currentBudget.attributes.int_monthly_budget)
+				setQuery(`?id=${currentBudget.id}&`)
 				const array = []
 				const objects = response.data.data
 				objects.forEach(object => {
@@ -41,7 +45,7 @@ const EntriesIndex = ({budget, setEntryRefreshKey, entryRefreshKey,global, FontA
 			})
 			.catch(response => {
 				if (response.response.status === 401) {
-					global.setSignedIn(false);
+					setSignedIn(false);
 				}
 			})
 	}
@@ -60,13 +64,13 @@ const EntriesIndex = ({budget, setEntryRefreshKey, entryRefreshKey,global, FontA
 		let queryFragment = Object.keys(date).map(key => key + '=' + date[key]).join('&');
 		thisQuery += queryFragment
 		setQuery(thisQuery)	
-		setFilterRefreshKey(oldKey => oldKey + 1)
+		setRenderKey(oldKey => oldKey + 1)
 	}
 
 	const handleDelete = (id) => {
 		axios.delete(`/api/v1/budget_entries/${id}`, config)
 			.then(response => {
-				setEntryRefreshKey(oldKey => oldKey + 1)
+				setRenderKey(oldKey => oldKey + 1)
 			})
 			.catch(response => {
 				console.log(response)

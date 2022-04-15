@@ -1,24 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import AppContext from '../../../context/AppContext';
+import BudgetContext from '../../../context/BudgetContext';
 import axios from 'axios';
 import CreateBudgetEntry from './CreateBudgetEntry';
 import EntriesIndex from './EntriesIndex';
 import NumberFormat from 'react-number-format';
 
 
-const ShowBudgetEntryContent = ({budget, showBudgetEntry, setShowBudgetEntry, global, FontAwesomeIcon, setEntryRefreshKey, entryRefreshKey, setFilterRefreshKey, filterRefreshKey, setBudgetRefreshKey}) => {
+const ShowBudgetEntryContent = () => {
+	const { FontAwesomeIcon, authorizationToken, setDeleteFunction, setShow, setRenderKey } = useContext(AppContext);
+	const { currentBudget } = useContext(BudgetContext);
+	const [showBudgetEntry, setShowBudgetEntry] = useState(false);
 	const [editBudget, setEditBudget] = useState(false);
 	const [update, setUpdate] = useState({
-		name: `${budget.attributes.name}`,
-		monthly_budget: `${budget.attributes.monthly_budget}`
+		name: `${currentBudget.attributes.name}`,
+		monthly_budget: `${currentBudget.attributes.monthly_budget}`
 	})
 	const config = {
-		headers: { Authorization: global.authorizationToken }
+		headers: { Authorization: authorizationToken }
 	}
 
 	const handleBudgetDelete = () => {
-		axios.delete(`/api/v1/budgets/${budget.id}`, config)
+		axios.delete(`/api/v1/budgets/${currentBudget.id}`, config)
 			.then(response => {
-				setBudgetRefreshKey(oldkey => oldkey + 1)
+			setRenderKey(oldKey => oldKey + 1)
 			})
 			.catch(response => {
 				console.log(response)
@@ -31,12 +36,12 @@ const ShowBudgetEntryContent = ({budget, showBudgetEntry, setShowBudgetEntry, gl
 
 	const handleBudgetUpdate = (e) => {
 		e.preventDefault();
-		axios.put(`/api/v1/budgets/${budget.id}`, update, config)
+		axios.put(`/api/v1/budgets/${currentBudget.id}`, update, config)
 			.then(response => {
-				setBudgetRefreshKey(oldkey => oldkey + 1)
+			setRenderKey(oldKey => oldKey + 1)
 				setUpdate({
-					name: `${budget.attributes.name}`,
-					monthly_budget: `${budget.attributes.monthly_budget}`
+					name: `${currentBudget.attributes.name}`,
+					monthly_budget: `${currentBudget.attributes.monthly_budget}`
 
 				})
 			})
@@ -50,9 +55,9 @@ const ShowBudgetEntryContent = ({budget, showBudgetEntry, setShowBudgetEntry, gl
 			<div className = "budget-header">
 				{!editBudget ?
 				<>
-					<h1 onClick={()=>{setEditBudget(true)}}>{budget.attributes.name}</h1>
+					<h1 onClick={()=>{setEditBudget(true)}}>{currentBudget.attributes.name}</h1>
 					<div className="budget-options">
-						<button onClick={()=>{global.setShow(true); global.setDeleteFunction(()=>()=> handleBudgetDelete())}}><FontAwesomeIcon icon="fas fa-times"/></button>
+						<button onClick={()=>{setShow(true); setDeleteFunction(()=>()=> handleBudgetDelete())}}><FontAwesomeIcon icon="fas fa-times"/></button>
 					</div>
 					</>
 				:
@@ -86,11 +91,11 @@ const ShowBudgetEntryContent = ({budget, showBudgetEntry, setShowBudgetEntry, gl
 			</div>
 			{
 			showBudgetEntry ? 
-			<CreateBudgetEntry {...{budget,global, setEntryRefreshKey}}/>
+				<CreateBudgetEntry />
 			:
 			<div></div>
 			}
-			<EntriesIndex {...{budget,global, budget, FontAwesomeIcon, setEntryRefreshKey, entryRefreshKey, setFilterRefreshKey, filterRefreshKey}}/>
+			<EntriesIndex />
 			</>
 	)
 }

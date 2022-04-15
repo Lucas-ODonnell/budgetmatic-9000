@@ -1,29 +1,24 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import AppContext from '../../../context/AppContext';
+import BudgetContext from '../../../context/BudgetContext';
 import Tabs from '../Tabs/Tabs';
 import TabContent from '../Tabs/TabContent';
 import ShowBudgetEntryContent from './ShowBudgetEntryContent';
 import ShowBudgetForm from './ShowBudgetForm';
 
 const Budget = () => {
-	const global = useContext(AppContext);
-	const FontAwesomeIcon = global.FontAwesomeIcon;
-	const [showBudgetEntry, setShowBudgetEntry] = useState(false);
-	const [showBudgetForm, setShowBudgetForm] = useState(false);
-	const [filterRefreshKey, setFilterRefreshKey] = useState(0);
-	const [entryRefreshKey, setEntryRefreshKey] = useState(0);
-	const [budgetRefreshKey, setBudgetRefreshKey] = useState(0);
+	const { authorizationToken, renderKey } = useContext(AppContext);
 	const [budgets, setBudgets] = useState([]);
 	const [activeTab, setActiveTab] = useState(0);
+	const currentBudget = budgets[activeTab];
 
 	useEffect(()=> {
 		getBudget();
-	},[budgetRefreshKey])
-
+	},[renderKey])
 	const getBudget = () => {
 		const config = {
-		headers: { Authorization: global.authorizationToken }
+		headers: { Authorization: authorizationToken }
 	}
 		axios.get('/api/v1/budgets.json', config)
 			.then(response => {
@@ -35,14 +30,18 @@ const Budget = () => {
 			}
 			)
 	}
+
+	const ContextProvider = useMemo(() => ({currentBudget}), [currentBudget])
+
 	const allBudgets = budgets.map((budget, index) => {
 		return (
 			<TabContent id={index} activeTab={activeTab} key={index}>
-				<ShowBudgetEntryContent {...{budget, showBudgetEntry, setShowBudgetEntry, global, FontAwesomeIcon, setEntryRefreshKey, entryRefreshKey, filterRefreshKey, setFilterRefreshKey, setBudgetRefreshKey}}/>
+				<ShowBudgetEntryContent />
 			</TabContent>
 		)
 	})
 	return (
+		<BudgetContext.Provider value={ContextProvider}>
 		<section>
 				<div className="budget-container">
 					<div className = "budget-content">
@@ -52,15 +51,15 @@ const Budget = () => {
 							</div>
 						</div>
 						<div>
-							<ShowBudgetForm {...{showBudgetForm, setShowBudgetForm, FontAwesomeIcon, global,setBudgetRefreshKey}}/>
+							<ShowBudgetForm />
 						</div>
-
 						<div className="outlet">
 							{allBudgets}
 						</div>
 					</div>
 				</div>
 		</section>
+		</BudgetContext.Provider>
 	)
 }
 

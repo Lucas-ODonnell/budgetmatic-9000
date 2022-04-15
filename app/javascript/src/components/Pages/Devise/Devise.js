@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-const Devise = ({setAuthorizationToken, setCurrentUser}) => {
+const Devise = ({setAuthorizationToken}) => {
 	const [ signUp, setSignUp ] = useState(false);
 	const toggleSignUp = (e) => {
 		e.preventDefault();
@@ -14,9 +14,9 @@ const Devise = ({setAuthorizationToken, setCurrentUser}) => {
 				<div className="devise-container">
 					{
 					signUp ?
-					<SignUp {...{toggleSignUp, setAuthorizationToken, setCurrentUser}} />
+					<SignUp {...{toggleSignUp, setAuthorizationToken}} />
 					:
-					<SignIn {...{toggleSignUp, setAuthorizationToken, setCurrentUser}} />
+					<SignIn {...{toggleSignUp, setAuthorizationToken}} />
 					}
 				</div>
 			</div>

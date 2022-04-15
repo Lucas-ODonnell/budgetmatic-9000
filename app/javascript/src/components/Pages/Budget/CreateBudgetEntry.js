@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AppContext from '../../../context/AppContext';
+import BudgetContext from '../../../context/BudgetContext';
 import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
-const CreateBudgetEntry = ({budget,global,setEntryRefreshKey}) => {
+const CreateBudgetEntry = () => {
+	const { authorizationToken, setRenderKey } = useContext(AppContext);
+	const { currentBudget } = useContext(BudgetContext);
 	const [budgetEntry, setBudgetEntry] = useState({
 		category: "food",
 		name: "",
 		price: "",
-		budget_id: budget.id
+		budget_id: currentBudget.id
 	})
 
 	const handleChange = (e) => {
@@ -17,7 +21,7 @@ const CreateBudgetEntry = ({budget,global,setEntryRefreshKey}) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const config = {
-			headers: { Authorization: global.authorizationToken }
+			headers: { Authorization: authorizationToken }
 		}
 		axios.post("/api/v1/budget_entries", budgetEntry, config)
 			.then(response => {
@@ -25,9 +29,9 @@ const CreateBudgetEntry = ({budget,global,setEntryRefreshKey}) => {
 					category: "food",
 					name: "",
 					price: "",
-					budget_id: budget.id
+					budget_id: currentBudget.id
 				})
-				setEntryRefreshKey(oldKey => oldKey + 1)
+				setRenderKey(oldKey => oldKey + 1)	
 			})
 			.catch(response=> {
 				console.log(response)
@@ -122,7 +126,7 @@ const CreateBudgetEntry = ({budget,global,setEntryRefreshKey}) => {
 									checked={budgetEntry.category === 'misc'} 
 									onChange={handleChange}
 									/>
-							<label>Misc</label>
+								<label>Misc</label>
 							</div>
 						</div>
 						<div className="field">

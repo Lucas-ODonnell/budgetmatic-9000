@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AppContext from './context/AppContext';
 import Budget from './components/Pages/Budget/Budget';
@@ -15,35 +15,46 @@ library.add(fas)
 const App = () => {
 	const [authorizationToken, setAuthorizationToken] = useState();
 	const [signedIn, setSignedIn] = useState(false);
-	const [currentUser, setCurrentUser] = useState({})
 	const [show, setShow] = useState(false);
 	const [deleteFunction, setDeleteFunction] = useState(()=> () => {return});
+	const [renderKey, setRenderKey] = useState(0);
 
 	useEffect(() => {
 		if (localStorage.Authorization !== undefined) {
 			const AuthorizedToken = localStorage.getItem('Authorization')
-			const CurrentUser = localStorage.getItem('currentUser')
 			setAuthorizationToken(JSON.parse(AuthorizedToken))
 			setSignedIn(true)
 		}
 	}, [authorizationToken])
 
-	const global = {
-		authorizationToken: authorizationToken,
-		setSignedIn: setSignedIn,
-		signedIn: signedIn,
-		FontAwesomeIcon: FontAwesomeIcon,
-		show: show,
-		setShow: setShow,
-		deleteFunction: deleteFunction,
-		setDeleteFunction: setDeleteFunction
-	}
+	const ContextProvider = useMemo(() => ({
+		authorizationToken,
+		show,
+		setShow,
+		deleteFunction, 
+		setDeleteFunction,
+		setSignedIn,
+		FontAwesomeIcon,
+		renderKey,
+		setRenderKey
+	}), [
+			authorizationToken,
+			show,
+			setShow,
+			deleteFunction, 
+			setDeleteFunction,
+			setSignedIn,
+			FontAwesomeIcon,
+			renderKey,
+			setRenderKey
+		])
+
 
 	return (
-		<AppContext.Provider value={global}>
+		<AppContext.Provider value={ContextProvider}>
 			<div className="background-form">
 				{!signedIn ?
-				<Devise {...{setAuthorizationToken, setCurrentUser}}/>
+				<Devise {...{setAuthorizationToken}}/>
 				:
 				<>
 					<Navigation />
