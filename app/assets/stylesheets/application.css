@@ -72,6 +72,10 @@ html {
 	font-family: 'Lato', sans-serif;
 }
 
+body {
+	background-color: var(--mainBodyColor);
+}
+
 
 :root {
 	--backgroundColor: #1f1a24;

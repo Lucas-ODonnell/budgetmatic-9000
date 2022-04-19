@@ -1,19 +1,10 @@
-.analysis-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	background-color: var(--mainBodyColor);
-}
-
 .analysis-content {
-	width: 95%;
-	max-width: 70rem;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 	border-radius: 4px;
 	overflow: hidden;
 	background-color: var(--backgroundColor);
-	height: 95vh;
 	overflow-y: scroll;
 	color: white;
+	height: 80vh;
+	margin: .5em 1em 2em 1em;
 }

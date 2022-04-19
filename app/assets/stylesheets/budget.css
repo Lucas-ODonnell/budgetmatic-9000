@@ -1,20 +1,11 @@
-.budget-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 90vh;
-	background-color: var(--mainBodyColor);
-}
-
 .budget-content {
-	width: 95%;
-	max-width: 70rem;
 	box-shadow: 0 2px 5px rgb(0,0,0);
 	border-radius: 4px;
 	overflow: hidden;
 	background-color: var(--backgroundColor);
-	height: 80vh;
 	overflow-y: scroll;
+	height: 80vh;
+	margin: .5em 1em 0 1em;
 }
 
 .budget-nav {

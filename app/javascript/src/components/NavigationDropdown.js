@@ -43,10 +43,6 @@ const NavigationDropdown = ({setCurrentSection}) => {
 						<Link to="/profile" onClick={() => {handleOnClick("Profile"); setCurrentSection("Profile");}}>Profile</Link>
 						<span>{isItemInSelection("Profile") && <FontAwesomeIcon icon="fas fa-check"/>}</span>
 					</div>
-					<div className="nav-page">
-						<Link to="/analysis" onClick={() => {handleOnClick("Analysis"); setCurrentSection("Analysis");}}>Analysis</Link>
-						<span>{isItemInSelection("Analysis") && <FontAwesomeIcon icon="fas fa-check"/>}</span>
-					</div>
 				</div>
 			)}
 		</div>

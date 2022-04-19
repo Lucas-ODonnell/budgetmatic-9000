@@ -4,7 +4,6 @@
 }
 
 .tab-nav li {
-	border: 1px solid black;
 	font-weight: bold;
 	padding: .5em 1em;
 	background-color: var(--buttonPrimary);
@@ -13,8 +12,8 @@
 }
 
 .tab-nav li.active {
-	background-color: var(--buttonSecondary);
-	color: black;
+	background-color: var(--backgroundColor);
+	color: white;
 	border-bottom: transparent;
 }
 

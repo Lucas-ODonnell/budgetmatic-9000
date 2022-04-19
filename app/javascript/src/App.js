@@ -1,9 +1,8 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AppContext from './context/AppContext';
-import Budget from './components/Pages/Budget/Budget';
+import Main from './components/Pages/MainPage/Main';
 import Devise from './components/Pages/Devise/Devise';
-import Analysis from './components/Pages/Analysis/Analysis';
 import Profile from './components/Pages/Profile/Profile';
 import DeleteConfirmation from './components/DeleteConfirmation';
 import Navigation from './components/Navigation';
@@ -60,9 +59,8 @@ const App = () => {
 					<Navigation />
 					<DeleteConfirmation/>
 					<Routes>
-						<Route exact path="/" element={<Budget />}/>
+						<Route exact path="/" element={<Main />}/>
 						<Route exact path="profile" element={<Profile />}/>
-						<Route exact path="/analysis" element={<Analysis />}/>
 					</Routes>
 					</>
 				}
