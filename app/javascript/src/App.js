@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AppContext from './context/AppContext';
 import Main from './components/Pages/MainPage/Main';
@@ -16,7 +16,8 @@ const App = () => {
 	const [signedIn, setSignedIn] = useState(false);
 	const [show, setShow] = useState(false);
 	const [deleteFunction, setDeleteFunction] = useState(()=> () => {return});
-	const [renderKey, setRenderKey] = useState(0);
+	const [renderBudget, setRenderBudget] = useState(0);
+	const [renderEntry, setRenderEntry] = useState(0)
 
 	useEffect(() => {
 		if (localStorage.Authorization !== undefined) {
@@ -26,7 +27,7 @@ const App = () => {
 		}
 	}, [authorizationToken])
 
-	const ContextProvider = useMemo(() => ({
+	const ContextProvider = {
 		authorizationToken,
 		show,
 		setShow,
@@ -34,20 +35,11 @@ const App = () => {
 		setDeleteFunction,
 		setSignedIn,
 		FontAwesomeIcon,
-		renderKey,
-		setRenderKey
-	}), [
-			authorizationToken,
-			show,
-			setShow,
-			deleteFunction, 
-			setDeleteFunction,
-			setSignedIn,
-			FontAwesomeIcon,
-			renderKey,
-			setRenderKey
-		])
-
+		renderBudget,
+		setRenderBudget,
+		renderEntry,
+		setRenderEntry
+	}
 
 	return (
 		<AppContext.Provider value={ContextProvider}>
