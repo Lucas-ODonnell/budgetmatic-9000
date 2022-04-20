@@ -89,7 +89,7 @@ const BarGraph = () => {
   return (
     <section>
       <div className="analysis-header">
-        <button onClick={handleClick}>Show Chart</button>
+        <button onClick={handleClick}>{showGraph ? "Hide Chart" : "Show Chart"}</button>
       </div>
       {showGraph ? (
         <div className="analysis-body">

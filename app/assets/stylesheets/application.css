@@ -152,6 +152,18 @@ td {
 	background-color: var(--borderColor);
 }
 
+.app-name {
+	display: flex;
+	justify-content: center;
+	padding-top: 2em;
+}
+
+.app-name h1 {
+	color: white;
+	font-weight: bold;
+	font-size: 3rem;
+}
+
 @media 
 only screen and (max-width: 810px),
 {

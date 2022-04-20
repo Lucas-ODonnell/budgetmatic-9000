@@ -23,6 +23,9 @@ const Main = () => {
 		showGraph,
 		setShowGraph
 	}	
+
+
+	console.log(currentBudget)
 	return (
 		<BudgetContext.Provider value={ContextProvider}>
 			<section className="main-page">

@@ -1,7 +1,7 @@
 import React from "react";
 const TabNavItem = ({ id, title, activeTab, setActiveTab }) => {
  
- const handleClick = () => {
+ const handleClick = async () => {
    setActiveTab(id);
  };
  

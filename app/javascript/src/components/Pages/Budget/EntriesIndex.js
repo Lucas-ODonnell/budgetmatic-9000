@@ -31,28 +31,25 @@ const EntriesIndex = () => {
 		getBudgetEntries();
 	}, [renderEntry]);
 
-	const getBudgetEntries = () => {
+	const getBudgetEntries = async () => {
 		setTotal(0);
 		setIncome(0);
-		axios
-			.get(`/api/v1/budget_entries${id}${query}`, config)
-			.then((response) => {
-				setIncome(currentBudget.attributes.int_monthly_budget);
-				setQuery(`?id=${currentBudget.id}&`);
-				const array = [];
-				const objects = response.data.data;
-				objects.forEach((object) => {
-					let thisPrice = object.attributes.int_price;
-					setTotal((total) => total + thisPrice);
-					array.push(object);
-				});
-				setEntries(array);
-			})
-			.catch((response) => {
-				if (response.response.status === 401) {
-					setSignedIn(false);
-				}
+		try {
+			const response = await axios.get(`/api/v1/budget_entries${id}${query}`, config)
+			setIncome(currentBudget.attributes.int_monthly_budget);
+			setQuery(`?id=${currentBudget.id}&`);
+			const array = [];
+			const objects = response.data.data;
+			objects.forEach((object) => {
+				let thisPrice = object.attributes.int_price;
+				setTotal((total) => total + thisPrice);
+				array.push(object);
 			});
+			setEntries(array);
+		} catch (err) {
+			console.error(err)
+			setSignedIn(false)
+		}
 	};
 
 	const handleDateChange = (e) => {
