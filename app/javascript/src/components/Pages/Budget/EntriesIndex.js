@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import AppContext from "../../../context/AppContext";
 import BudgetContext from "../../../context/BudgetContext";
+import Entry from './Entry';
 import axios from "axios";
 import Filter from "./Filter";
-import colors from "./colors";
 
 const EntriesIndex = () => {
 	const {
 		authorizationToken,
 		setSignedIn,
-		FontAwesomeIcon,
 		renderEntry,
 		setRenderEntry,
 	} = useContext(AppContext);
@@ -86,21 +85,7 @@ const EntriesIndex = () => {
 		const { category, name, price, date } = entry.attributes;
 		const { id } = entry;
 		return (
-			<tr className={colors[category]} key={index}>
-				<td className="entry-col">{category}</td>
-				<td className="entry-col">{name}</td>
-				<td className="entry-col">{price}</td>
-				<td className="entry-col">{date}</td>
-				<td className="entry-col delete">
-					<button
-						onClick={() => {
-							handleDelete(id);
-						}}
-					>
-						<FontAwesomeIcon icon="fas fa-times" />
-					</button>
-				</td>
-			</tr>
+			<Entry {...{category, name, price, date, id, index, handleDelete}} />
 		);
 	});
 	return (
