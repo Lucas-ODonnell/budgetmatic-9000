@@ -12,33 +12,32 @@ const SignIn = ({toggleSignUp, setAuthorizationToken}) => {
 		setUserData({...userData, [e.target.name]: e.target.value})
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const user = { user: userData }
-		axios.post('/login', user)
-			.then(response => {
-				if (response.headers.authorization === undefined) {
-					setUserData({
-						email: "",
-						password: ""
-					});
-					return;
-				}
-				localStorage.setItem('Authorization', JSON.stringify(response.headers.authorization));
-				setAuthorizationToken(JSON.parse(localStorage.getItem('Authorization')));
+		try {
+			const response = await axios.post('/login', user)
+			if (response.headers.authorization === undefined) {
 				setUserData({
 					email: "",
 					password: ""
-				})
+				});
+				return;
+			}
+			localStorage.setItem('Authorization', JSON.stringify(response.headers.authorization));
+			setAuthorizationToken(JSON.parse(localStorage.getItem('Authorization')));
+			setUserData({
+				email: "",
+				password: ""
 			})
-			.catch(response => {
-				console.log(response.response);
-				setUserData({
-					email: "",
-					password: ""
-				})
+		} catch (error) {
+			setUserData({
+				email: "",
+				password: ""
 			})
+		}
 	}
+
 	return (
 		<div className="devise-content">
 			<div className="devise-header">

@@ -7,7 +7,7 @@ const Profile = () => {
 	const { FontAwesomeIcon, authorizationToken, setSignedIn, setShow, setDeleteFunction } = useContext(AppContext);
 	const [currentUser, setCurrentUser] = useState({})
 	const [showUpdateForm, setShowUpdateForm] = useState(false);
-	
+
 	const config = {
 		headers: { Authorization: authorizationToken }
 	}
@@ -16,24 +16,24 @@ const Profile = () => {
 		fetchProfile()
 	}, [])
 
-	const fetchProfile = () => {
-		axios.get('/api/v1/current_user', config)
-			.then(response => {
-				setCurrentUser(response.data)
-			})
+	const fetchProfile = async () => {
+		try {
+			const response = await axios.get('/api/v1/current_user', config)
+			setCurrentUser(response.data)
+		} catch (error) {
+			setSignedIn(false);
+		}
 	}
 
-	const handleDelete = () => {
-		axios.delete(`api/v1/users/${currentUser.id}`, config)
-			.then(response => {
-				console.log(response);
-				localStorage.removeItem('currentUser');
-				localStorage.removeItem('Authorization');
-				setSignedIn(false);
-			})
-			.catch(response => {
-				console.log(response);
-			})
+	const handleDelete = async () => {
+		try {
+			const response = await axios.delete(`api/v1/users/${currentUser.id}`, config)
+			localStorage.removeItem('currentUser');
+			localStorage.removeItem('Authorization');
+			setSignedIn(false);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 	return (
 		<section>
@@ -50,19 +50,19 @@ const Profile = () => {
 							</button>
 						</div>
 					</div>
-						<div className = "update-profile" onClick={()=>{setShowUpdateForm(!showUpdateForm)}}>
-							<div className="icon" >
-								{ showUpdateForm ? <FontAwesomeIcon icon="fas fa-caret-down" /> : <FontAwesomeIcon icon="fas fa-caret-right" />}
-							</div>
-							<p>Update Profile</p>
+					<div className = "update-profile" onClick={()=>{setShowUpdateForm(!showUpdateForm)}}>
+						<div className="icon" >
+							{ showUpdateForm ? <FontAwesomeIcon icon="fas fa-caret-down" /> : <FontAwesomeIcon icon="fas fa-caret-right" />}
 						</div>
-						{ showUpdateForm ?
-						<ProfileUpdate {...{config, currentUser, fetchProfile, setShowUpdateForm}}/>
-						:
-						<div></div>
-						}
+						<p>Update Profile</p>
 					</div>
+					{ showUpdateForm ?
+					<ProfileUpdate {...{config, currentUser, fetchProfile, setShowUpdateForm}}/>
+					:
+					<div></div>
+					}
 				</div>
+			</div>
 		</section>
 	)
 }

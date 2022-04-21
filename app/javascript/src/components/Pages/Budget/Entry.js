@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
-import AppContext from '../../../context/AppContext';
+import React from 'react';
 import colors from "./colors";
 
-const Entry = ({category, name, price, date, id, index, handleDelete}) => {
-	const { FontAwesomeIcon } = useContext(AppContext);
-	return (
-		<tr className={colors[category]} key={index}>
+const Entry = ({category, name, price, date, id,handleDelete, FontAwesomeIcon}) => (
+		<tr className={colors[category]} >
 			<td className="entry-col">{category}</td>
 			<td className="entry-col">{name}</td>
 			<td className="entry-col">{price}</td>
@@ -20,6 +17,6 @@ const Entry = ({category, name, price, date, id, index, handleDelete}) => {
 				</button>
 			</td>
 		</tr>
-	)}
+	)
 
 export default Entry;

@@ -5,7 +5,7 @@ import axios from "axios";
 import NumberFormat from "react-number-format";
 
 const CreateBudget = () => {
-  const { authorizationToken, setRenderBudget } = useContext(AppContext);
+  const { authorizationToken, setRenderBudget, setErrorMessage, errorShow } = useContext(AppContext);
   const { setShowGraph } = useContext(BudgetContext);
   const [budget, setBudget] = useState({
     name: "",
@@ -16,24 +16,23 @@ const CreateBudget = () => {
     setBudget({ ...budget, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const config = {
       headers: { Authorization: authorizationToken },
     };
-    axios
-      .post("/api/v1/budgets", budget, config)
-      .then((response) => {
-        setBudget({
+		try {
+			const response = await axios.post("/api/v1/budgets", budget, config)
+			setBudget({
           name: "",
           monthly_budget: "",
         });
         setRenderBudget((oldKey) => oldKey + 1);
         setShowGraph(false);
-      })
-      .catch((response) => {
-        console.log(response);
-      });
+		} catch (error) {
+		setErrorMessage(error.response.data[0]);
+			  errorShow();
+		}
   };
   return (
     <section>

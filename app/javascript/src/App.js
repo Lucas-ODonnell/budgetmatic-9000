@@ -6,6 +6,7 @@ import Devise from './components/Pages/Devise/Devise';
 import Profile from './components/Pages/Profile/Profile';
 import DeleteConfirmation from './components/DeleteConfirmation';
 import Navigation from './components/Navigation';
+import Error from './components/Error';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -18,6 +19,8 @@ const App = () => {
 	const [deleteFunction, setDeleteFunction] = useState(()=> () => {return});
 	const [renderBudget, setRenderBudget] = useState(0);
 	const [renderEntry, setRenderEntry] = useState(0)
+	const [showError, setShowError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState(null);
 
 	useEffect(() => {
 		if (localStorage.Authorization !== undefined) {
@@ -26,6 +29,13 @@ const App = () => {
 			setSignedIn(true)
 		}
 	}, [authorizationToken])
+
+	const errorShow = () => {
+		setShowError(true);
+		setTimeout(() => {
+			setShowError(false)
+		}, 5000);
+	}
 
 	const ContextProvider = {
 		authorizationToken,
@@ -38,7 +48,10 @@ const App = () => {
 		renderBudget,
 		setRenderBudget,
 		renderEntry,
-		setRenderEntry
+		setRenderEntry,
+		errorShow,
+		errorMessage,
+		setErrorMessage
 	}
 
 	return (
@@ -49,10 +62,11 @@ const App = () => {
 				:
 				<>
 					<Navigation />
+					<Error {...{showError}}/>
 					<DeleteConfirmation/>
 					<Routes>
 						<Route exact path="/" element={<Main />}/>
-						<Route exact path="profile" element={<Profile />}/>
+						<Route exact path="/profile" element={<Profile />}/>
 					</Routes>
 					</>
 				}

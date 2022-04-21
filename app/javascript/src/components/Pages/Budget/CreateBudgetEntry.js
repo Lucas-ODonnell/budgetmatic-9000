@@ -5,7 +5,7 @@ import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
 const CreateBudgetEntry = () => {
-	const { authorizationToken, setRenderEntry } = useContext(AppContext);
+	const { authorizationToken, setRenderEntry, errorShow, setErrorMessage } = useContext(AppContext);
 	const { currentBudget, setShowGraph } = useContext(BudgetContext);
 	const [budgetEntry, setBudgetEntry] = useState({
 		category: "food",
@@ -18,25 +18,25 @@ const CreateBudgetEntry = () => {
 		setBudgetEntry({...budgetEntry, [e.target.name]: e.target.value})
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const config = {
 			headers: { Authorization: authorizationToken }
 		}
-		axios.post("/api/v1/budget_entries", budgetEntry, config)
-			.then(response => {
-				setBudgetEntry({
-					category: "food",
-					name: "",
-					price: "",
-					budget_id: currentBudget.id
-				})
-				setRenderEntry(oldKey => oldKey + 1)	
-				setShowGraph(false);
+		try {
+			const response = await axios.post("/api/v1/budget_entries", budgetEntry, config)
+			setBudgetEntry({
+				category: "food",
+				name: "",
+				price: "",
+				budget_id: currentBudget.id
 			})
-			.catch(response=> {
-				console.log(response)
-			})
+			setRenderEntry(oldKey => oldKey + 1)	
+			setShowGraph(false);
+		} catch (error) {
+			setErrorMessage(error.response.data[0]);
+			errorShow();
+		}
 	}
 	return (
 		<section>

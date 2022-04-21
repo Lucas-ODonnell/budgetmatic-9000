@@ -1,33 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AppContext from '../../../context/AppContext';
 import axios from 'axios';
 
 const ProfileUpdate = ({config, currentUser, fetchProfile, setShowUpdateForm}) => {
-	const [userInfo, setUserInfo] = useState({
-		name: "",
-		email: ""
-	})
+	const { setErrorMessage, errorShow } = useContext(AppContext);
+	const [userInfo, setUserInfo] = useState({ user: 
+		{
+			name: "",
+			email: ""
+		}
+	}
+	)
 
 	const handleChange = (e) => {
 		e.preventDefault();
-		setUserInfo({...userInfo, [e.target.name]: e.target.value})
+		setUserInfo({...userInfo, 
+			user: {
+				[e.target.name]: e.target.value
+			}
+		})
 	}
 
-	const handleUpdate = (e) => {
+	const handleUpdate = async (e) => {
 		e.preventDefault();
 		const edited = Object.fromEntries(
 			Object.entries(userInfo).filter(([key, value]) => value !== ""));
-		axios.put(`/api/v1/users/${currentUser.id}`, edited, config)
-			.then(response => {
-				fetchProfile();
-				setShowUpdateForm(false);
-				setUserInfo({
-					name: "",
-					email: "" 
-				})
+		try {
+			const response = await axios.put(`/api/v1/users/${currentUser.id}`, edited, config)
+			fetchProfile();
+			setShowUpdateForm(false);
+			setUserInfo({
+				name: "",
+				email: "" 
 			})
-			.catch(response => {
-				console.log(response)
-			})
+		} catch (error) {
+			setErrorMessage(error.response.data[1])
+			errorShow();
+		}
 	}
 	return (
 		<section>
@@ -38,7 +47,7 @@ const ProfileUpdate = ({config, currentUser, fetchProfile, setShowUpdateForm}) =
 							<label>Name </label>
 							<input
 								onChange={handleChange}
-								value={userInfo.name}
+								value={userInfo.user.name}
 								className="input"
 								type="text"
 								name="name"
@@ -48,7 +57,7 @@ const ProfileUpdate = ({config, currentUser, fetchProfile, setShowUpdateForm}) =
 							<label>Email </label>
 							<input
 								onChange={handleChange}
-								value={userInfo.email}
+								value={userInfo.user.email}
 								className="input"
 								type="email"
 								name="email"

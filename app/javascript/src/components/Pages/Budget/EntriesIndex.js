@@ -11,6 +11,7 @@ const EntriesIndex = () => {
 		setSignedIn,
 		renderEntry,
 		setRenderEntry,
+		FontAwesomeIcon
 	} = useContext(AppContext);
 	const { currentBudget, entries, setEntries, total, setTotal, setShowGraph } =
 	useContext(BudgetContext);
@@ -69,23 +70,21 @@ const EntriesIndex = () => {
 		setShowGraph(false);
 	};
 
-	const handleDelete = (id) => {
-		axios
-			.delete(`/api/v1/budget_entries/${id}`, config)
-			.then((response) => {
-				setRenderEntry((oldKey) => oldKey + 1);
-				setShowGraph(false);
-			})
-			.catch((response) => {
-				console.log(response);
-			});
+	const handleDelete = async (id) => {
+		try {
+			const response = await axios.delete(`/api/v1/budget_entries/${id}`, config)
+			setRenderEntry((oldKey) => oldKey + 1);
+			setShowGraph(false);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const entryList = entries.map((entry, index) => {
 		const { category, name, price, date } = entry.attributes;
 		const { id } = entry;
 		return (
-			<Entry {...{category, name, price, date, id, index, handleDelete}} />
+			<Entry key={index} {...{category, name, price, date, id, handleDelete, FontAwesomeIcon}} />
 		);
 	});
 	return (
