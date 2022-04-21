@@ -165,7 +165,7 @@ td {
 }
 
 @media 
-only screen and (max-width: 810px),
+only screen and (max-width: 810px)
 {
 
 	/* Force table to not be like tables anymore */
@@ -180,7 +180,9 @@ only screen and (max-width: 810px),
 		left: -9999px;
 	}
 
-	tr { border: 1px solid #ccc; }
+	tr { 
+		border: 1px solid #ccc; 
+	}
 
 	td { 
 		/* Behave  like a "row" */
