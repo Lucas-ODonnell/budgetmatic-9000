@@ -4,6 +4,7 @@ import BudgetContext from "../../../context/BudgetContext";
 import Entry from './Entry';
 import axios from "axios";
 import Filter from "./Filter";
+import EntryTableHeader from "./EntryTableHeader";
 
 const EntriesIndex = () => {
 	const {
@@ -79,29 +80,21 @@ const EntriesIndex = () => {
 			console.log(error);
 		}
 	};
-
-	const entryList = entries.map((entry, index) => {
-		const { category, name, price, date } = entry.attributes;
-		const { id } = entry;
-		return (
-			<Entry key={index} {...{category, name, price, date, id, handleDelete, FontAwesomeIcon}} />
-		);
-	});
 	return (
 		<section>
 			<div className="entries-container">
 				<div className="entries-content">
 					<table>
-						<thead>
-							<tr>
-								<th scope="col">Category</th>
-								<th scope="col">Name</th>
-								<th scope="col">Price</th>
-								<th scope="col">Month</th>
-								<th scope="col"></th>
-							</tr>
-						</thead>
-						<tbody>{entryList}</tbody>
+						<EntryTableHeader />
+						<tbody>{
+							entries.map((entry) => {
+								const { category, name, price, date } = entry.attributes
+								const { id } = entry
+								return (
+									<Entry key={id} {...{category, name, price, date, handleDelete, FontAwesomeIcon}} />
+								);
+							})
+						}</tbody>
 					</table>
 				</div>
 			</div>

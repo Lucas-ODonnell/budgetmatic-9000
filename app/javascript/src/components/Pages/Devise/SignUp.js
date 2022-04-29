@@ -1,18 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import AppContext from '../../../context/AppContext';
 import axios from 'axios';
 
 const SignUp = ({toggleSignUp, setAuthorizationToken}) => {
+	const { handleChange } = useContext(AppContext);
 	const [newUserData, setNewUserData] = useState({
 		name: "",
 		email: "",
 		password: "",
 		password_confirmation: ""
 	})
-
-	const handleChange = (e) => {
-		e.preventDefault();
-		setNewUserData({...newUserData, [e.target.name]: e.target.value})
-	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -54,19 +51,19 @@ const SignUp = ({toggleSignUp, setAuthorizationToken}) => {
 			<form onSubmit={handleSubmit} className="devise-form">
 				<div className="field">
 					<label>Name </label>
-					<input onChange={handleChange} type="text" name="name" value={newUserData.name}/>
+					<input onChange={(e)=> handleChange(e, setNewUserData, newUserData )} type="text" name="name" value={newUserData.name}/>
 				</div>
 				<div className="field">
 					<label>Email </label>
-					<input onChange={handleChange} type="email" name="email" value={newUserData.email}/>
+					<input onChange={(e)=> handleChange(e, setNewUserData, newUserData )} type="email" name="email" value={newUserData.email}/>
 				</div>
 				<div className="field">
 					<label>Password </label>
-					<input onChange={handleChange} type="password" name="password" value={newUserData.password}/>
+					<input onChange={(e)=> handleChange(e, setNewUserData, newUserData )} type="password" name="password" value={newUserData.password}/>
 				</div>
 				<div className="field">
 					<label>Password Confirmation </label>
-					<input onChange={handleChange} type="password" name="password_confirmation" value={newUserData.password_confirmation}/>
+					<input onChange={(e)=> handleChange(e, setNewUserData, newUserData )} type="password" name="password_confirmation" value={newUserData.password_confirmation}/>
 				</div>
 				<div className="submit-area">
 					<button className="submit" type="submit">Sign Up</button>

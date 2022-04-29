@@ -30,6 +30,10 @@ const App = () => {
 		}
 	}, [authorizationToken])
 
+	const handleChange = (e, setVar, Var) => {
+    setVar({ ...Var, [e.target.name]: e.target.value });
+  };
+
 	const errorShow = () => {
 		setShowError(true);
 		setTimeout(() => {
@@ -51,7 +55,8 @@ const App = () => {
 		setRenderEntry,
 		errorShow,
 		errorMessage,
-		setErrorMessage
+		setErrorMessage,
+		handleChange
 	}
 
 	return (

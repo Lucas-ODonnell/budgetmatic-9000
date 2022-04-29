@@ -13,6 +13,7 @@ const ShowBudgetEntryContent = () => {
 		setDeleteFunction,
 		setShow,
 		setRenderBudget,
+		handleChange
 	} = useContext(AppContext);
 	const { currentBudget, setShowGraph } = useContext(BudgetContext);
 	const [showBudgetEntry, setShowBudgetEntry] = useState(false);
@@ -34,11 +35,6 @@ const ShowBudgetEntryContent = () => {
 			console.log(error);
 		}
 	};
-
-	const handleChange = (e) => {
-		setUpdate({ ...update, [e.target.name]: e.target.value });
-	};
-
 	const handleBudgetUpdate = async (e) => {
 		e.preventDefault();
 		try {
@@ -91,7 +87,7 @@ const ShowBudgetEntryContent = () => {
 								className="input"
 								name="name"
 								value={update.name}
-								onChange={handleChange}
+								onChange={(e)=> handleChange(e, setUpdate, update )}
 								/>
 						</div>
 						<div className="field">
@@ -103,7 +99,7 @@ const ShowBudgetEntryContent = () => {
 								thousandSeparator={true}
 								decimalScale={2}
 								prefix={"$"}
-								onChange={handleChange}
+								onChange={(e)=> handleChange(e, setUpdate, update )}
 								/>
 						</div>
 						<button onClick={() => setEditBudget(false)}>Cancel</button>
@@ -128,7 +124,7 @@ const ShowBudgetEntryContent = () => {
 				</div>
 				<p>New Budget Entry</p>
 			</div>
-			{showBudgetEntry ? <CreateBudgetEntry /> : <div></div>}
+			{showBudgetEntry && <CreateBudgetEntry />}
 			<EntriesIndex />
 			</>
 	);

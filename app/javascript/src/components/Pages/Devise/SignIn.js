@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AppContext from '../../../context/AppContext';
 import axios from 'axios';
 
 const SignIn = ({toggleSignUp, setAuthorizationToken}) => {
+	const { handleChange } = useContext(AppContext);
 	const [userData, setUserData] = useState({
 		email: "",
 		password: ""
 	})
-
-	const handleChange = (e) => {
-		e.preventDefault();
-		setUserData({...userData, [e.target.name]: e.target.value})
-	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -46,11 +43,11 @@ const SignIn = ({toggleSignUp, setAuthorizationToken}) => {
 			<form onSubmit={handleSubmit} className="devise-form">
 				<div className="field">
 					<label>Email </label>
-					<input onChange={handleChange} type="email" name="email" value={userData.email}/>
+					<input onChange={(e)=> handleChange(e, setUserData, userData)} type="email" name="email" value={userData.email}/>
 				</div>
 				<div className="field">
 					<label>Password </label>
-					<input onChange={handleChange} type="password" name="password" value={userData.password}/>
+					<input onChange={(e)=> handleChange(e, setUserData, userData)} type="password" name="password" value={userData.password}/>
 				</div>
 				<div className="submit-area">
 					<button className="submit" type="submit">Sign In</button>

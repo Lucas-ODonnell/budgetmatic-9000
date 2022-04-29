@@ -11,10 +11,6 @@ const Budget = () => {
 	const { authorizationToken, renderBudget, setSignedIn } = useContext(AppContext);
 	const { setBudgets, budgets, activeTab, setActiveTab, setShowGraph } = useContext(BudgetContext);
 
-	useEffect(() => {
-		getBudget();
-	}, [renderBudget]);
-
 	const getBudget = async () => {
 		const config = {
 			headers: { Authorization: authorizationToken },
@@ -31,13 +27,10 @@ const Budget = () => {
 		}
 	};
 
-	const allBudgets = budgets.map((budget, index) => {
-		return (
-			<TabContent id={index} activeTab={activeTab} key={index}>
-				<ShowBudgetEntryContent />
-			</TabContent>
-		);
-	});
+	useEffect(() => {
+		getBudget();
+	}, [renderBudget]);
+
 	return (
 		<section>
 			<div className="budget-container">
@@ -50,7 +43,17 @@ const Budget = () => {
 					<div>
 						<ShowBudgetForm />
 					</div>
-					<div className="outlet">{allBudgets}</div>
+					<div className="outlet">
+						{
+						budgets.map((budget, index)=> {
+							return (
+								<TabContent id={index} activeTab={activeTab} key={index}>
+									<ShowBudgetEntryContent />
+								</TabContent>
+							)
+						})
+						}
+					</div>
 				</div>
 			</div>
 		</section>

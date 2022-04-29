@@ -5,7 +5,7 @@ import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
 const CreateBudgetEntry = () => {
-	const { authorizationToken, setRenderEntry, errorShow, setErrorMessage } = useContext(AppContext);
+	const { authorizationToken, setRenderEntry, errorShow, setErrorMessage, handleChange } = useContext(AppContext);
 	const { currentBudget, setShowGraph } = useContext(BudgetContext);
 	const [budgetEntry, setBudgetEntry] = useState({
 		category: "food",
@@ -13,10 +13,6 @@ const CreateBudgetEntry = () => {
 		price: "",
 		budget_id: currentBudget.id
 	})
-
-	const handleChange = (e) => {
-		setBudgetEntry({...budgetEntry, [e.target.name]: e.target.value})
-	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -51,7 +47,7 @@ const CreateBudgetEntry = () => {
 									value="food" 
 									type="radio" 
 									checked={budgetEntry.category === 'food'} 
-									onChange={handleChange}
+									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
 									/>
 								<label>Food</label>						
 								<input 
@@ -59,7 +55,7 @@ const CreateBudgetEntry = () => {
 									value="utilities" 
 									type="radio"  
 									checked={budgetEntry.category === 'utilities'} 
-									onChange={handleChange}
+									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
 									/>
 								<label>Utilities</label>
 								<input 
@@ -67,7 +63,7 @@ const CreateBudgetEntry = () => {
 									value="housing" 
 									type="radio" 
 									checked={budgetEntry.category === 'housing'} 
-									onChange={handleChange} 
+									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)} 
 									/>
 								<label>Housing</label>
 								<input 
@@ -75,7 +71,7 @@ const CreateBudgetEntry = () => {
 									value="transportation" 
 									type="radio" 
 									checked={budgetEntry.category === 'transportation'} 
-									onChange={handleChange}
+									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
 									/>
 								<label>Transportation</label>
 								<input 
@@ -83,7 +79,7 @@ const CreateBudgetEntry = () => {
 									value="insurance" 
 									type="radio" 
 									checked={budgetEntry.category === 'insurance'} 
-									onChange={handleChange}
+									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
 									/>
 								<label>Insurance</label>
 							</div>
@@ -93,7 +89,7 @@ const CreateBudgetEntry = () => {
 									value="medical" 
 									type="radio" 
 									checked={budgetEntry.category === 'medical'} 
-									onChange={handleChange}
+									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
 									/>
 								<label>Medical</label>			
 								<input 
@@ -101,7 +97,7 @@ const CreateBudgetEntry = () => {
 									value="investments" 
 									type="radio"  
 									checked={budgetEntry.category === 'investments'} 
-									onChange={handleChange}
+									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
 									/>
 								<label>Investments</label>
 								<input 
@@ -109,7 +105,7 @@ const CreateBudgetEntry = () => {
 									value="personal" 
 									type="radio" 
 									checked={budgetEntry.category === 'personal'} 
-									onChange={handleChange} 
+									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)} 
 									/>
 								<label>Personal</label>
 								<input 
@@ -117,7 +113,7 @@ const CreateBudgetEntry = () => {
 									value="entertainment" 
 									type="radio" 
 									checked={budgetEntry.category === 'entertainment'} 
-									onChange={handleChange}
+									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
 									/>
 								<label>Entertainment</label>
 								<input 
@@ -125,14 +121,16 @@ const CreateBudgetEntry = () => {
 									value="misc" 
 									type="radio" 
 									checked={budgetEntry.category === 'misc'} 
-									onChange={handleChange}
+									onChange={(e)=> handleChange(e, setBudgetEntry, udgetEntry)}
 									/>
 								<label>Misc</label>
 							</div>
 						</div>
 						<div className="field">
 							<label>Name </label>
-							<input onChange={handleChange} value={budgetEntry.name} className="input" type="text" name="name"/>
+							<input value={budgetEntry.name} className="input" type="text" name="name"
+								onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
+							/>
 						</div>
 						<div className="field">
 							<label>Price </label>
@@ -143,7 +141,7 @@ const CreateBudgetEntry = () => {
 								thousandSeparator={true}
 								decimalScale={2}
 								prefix={'$'}
-								onChange={handleChange}
+								onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
 								/>
 						</div>
 						<div className="budget-entry-submit">

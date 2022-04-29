@@ -5,16 +5,12 @@ import axios from "axios";
 import NumberFormat from "react-number-format";
 
 const CreateBudget = () => {
-  const { authorizationToken, setRenderBudget, setErrorMessage, errorShow } = useContext(AppContext);
+  const { authorizationToken, setRenderBudget, setErrorMessage, errorShow, handleChange} = useContext(AppContext);
   const { setShowGraph } = useContext(BudgetContext);
   const [budget, setBudget] = useState({
     name: "",
     monthly_budget: "",
   });
-
-  const handleChange = (e) => {
-    setBudget({ ...budget, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +38,7 @@ const CreateBudget = () => {
             <div className="field">
               <label>Name </label>
               <input
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e,setBudget, budget)}
                 value={budget.name}
                 className="input"
                 type="text"
@@ -58,7 +54,7 @@ const CreateBudget = () => {
                 thousandSeparator={true}
                 decimalScale={2}
                 prefix={"$"}
-                onChange={handleChange}
+                onChange={(e)=>handleChange(e,setBudget, budget)}
               />
             </div>
             <div className="budget-entry-submit">
