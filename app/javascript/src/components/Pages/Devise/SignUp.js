@@ -1,9 +1,9 @@
-import React, {useState, useContext} from 'react';
-import AppContext from '../../../context/AppContext';
+import React, {useState} from 'react';
+import {useGlobalContext} from '../../../context/AppContext';
 import axios from 'axios';
 
-const SignUp = ({toggleSignUp, setAuthorizationToken}) => {
-	const { handleChange } = useContext(AppContext);
+const SignUp = ({toggleSignUp}) => {
+	const { handleChange, setAuthorizationToken, setSignedIn } = useGlobalContext();
 	const [newUserData, setNewUserData] = useState({
 		name: "",
 		email: "",
@@ -18,11 +18,9 @@ const SignUp = ({toggleSignUp, setAuthorizationToken}) => {
 			const response = await axios.post('/signup', newUser)
 			if (response.headers.authorization === undefined) {
 				setNewUserData({
-					name: "",
 					email: "",
-					password: "",
-					password_confirmation: ""
-				})
+					password: ""
+				});
 				return;
 			}
 			localStorage.setItem('Authorization', JSON.stringify(response.headers.authorization));
@@ -33,6 +31,7 @@ const SignUp = ({toggleSignUp, setAuthorizationToken}) => {
 				password: "",
 				password_confirmation: ""
 			})
+			setSignedIn(true);
 		} catch (error) {
 			setNewUserData({
 				name: "",

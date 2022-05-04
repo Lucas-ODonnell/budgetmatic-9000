@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import AppContext from '../context/AppContext';
 import { NavData } from './NavData';
+import { useGlobalContext } from '../context/AppContext';
 
 const NavigationDropdown = ({setCurrentSection}) => {
-	const { FontAwesomeIcon } = useContext(AppContext);
+	const { FontAwesomeIcon } = useGlobalContext();
 	const [open, setOpen] = useState(false);
 	const [selection, setSelection] = useState([]);
 	const toggle = () => setOpen(!open);

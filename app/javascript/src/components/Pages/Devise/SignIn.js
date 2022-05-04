@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
-import AppContext from '../../../context/AppContext';
+import React, { useState } from 'react';
+import { useGlobalContext } from '../../../context/AppContext';
 import axios from 'axios';
 
-const SignIn = ({toggleSignUp, setAuthorizationToken}) => {
-	const { handleChange } = useContext(AppContext);
+const SignIn = ({toggleSignUp}) => {
+	const { handleChange, setAuthorizationToken, setSignedIn } = useGlobalContext();
 	const [userData, setUserData] = useState({
 		email: "",
 		password: ""
@@ -27,6 +27,7 @@ const SignIn = ({toggleSignUp, setAuthorizationToken}) => {
 				email: "",
 				password: ""
 			})
+			setSignedIn(true);
 		} catch (error) {
 			setUserData({
 				email: "",

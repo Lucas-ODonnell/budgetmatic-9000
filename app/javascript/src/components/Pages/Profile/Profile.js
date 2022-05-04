@@ -1,10 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
-import AppContext from '../../../context/AppContext';
+import React, { useState, useEffect } from 'react';
+import { useGlobalContext } from '../../../context/AppContext';
 import ProfileUpdate from './ProfileUpdate';
 import axios from 'axios';
 
 const Profile = () => {
-	const { FontAwesomeIcon, authorizationToken, setSignedIn, setShow, setDeleteFunction } = useContext(AppContext);
+	const { FontAwesomeIcon, authorizationToken, setSignedIn, setShow, setDeleteFunction } = useGlobalContext();
 	const [currentUser, setCurrentUser] = useState({})
 	const [showUpdateForm, setShowUpdateForm] = useState(false);
 

@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
-import AppContext from '../../../context/AppContext';
+import { useGlobalContext } from '../../../context/AppContext';
 import BudgetContext from '../../../context/BudgetContext';
 import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
 const CreateBudgetEntry = () => {
-	const { authorizationToken, setRenderEntry, errorShow, setErrorMessage, handleChange } = useContext(AppContext);
+	const { authorizationToken, setRenderEntry, errorShow, setErrorMessage, handleChange } = useGlobalContext();
 	const { currentBudget, setShowGraph } = useContext(BudgetContext);
 	const [budgetEntry, setBudgetEntry] = useState({
 		category: "food",

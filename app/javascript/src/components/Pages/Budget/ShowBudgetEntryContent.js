@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import AppContext from "../../../context/AppContext";
+import {useGlobalContext} from "../../../context/AppContext";
 import BudgetContext from "../../../context/BudgetContext";
 import axios from "axios";
 import CreateBudgetEntry from "./CreateBudgetEntry";
@@ -14,7 +14,7 @@ const ShowBudgetEntryContent = () => {
 		setShow,
 		setRenderBudget,
 		handleChange
-	} = useContext(AppContext);
+	} = useGlobalContext();
 	const { currentBudget, setShowGraph } = useContext(BudgetContext);
 	const [showBudgetEntry, setShowBudgetEntry] = useState(false);
 	const [editBudget, setEditBudget] = useState(false);

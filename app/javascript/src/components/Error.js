@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import AppContext from '../context/AppContext';
+import React from 'react';
+import { useGlobalContext } from '../context/AppContext';
 
 const Error = ({showError}) => {
-	const { errorMessage } = useContext(AppContext);
+	const { errorMessage } = useGlobalContext();
 	if (!showError) {
 		return (
 			<>

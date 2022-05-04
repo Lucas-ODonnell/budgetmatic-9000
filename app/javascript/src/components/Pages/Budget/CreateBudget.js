@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-import AppContext from "../../../context/AppContext";
+import { useGlobalContext } from "../../../context/AppContext";
 import BudgetContext from "../../../context/BudgetContext";
 import axios from "axios";
 import NumberFormat from "react-number-format";
 
 const CreateBudget = () => {
-  const { authorizationToken, setRenderBudget, setErrorMessage, errorShow, handleChange} = useContext(AppContext);
+  const { authorizationToken, setRenderBudget, setErrorMessage, errorShow, handleChange} = useGlobalContext();
   const { setShowGraph } = useContext(BudgetContext);
   const [budget, setBudget] = useState({
     name: "",

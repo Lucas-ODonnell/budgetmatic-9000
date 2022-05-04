@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import AppContext from "../../../context/AppContext";
+import {useGlobalContext} from "../../../context/AppContext";
 import BudgetContext from "../../../context/BudgetContext";
 import Entry from './Entry';
 import axios from "axios";
@@ -13,7 +13,7 @@ const EntriesIndex = () => {
 		renderEntry,
 		setRenderEntry,
 		FontAwesomeIcon
-	} = useContext(AppContext);
+	} = useGlobalContext();
 	const { currentBudget, entries, setEntries, total, setTotal, setShowGraph } =
 	useContext(BudgetContext);
 	const id = `?id=${currentBudget.id}&`;

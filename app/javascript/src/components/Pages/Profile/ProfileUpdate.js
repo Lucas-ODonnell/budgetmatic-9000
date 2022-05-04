@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
-import AppContext from '../../../context/AppContext';
+import React, { useState } from 'react';
+import {useGlobalContext} from '../../../context/AppContext';
 import axios from 'axios';
 
 const ProfileUpdate = ({config, currentUser, fetchProfile, setShowUpdateForm}) => {
-	const { setErrorMessage, errorShow } = useContext(AppContext);
+	const { setErrorMessage, errorShow } = useGlobalContext();
 	const [userInfo, setUserInfo] = useState({ user: 
 		{
 			name: "",

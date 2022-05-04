@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
-import AppContext from "../../../context/AppContext";
+import React, { useState } from "react";
+import { useGlobalContext } from "../../../context/AppContext";
 import CreateBudget from "./CreateBudget";
 
 const ShowBudgetForm = () => {
-  const { FontAwesomeIcon } = useContext(AppContext);
+  const { FontAwesomeIcon } = useGlobalContext();
   const [showBudgetForm, setShowBudgetForm] = useState(false);
 
   return (

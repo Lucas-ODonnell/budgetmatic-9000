@@ -320,7 +320,6 @@ DEPENDENCIES
   spring
   turbolinks (~> 5)
   tzinfo-data
-  warden-jwt_auth
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)

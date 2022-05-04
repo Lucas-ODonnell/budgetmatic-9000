@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import axios from 'axios';
-import AppContext from '../context/AppContext';
+import { useGlobalContext } from '../context/AppContext';
 
 const SignOut = () => {
-	const { setSignedIn, authorizationToken} = useContext(AppContext);
+	const { setSignedIn, authorizationToken} = useGlobalContext();
 	const config = {
 		headers: { Authorization: authorizationToken }
 	}
