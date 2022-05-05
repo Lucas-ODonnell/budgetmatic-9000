@@ -23,7 +23,7 @@ const ShowBudgetForm = () => {
         </div>
         <p>New Budget</p>
       </div>
-      {showBudgetForm ? <CreateBudget /> : <div></div>}
+      {showBudgetForm && <CreateBudget /> }
     </section>
   );
 };

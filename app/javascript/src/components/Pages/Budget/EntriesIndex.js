@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {useGlobalContext} from "../../../context/AppContext";
-import BudgetContext from "../../../context/BudgetContext";
+import { useBudgetContext } from "../../../context/BudgetContext";
 import Entry from './Entry';
 import axios from "axios";
 import Filter from "./Filter";
@@ -14,8 +14,8 @@ const EntriesIndex = () => {
 		setRenderEntry,
 		FontAwesomeIcon
 	} = useGlobalContext();
-	const { currentBudget, entries, setEntries, total, setTotal, setShowGraph } =
-	useContext(BudgetContext);
+	
+	const { currentBudget, entries, setEntries, total, setTotal, setShowGraph } = useBudgetContext();
 	const id = `?id=${currentBudget.id}&`;
 	const [tags, setTags] = useState([]);
 	const [query, setQuery] = useState("");
@@ -91,7 +91,7 @@ const EntriesIndex = () => {
 								const { category, name, price, date } = entry.attributes
 								const { id } = entry
 								return (
-									<Entry key={id} {...{category, name, price, date, handleDelete, FontAwesomeIcon}} />
+									<Entry key={id} {...{category, name, price, date, handleDelete, FontAwesomeIcon, id}} />
 								);
 							})
 						}</tbody>

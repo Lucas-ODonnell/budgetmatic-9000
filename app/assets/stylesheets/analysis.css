@@ -20,6 +20,15 @@
 	margin-top: 1em;
 }
 
+.analysis-header button {
+	color: var(--buttonSecondary);
+}
+
+.analysis-header button:hover {
+	background-color: transparent;
+	color: var(--buttonPrimary);
+}
+
 .analysis-body {
 	padding-bottom: 1em;
 }

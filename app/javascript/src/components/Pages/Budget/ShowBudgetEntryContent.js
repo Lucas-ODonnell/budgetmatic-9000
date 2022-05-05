@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {useGlobalContext} from "../../../context/AppContext";
-import BudgetContext from "../../../context/BudgetContext";
+import {useBudgetContext} from "../../../context/BudgetContext";
 import axios from "axios";
 import CreateBudgetEntry from "./CreateBudgetEntry";
 import EntriesIndex from "./EntriesIndex";
@@ -11,11 +11,11 @@ const ShowBudgetEntryContent = () => {
 		FontAwesomeIcon,
 		authorizationToken,
 		setDeleteFunction,
-		setShow,
+		setShowWarning,
 		setRenderBudget,
 		handleChange
 	} = useGlobalContext();
-	const { currentBudget, setShowGraph } = useContext(BudgetContext);
+	const { currentBudget, setShowGraph } = useBudgetContext();
 	const [showBudgetEntry, setShowBudgetEntry] = useState(false);
 	const [editBudget, setEditBudget] = useState(false);
 	const [update, setUpdate] = useState({
@@ -65,7 +65,7 @@ const ShowBudgetEntryContent = () => {
 						<div className="budget-options">
 							<button
 								onClick={() => {
-									setShow(true);
+									setShowWarning(true);
 									setDeleteFunction(() => () => handleBudgetDelete());
 								}}
 							>

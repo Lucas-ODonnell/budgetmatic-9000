@@ -4,7 +4,7 @@ import ProfileUpdate from './ProfileUpdate';
 import axios from 'axios';
 
 const Profile = () => {
-	const { FontAwesomeIcon, authorizationToken, setSignedIn, setShow, setDeleteFunction } = useGlobalContext();
+	const { FontAwesomeIcon, authorizationToken, setSignedIn, setShowWarning, setDeleteFunction } = useGlobalContext();
 	const [currentUser, setCurrentUser] = useState({})
 	const [showUpdateForm, setShowUpdateForm] = useState(false);
 
@@ -45,7 +45,7 @@ const Profile = () => {
 							<p><span>Email:</span> {currentUser.email}</p>
 						</div>
 						<div className="delete-profile">
-							<button onClick={()=>{setShow(true); setDeleteFunction(()=>()=> handleDelete())}}>
+							<button onClick={()=>{setShowWarning(true); setDeleteFunction(()=>()=> handleDelete())}}>
 							Delete Profile
 							</button>
 						</div>

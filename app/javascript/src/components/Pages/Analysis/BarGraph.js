@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, {useState} from "react";
 import colors from "../Budget/colors";
-import BudgetContext from "../../../context/BudgetContext";
+import {useBudgetContext} from "../../../context/BudgetContext";
 
 const BarGraph = () => {
-  const { total, entries, currentBudget, showGraph, setShowGraph } =
-    useContext(BudgetContext);
+  const { total, entries, currentBudget, showGraph, setShowGraph } = useBudgetContext();
   const [categoryTotals, setCategoryTotals] = useState({
     Food: 0,
     Utilities: 0,
@@ -72,7 +71,7 @@ const BarGraph = () => {
     if (price === 0) {
       return;
     }
-    return showGraph ? (
+    return showGraph && (
       <div key={index}>
         <div className="graph-name">{thisCategory}</div>
         <div
@@ -81,17 +80,14 @@ const BarGraph = () => {
           {percentageOfTotalBudget(price)}
         </div>
       </div>
-    ) : (
-      <div></div>
-    );
-  });
+    )});
 
   return (
     <section>
       <div className="analysis-header">
         <button onClick={handleClick}>{showGraph ? "Hide Chart" : "Show Chart"}</button>
       </div>
-      {showGraph ? (
+      {showGraph && (
         <div className="analysis-body">
           <div className="bar-content">{graph}</div>
           <h3>
@@ -115,8 +111,6 @@ const BarGraph = () => {
           </p>
           <p>Try to stay below 80% of your monthly budget.</p>
         </div>
-      ) : (
-        <div></div>
       )}
     </section>
   );
