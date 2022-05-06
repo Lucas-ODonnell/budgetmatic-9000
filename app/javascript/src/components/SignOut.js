@@ -14,6 +14,7 @@ const SignOut = () => {
 			.then(response =>{
 				console.log(response)
 				setSignedIn(false);
+				localStorage.removeItem('Authorization');
 			})
 			.catch(response => {
 				console.log(response);

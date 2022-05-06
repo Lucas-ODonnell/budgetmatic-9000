@@ -17,6 +17,9 @@ const BarGraph = () => {
     Misc: 0,
   });
 
+		if(!currentBudget) { return };
+
+
   const percentageOfTotalBudget = (option) => {
     if (total === 0) return "0%";
     const quotient = option / total;

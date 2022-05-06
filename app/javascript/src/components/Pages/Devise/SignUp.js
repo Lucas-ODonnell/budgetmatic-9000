@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import {useGlobalContext} from '../../../context/AppContext';
 import axios from 'axios';
 
@@ -10,6 +11,8 @@ const SignUp = ({toggleSignUp}) => {
 		password: "",
 		password_confirmation: ""
 	})
+
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -32,6 +35,7 @@ const SignUp = ({toggleSignUp}) => {
 				password_confirmation: ""
 			})
 			setSignedIn(true);
+			navigate('/');
 		} catch (error) {
 			setNewUserData({
 				name: "",
