@@ -5,7 +5,7 @@ import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
 const CreateBudgetEntry = () => {
-	const { authorizationToken, setRenderEntry, errorShow, setErrorMessage, handleChange } = useGlobalContext();
+	const { authorizationToken, rerenderEntry, errorShow, setErrorMessage, handleChange } = useGlobalContext();
 	const { currentBudget, setShowGraph } = useBudgetContext();
 	const [budgetEntry, setBudgetEntry] = useState({
 		category: "food",
@@ -27,7 +27,7 @@ const CreateBudgetEntry = () => {
 				price: "",
 				budget_id: currentBudget.id
 			})
-			setRenderEntry(oldKey => oldKey + 1)	
+			rerenderEntry();
 			setShowGraph(false);
 		} catch (error) {
 			setErrorMessage(error.response.data[0]);

@@ -4,6 +4,7 @@ import { useGlobalContext } from './context/AppContext';
 import Main from './components/Pages/MainPage/Main';
 import Devise from './components/Pages/Devise/Devise';
 import Profile from './components/Pages/Profile/Profile';
+import ErrorPage from './components/Pages/ErrorPage';
 import DeleteConfirmation from './components/DeleteConfirmation';
 import Navigation from './components/Navigation';
 import Error from './components/Error';
@@ -35,8 +36,9 @@ const App = () => {
 					<Error {...{showError}}/>
 					<DeleteConfirmation/>
 					<Routes>
-						<Route exact path="/" element={<Main />}/>
-						<Route exact path="/profile" element={<Profile />}/>
+						<Route path="/" element={<Main />}/>
+						<Route path="profile" element={<Profile />}/>
+						<Route path="*" element={<ErrorPage />} />
 					</Routes>
 			</>
 			}

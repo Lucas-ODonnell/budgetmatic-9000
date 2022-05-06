@@ -11,7 +11,7 @@ const EntriesIndex = () => {
 		authorizationToken,
 		setSignedIn,
 		renderEntry,
-		setRenderEntry,
+		rerenderEntry,
 		FontAwesomeIcon
 	} = useGlobalContext();
 	
@@ -67,14 +67,14 @@ const EntriesIndex = () => {
 		.join("&");
 		thisQuery += queryFragment;
 		setQuery(thisQuery);
-		setRenderEntry((oldKey) => oldKey + 1);
+		rerenderEntry()
 		setShowGraph(false);
 	};
 
 	const handleDelete = async (id) => {
 		try {
 			const response = await axios.delete(`/api/v1/budget_entries/${id}`, config)
-			setRenderEntry((oldKey) => oldKey + 1);
+			rerenderEntry();
 			setShowGraph(false);
 		} catch (error) {
 			console.log(error);

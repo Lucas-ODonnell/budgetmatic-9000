@@ -28,6 +28,15 @@ export const AppProvider = ({children}) => {
 			}, 5000);
 	}
 
+	const rerenderBudget = () => {
+		setRenderBudget((oldKey) => oldKey + 1);
+	}
+
+	const rerenderEntry = () => {
+		setRenderEntry((oldKey) => oldKey + 1);
+	}
+
+
 	return (
 		<AppContext.Provider value={{
 			authorizationToken,
@@ -45,9 +54,9 @@ export const AppProvider = ({children}) => {
 			showError,
 			handleChange,
 			renderBudget,
-			setRenderBudget,
 			renderEntry,
-			setRenderEntry
+			rerenderBudget,
+			rerenderEntry
 		}}>
 			{children}
 		</AppContext.Provider>

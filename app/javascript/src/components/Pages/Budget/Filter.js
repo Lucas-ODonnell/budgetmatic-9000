@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 
-const Filter = ({
-  total,
-  income,
-  tags,
-  setTags,
-  handleFilterSubmit,
-  handleDateChange,
-  date,
-}) => {
+const Filter = ({total,income,tags,setTags,handleFilterSubmit,handleDateChange,date}) => {
   const [isKeyReleased, setIsKeyReleased] = useState(false);
   const [input, setInput] = useState("");
 

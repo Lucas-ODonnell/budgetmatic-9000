@@ -1,0 +1,24 @@
+.error-container {
+	display: flex;
+	justify-content: center;
+}
+
+.error-content {
+	margin-top: 5em;
+	width: 95%;
+	max-width: 70rem;
+	box-shadow: 0 2px 5px rgb(0,0,0);
+	border-radius: 4px;
+	overflow: hidden;
+	background-color: var(--backgroundColor);
+	height: 50vh;
+	max-height: 50vh;
+	overflow: auto;
+	color: white;
+	padding: 2em 3em;
+	font-size: 2rem;
+}
+
+.error-btn {
+	color: var(--buttonPrimary);
+}

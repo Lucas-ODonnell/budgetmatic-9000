@@ -5,7 +5,7 @@ import axios from "axios";
 import NumberFormat from "react-number-format";
 
 const CreateBudget = () => {
-	const { authorizationToken, setRenderBudget, setErrorMessage, errorShow, handleChange} = useGlobalContext();
+	const { authorizationToken, rerenderBudget, setErrorMessage, errorShow, handleChange} = useGlobalContext();
 	const { setShowGraph } = useBudgetContext();
 	const [budget, setBudget] = useState({
 		name: "",
@@ -23,7 +23,7 @@ const CreateBudget = () => {
 				name: "",
 				monthly_budget: "",
 			});
-			setRenderBudget((oldKey) => oldKey + 1);
+			rerenderBudget()
 			setShowGraph(false);
 		} catch (error) {
 			setErrorMessage(error.response.data[0]);

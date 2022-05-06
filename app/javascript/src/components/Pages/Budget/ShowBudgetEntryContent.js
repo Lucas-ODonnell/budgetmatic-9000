@@ -12,7 +12,7 @@ const ShowBudgetEntryContent = () => {
 		authorizationToken,
 		setDeleteFunction,
 		setShowWarning,
-		setRenderBudget,
+		rerenderBudget,
 		handleChange
 	} = useGlobalContext();
 	const { currentBudget, setShowGraph } = useBudgetContext();
@@ -29,7 +29,7 @@ const ShowBudgetEntryContent = () => {
 	const handleBudgetDelete = async () => {
 		try {
 			const response = await axios.delete(`/api/v1/budgets/${currentBudget.id}`, config)
-			setRenderBudget((oldKey) => oldKey + 1);
+			rerenderBudget()
 			setShowGraph(false);
 		} catch (error) {
 			console.log(error);
@@ -39,7 +39,7 @@ const ShowBudgetEntryContent = () => {
 		e.preventDefault();
 		try {
 			const response = await axios.put(`/api/v1/budgets/${currentBudget.id}`, update, config)
-			setRenderBudget((oldKey) => oldKey + 1);
+			rerenderBudget()
 			setUpdate({
 				name: `${currentBudget.attributes.name}`,
 				monthly_budget: `${currentBudget.attributes.monthly_budget}`,
