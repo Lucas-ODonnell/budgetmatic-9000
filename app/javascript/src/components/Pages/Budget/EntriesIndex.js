@@ -15,7 +15,9 @@ const EntriesIndex = () => {
 		setEntries, 
 		total, 
 		setTotal, 
-		setShowGraph
+		setShowGraph,
+		render,
+		setRender
 	} = useGlobalContext();
 
 	const id = `?id=${currentBudget.id}&`;
@@ -26,7 +28,6 @@ const EntriesIndex = () => {
 		start: "",
 		end: "",
 	});
-	const [render, setRender] = useState(0);
 	const config = {
 		headers: { Authorization: authorizationToken },
 	};
@@ -43,10 +44,8 @@ const EntriesIndex = () => {
 			setIncome(currentBudget.attributes.int_monthly_budget);
 			setQuery(`?id=${currentBudget.id}&`);
 			const array = [];
-			const objects = response.data.data;
-			objects.forEach((object) => {
-				let thisPrice = object.attributes.int_price;
-				setTotal((total) => total + thisPrice);
+			response.data.data.forEach((object) => {
+				setTotal((total) => total + object.attributes.int_price);
 				array.push(object);
 			});
 			setEntries(array);

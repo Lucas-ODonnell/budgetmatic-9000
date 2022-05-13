@@ -19,6 +19,7 @@ export const AppProvider = ({children}) => {
 	const [activeTab, setActiveTab] = useState(0);
 	const [total, setTotal] = useState(0)
 	const [showGraph, setShowGraph] = useState(false);
+	const [render, setRender] = useState(0);
 	const currentBudget = budgets[activeTab];
 
 
@@ -59,8 +60,9 @@ export const AppProvider = ({children}) => {
 			setTotal,
 			showGraph,
 			setShowGraph,
-			currentBudget
-
+			currentBudget,
+			render,
+			setRender
 		}}>
 			{children}
 		</AppContext.Provider>

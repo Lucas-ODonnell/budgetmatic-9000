@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState } from "react";
 import colors from "../Budget/colors";
 import {useGlobalContext} from "../../../context/AppContext";
 
@@ -8,7 +8,8 @@ const BarGraph = () => {
 		entries, 
 		currentBudget, 
 		showGraph, 
-		setShowGraph 
+		setShowGraph,
+		setRender
 	} = useGlobalContext();
 
   const [categoryTotals, setCategoryTotals] = useState({
@@ -74,6 +75,7 @@ const BarGraph = () => {
       }));
     });
     setShowGraph(!showGraph);
+		setRender((oldKey)=> oldKey + 1);
   };
 
   const graph = Object.entries(categoryTotals).map((category, index) => {
