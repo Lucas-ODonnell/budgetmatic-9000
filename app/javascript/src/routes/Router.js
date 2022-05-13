@@ -18,12 +18,8 @@ const Router = () => {
 				</ProtectedRoutes>
 				} 
 				>
-				<Route index element={
-					<Main />
-				}/>
-				<Route path="profile" element={
-					<Profile />
-				}/>
+				<Route index element={<Main />}/>
+				<Route path="profile" element={<Profile />}/>
 			</Route>
 			<Route path="*" element={<ErrorPage />} />
 		</Routes>

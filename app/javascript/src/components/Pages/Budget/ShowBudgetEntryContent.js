@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {useGlobalContext} from "../../../context/AppContext";
-import {useBudgetContext} from "../../../context/BudgetContext";
 import axios from "axios";
 import CreateBudgetEntry from "./CreateBudgetEntry";
 import EntriesIndex from "./EntriesIndex";
@@ -12,10 +11,11 @@ const ShowBudgetEntryContent = () => {
 		authorizationToken,
 		setDeleteFunction,
 		setShowWarning,
-		rerenderBudget,
-		handleChange
+		handleChange,
+		currentBudget, 
+		setShowGraph
 	} = useGlobalContext();
-	const { currentBudget, setShowGraph } = useBudgetContext();
+
 	const [showBudgetEntry, setShowBudgetEntry] = useState(false);
 	const [editBudget, setEditBudget] = useState(false);
 	const [update, setUpdate] = useState({
@@ -29,7 +29,6 @@ const ShowBudgetEntryContent = () => {
 	const handleBudgetDelete = async () => {
 		try {
 			const response = await axios.delete(`/api/v1/budgets/${currentBudget.id}`, config)
-			rerenderBudget()
 			setShowGraph(false);
 		} catch (error) {
 			console.log(error);
@@ -39,7 +38,6 @@ const ShowBudgetEntryContent = () => {
 		e.preventDefault();
 		try {
 			const response = await axios.put(`/api/v1/budgets/${currentBudget.id}`, update, config)
-			rerenderBudget()
 			setUpdate({
 				name: `${currentBudget.attributes.name}`,
 				monthly_budget: `${currentBudget.attributes.monthly_budget}`,
@@ -59,7 +57,7 @@ const ShowBudgetEntryContent = () => {
 							onClick={() => {
 								setEditBudget(true);
 							}}
-						>
+							>
 							{currentBudget.attributes.name}
 						</h1>
 						<div className="budget-options">
@@ -68,45 +66,45 @@ const ShowBudgetEntryContent = () => {
 									setShowWarning(true);
 									setDeleteFunction(() => () => handleBudgetDelete());
 								}}
-							>
+								>
 								<FontAwesomeIcon icon="fas fa-times" />
 							</button>
 						</div>
-						</>
-				) : (
-					<form
-						onSubmit={(e) => {
-							handleBudgetUpdate(e);
-							setEditBudget(false);
-						}}
-						className="budget-entry-form update-form"
-					>
-						<div className="field">
-							<label>Update Name </label>
-							<input
-								className="input"
-								name="name"
-								value={update.name}
-								onChange={(e)=> handleChange(e, setUpdate, update )}
+					</>
+					) : (
+						<form
+							onSubmit={(e) => {
+								handleBudgetUpdate(e);
+								setEditBudget(false);
+							}}
+							className="budget-entry-form update-form"
+							>
+							<div className="field">
+								<label>Update Name </label>
+								<input
+									className="input"
+									name="name"
+									value={update.name}
+									onChange={(e)=> handleChange(e, setUpdate, update )}
 								/>
-						</div>
-						<div className="field">
-							<label>Update Monthly Income </label>
-							<NumberFormat
-								className="input"
-								name="monthly_budget"
-								value={update.monthly_budget}
-								thousandSeparator={true}
-								decimalScale={2}
-								prefix={"$"}
-								onChange={(e)=> handleChange(e, setUpdate, update )}
-								/>
-						</div>
-						<button onClick={() => setEditBudget(false)}>Cancel</button>
-						<button className="update" type="submit">
-						Update
-						</button>
-					</form>
+							</div>
+							<div className="field">
+								<label>Update Monthly Income </label>
+								<NumberFormat
+									className="input"
+									name="monthly_budget"
+									value={update.monthly_budget}
+									thousandSeparator={true}
+									decimalScale={2}
+									prefix={"$"}
+									onChange={(e)=> handleChange(e, setUpdate, update )}
+/>
+</div>
+<button onClick={() => setEditBudget(false)}>Cancel</button>
+							<button className="update" type="submit">
+								Update
+							</button>
+						</form>
 				)}
 			</div>
 			<div
@@ -114,20 +112,20 @@ const ShowBudgetEntryContent = () => {
 				onClick={() => {
 					setShowBudgetEntry(!showBudgetEntry);
 				}}
-			>
+				>
 				<div className="icon">
 					{showBudgetEntry ? (
 						<FontAwesomeIcon icon="fas fa-caret-down" />
-					) : (
-						<FontAwesomeIcon icon="fas fa-caret-right" />
+						) : (
+							<FontAwesomeIcon icon="fas fa-caret-right" />
 					)}
 				</div>
 				<p>New Budget Entry</p>
 			</div>
 			{showBudgetEntry && <CreateBudgetEntry />}
 			<EntriesIndex />
-			</>
-	);
+		</>
+		);
 };
 
 export default ShowBudgetEntryContent;

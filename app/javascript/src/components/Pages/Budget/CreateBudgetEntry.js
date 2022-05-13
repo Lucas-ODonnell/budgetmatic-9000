@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { useGlobalContext } from '../../../context/AppContext';
-import { useBudgetContext } from '../../../context/BudgetContext';
 import axios from 'axios';
 import NumberFormat from 'react-number-format';
 
 const CreateBudgetEntry = () => {
-	const { authorizationToken, rerenderEntry, errorShow, setErrorMessage, handleChange } = useGlobalContext();
-	const { currentBudget, setShowGraph } = useBudgetContext();
+	const { 
+		authorizationToken, 
+		errorShow, 
+		setErrorMessage, 
+		handleChange,
+		currentBudget, 
+		setShowGraph ,
+		entries,
+		setEntries
+	} = useGlobalContext();
+
 	const [budgetEntry, setBudgetEntry] = useState({
 		category: "food",
 		name: "",
@@ -21,13 +29,13 @@ const CreateBudgetEntry = () => {
 		}
 		try {
 			const response = await axios.post("/api/v1/budget_entries", budgetEntry, config)
+			setEntries([...entries, response.data.data]);
 			setBudgetEntry({
 				category: "food",
 				name: "",
 				price: "",
 				budget_id: currentBudget.id
 			})
-			rerenderEntry();
 			setShowGraph(false);
 		} catch (error) {
 			setErrorMessage(error.response.data[0]);
@@ -48,7 +56,7 @@ const CreateBudgetEntry = () => {
 									type="radio" 
 									checked={budgetEntry.category === 'food'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
-									/>
+								/>
 								<label>Food</label>						
 								<input 
 									name="category" 
@@ -56,7 +64,7 @@ const CreateBudgetEntry = () => {
 									type="radio"  
 									checked={budgetEntry.category === 'utilities'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
-									/>
+								/>
 								<label>Utilities</label>
 								<input 
 									name="category" 
@@ -64,7 +72,7 @@ const CreateBudgetEntry = () => {
 									type="radio" 
 									checked={budgetEntry.category === 'housing'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)} 
-									/>
+								/>
 								<label>Housing</label>
 								<input 
 									name="category" 
@@ -72,7 +80,7 @@ const CreateBudgetEntry = () => {
 									type="radio" 
 									checked={budgetEntry.category === 'transportation'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
-									/>
+								/>
 								<label>Transportation</label>
 								<input 
 									name="category" 
@@ -80,7 +88,7 @@ const CreateBudgetEntry = () => {
 									type="radio" 
 									checked={budgetEntry.category === 'insurance'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
-									/>
+								/>
 								<label>Insurance</label>
 							</div>
 							<div className="category-row">
@@ -90,7 +98,7 @@ const CreateBudgetEntry = () => {
 									type="radio" 
 									checked={budgetEntry.category === 'medical'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
-									/>
+								/>
 								<label>Medical</label>			
 								<input 
 									name="category" 
@@ -98,7 +106,7 @@ const CreateBudgetEntry = () => {
 									type="radio"  
 									checked={budgetEntry.category === 'investments'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
-									/>
+								/>
 								<label>Investments</label>
 								<input 
 									name="category" 
@@ -106,7 +114,7 @@ const CreateBudgetEntry = () => {
 									type="radio" 
 									checked={budgetEntry.category === 'personal'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)} 
-									/>
+								/>
 								<label>Personal</label>
 								<input 
 									name="category" 
@@ -114,7 +122,7 @@ const CreateBudgetEntry = () => {
 									type="radio" 
 									checked={budgetEntry.category === 'entertainment'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
-									/>
+								/>
 								<label>Entertainment</label>
 								<input 
 									name="category" 
@@ -122,7 +130,7 @@ const CreateBudgetEntry = () => {
 									type="radio" 
 									checked={budgetEntry.category === 'misc'} 
 									onChange={(e)=> handleChange(e, setBudgetEntry, udgetEntry)}
-									/>
+								/>
 								<label>Misc</label>
 							</div>
 						</div>
@@ -142,7 +150,7 @@ const CreateBudgetEntry = () => {
 								decimalScale={2}
 								prefix={'$'}
 								onChange={(e)=> handleChange(e, setBudgetEntry, budgetEntry)}
-								/>
+							/>
 						</div>
 						<div className="budget-entry-submit">
 							<button className="submit" type="submit">Submit</button>

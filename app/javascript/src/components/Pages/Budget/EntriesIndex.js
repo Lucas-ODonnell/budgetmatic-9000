@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {useGlobalContext} from "../../../context/AppContext";
-import { useBudgetContext } from "../../../context/BudgetContext";
-import Entry from './Entry';
 import axios from "axios";
+import {useGlobalContext} from "../../../context/AppContext";
+import Entry from './Entry';
 import Filter from "./Filter";
 import EntryTableHeader from "./EntryTableHeader";
 
@@ -10,12 +9,15 @@ const EntriesIndex = () => {
 	const {
 		authorizationToken,
 		setSignedIn,
-		renderEntry,
-		rerenderEntry,
-		FontAwesomeIcon
+		FontAwesomeIcon,
+		currentBudget, 
+		entries, 
+		setEntries, 
+		total, 
+		setTotal, 
+		setShowGraph
 	} = useGlobalContext();
-	
-	const { currentBudget, entries, setEntries, total, setTotal, setShowGraph } = useBudgetContext();
+
 	const id = `?id=${currentBudget.id}&`;
 	const [tags, setTags] = useState([]);
 	const [query, setQuery] = useState("");
@@ -30,12 +32,12 @@ const EntriesIndex = () => {
 
 	useEffect(() => {
 		getBudgetEntries();
-	}, [renderEntry]);
+		}, [entries.length]);
 
 	const getBudgetEntries = async () => {
-		setTotal(0);
-		setIncome(0);
-		try {
+	try {
+			setTotal(0);
+			setIncome(0);
 			const response = await axios.get(`/api/v1/budget_entries${id}${query}`, config)
 			setIncome(currentBudget.attributes.int_monthly_budget);
 			setQuery(`?id=${currentBudget.id}&`);
@@ -67,14 +69,16 @@ const EntriesIndex = () => {
 		.join("&");
 		thisQuery += queryFragment;
 		setQuery(thisQuery);
-		rerenderEntry()
 		setShowGraph(false);
 	};
 
 	const handleDelete = async (id) => {
 		try {
 			const response = await axios.delete(`/api/v1/budget_entries/${id}`, config)
-			rerenderEntry();
+			let newList = entries.filter((entry)=> {
+				entry.id !== id
+			})
+			setEntries(newList);
 			setShowGraph(false);
 		} catch (error) {
 			console.log(error);
@@ -86,7 +90,7 @@ const EntriesIndex = () => {
 				<div className="entries-content">
 					<table>
 						<EntryTableHeader />
-						<tbody>{
+					<tbody>{
 							entries.map((entry) => {
 								const { category, name, price, date } = entry.attributes
 								const { id } = entry
@@ -108,9 +112,9 @@ const EntriesIndex = () => {
 					handleDateChange,
 					date,
 				}}
-				/>
+			/>
 		</section>
-	);
+		);
 };
 
 export default EntriesIndex;

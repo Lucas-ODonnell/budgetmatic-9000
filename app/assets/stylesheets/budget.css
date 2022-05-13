@@ -93,21 +93,38 @@
 }
 
 .budget-signout button {
-	background-color: #660000;
-	border: 1px solid #660000;
-	border-radius: 4px;
-	padding: .3em .5em;
+	font-size: 1.5rem;
+	color: #FF0000;
+	padding: 0.5em 1em;
+	transition: var(--transition);
 }
 
 .budget-signout button:hover {
-	background-color: white;
-	color: #660000;
+	padding-left: 1.5em;
+	color: #FF0000;
+	background: transparent;
 }
-
 
 .update-form button {
 	border-radius: 4px;
 	margin-right: 1em;
 	background-color: var(--buttonPrimary);
 	color: black;
+}
+
+@media screen and (min-width: 800px) {
+	.budget-signout button {
+		background-color: #660000;
+		color: white;
+		border: 1px solid #660000;
+		border-radius: 4px;
+		padding: .3em .5em;
+	}
+
+	.budget-signout button:hover {
+		color: #660000;
+		background-color: white;
+		transition: var(--transition);
+		padding: .3em .5em;
+	}
 }

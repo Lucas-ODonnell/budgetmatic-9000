@@ -1,9 +1,16 @@
 import React, {useState} from "react";
 import colors from "../Budget/colors";
-import {useBudgetContext} from "../../../context/BudgetContext";
+import {useGlobalContext} from "../../../context/AppContext";
 
 const BarGraph = () => {
-  const { total, entries, currentBudget, showGraph, setShowGraph } = useBudgetContext();
+  const { 
+		total, 
+		entries, 
+		currentBudget, 
+		showGraph, 
+		setShowGraph 
+	} = useGlobalContext();
+
   const [categoryTotals, setCategoryTotals] = useState({
     Food: 0,
     Utilities: 0,

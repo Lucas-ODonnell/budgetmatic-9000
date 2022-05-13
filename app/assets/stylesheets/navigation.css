@@ -1,55 +1,103 @@
-.nav-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+nav {
+	background: var(--backgroundColor);
+	box-shadow: 0 2px 5px rgb(0,0,0);
 }
 
-.nav-content {
+.nav-header {
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
-	align-items: center;
-	padding: 0 2em 0 2em;
-	width: 100%;
-	background-color: var(--backgroundColor);
+	padding: 1em;
+}
+
+.nav-toggle {
 	font-size: 1.5rem;
+	color: var(--buttonPrimary);
+	background: transparent;
+	border-color: transparent;
+	transition: var(--transition);
+	cursor: pointer;
+}
+
+.nav-toggle:hover {
+	color: var(--buttonSecondary);
+	background: transparent;
+	transform: rotate(90deg);
+}
+
+.logo {
+	font-size: 3rem;
+	color: white;
 	font-weight: bold;
-	height: 10vh;
 }
 
-.nav-left {
-	cursor: pointer
+.links-container {
+	height: 0;
+	overflow: hidden;
+	transition: var(--transition);
 }
 
-.nav-left .dd-header {
-	color: white;
-	font-size: 2rem;
-}
-
-.nav-center h1 {
-	color: white;
-	font-size: 2rem;
-}
-
-.nav-pages {
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	z-index: 999;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-	border-radius: 4px;
-}
-
-.nav-pages a {
-	color: black;
+.links a {
+	color: var(--buttonPrimary);
+	font-size: 1.5rem;
+	text-transform: capitalize;
+	display: block;
+	padding: 0.5em 1em;
+	transition: var(--transition);
 	text-decoration: none;
 }
 
-.nav-pages span {
-	color: black;
+.links a:hover {
+	color: var(--buttonSecondary);
+	padding-left: 1.5em;
 }
 
-.nav-page {
-	background-color: var(--buttonPrimary);
-	padding: .2em .3em;
+.signout-btn {
+	display: none;
 }
 
+.show-container {
+	height: 10rem;
+}
+
+
+@media screen and (min-width: 800px) {
+	.nav-center {
+		max-width: 1170px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1em;
+	}
+
+	.nav-header {
+		padding: 0;
+	}
+
+	.nav-toggle {
+		display: none;
+	}
+
+	.links-container {
+		height: auto !important;
+	}
+
+	.links {
+		display: flex;
+	}
+
+	.links a {
+		padding: 0;
+		margin: 0 0.5em;
+	}
+
+	.links a:hover {
+		padding: 0;
+		background: transparent;
+	}
+
+	.signout-btn {
+		display: flex;
+	}
+}

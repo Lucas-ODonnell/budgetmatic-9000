@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../../../context/AppContext";
-import { useBudgetContext } from "../../../context/BudgetContext";
 import axios from "axios";
 import NumberFormat from "react-number-format";
 
 const CreateBudget = () => {
-	const { authorizationToken, rerenderBudget, setErrorMessage, errorShow, handleChange} = useGlobalContext();
-	const { setShowGraph } = useBudgetContext();
+	const { 
+		authorizationToken, 
+		setErrorMessage, 
+		errorShow, 
+		handleChange, 
+		setShowGraph,
+		setBudgets,
+		budgets
+	} = useGlobalContext();
+
 	const [budget, setBudget] = useState({
 		name: "",
 		monthly_budget: "",
@@ -19,11 +26,11 @@ const CreateBudget = () => {
 		};
 		try {
 			const response = await axios.post("/api/v1/budgets", budget, config)
+			setBudgets([...budgets, response.data.data])
 			setBudget({
 				name: "",
 				monthly_budget: "",
 			});
-			rerenderBudget()
 			setShowGraph(false);
 		} catch (error) {
 			setErrorMessage(error.response.data[0]);
@@ -43,7 +50,7 @@ const CreateBudget = () => {
 								className="input"
 								type="text"
 								name="name"
-								/>
+							/>
 						</div>
 						<div className="field">
 							<label>Monthly Income </label>
@@ -55,7 +62,7 @@ const CreateBudget = () => {
 								decimalScale={2}
 								prefix={"$"}
 								onChange={(e)=>handleChange(e,setBudget, budget)}
-								/>
+							/>
 						</div>
 						<div className="budget-entry-submit">
 							<button className="submit" type="submit">
@@ -66,7 +73,7 @@ const CreateBudget = () => {
 				</div>
 			</div>
 		</section>
-	);
+		);
 };
 
 export default CreateBudget;

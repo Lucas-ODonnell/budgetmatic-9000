@@ -1,15 +1,21 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import {useGlobalContext} from "../../../context/AppContext";
-import {useBudgetContext} from "../../../context/BudgetContext"
 import Tabs from "../Tabs/Tabs";
 import TabContent from "../Tabs/TabContent";
 import ShowBudgetEntryContent from "./ShowBudgetEntryContent";
 import ShowBudgetForm from "./ShowBudgetForm";
 
 const Budget = () => {
-	const { authorizationToken, setSignedIn, renderBudget } = useGlobalContext();
-	const { setBudgets, budgets, activeTab, setActiveTab, setShowGraph } = useBudgetContext();
+	const { 
+		authorizationToken, 
+		setSignedIn, 
+		setBudgets, 
+		budgets, 
+		activeTab, 
+		setActiveTab, 
+		setShowGraph 
+	} = useGlobalContext();
 
 	const getBudget = async () => {
 		const config = {
@@ -28,8 +34,8 @@ const Budget = () => {
 	};
 
 	useEffect(() => {
-		getBudget();
-		}, [renderBudget]);
+		getBudget()
+		}, [budgets.length]);
 
 	return (
 		<section>
@@ -57,7 +63,7 @@ const Budget = () => {
 				</div>
 			</div>
 		</section>
-		);
+	);
 };
 
 export default Budget;

@@ -14,8 +14,13 @@ export const AppProvider = ({children}) => {
 	const [deleteFunction, setDeleteFunction] = useState(()=> () => {return});
 	const [showError, setShowError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(null);
-	const [renderBudget, setRenderBudget] = useState(0);
-	const [renderEntry, setRenderEntry] = useState(0);
+	const [budgets, setBudgets] = useState([]);
+	const [entries, setEntries] = useState([]);
+	const [activeTab, setActiveTab] = useState(0);
+	const [total, setTotal] = useState(0)
+	const [showGraph, setShowGraph] = useState(false);
+	const currentBudget = budgets[activeTab];
+
 
 	const handleChange = (e, setVar, Var) => {
 		setVar({ ...Var, [e.target.name]: e.target.value });
@@ -27,15 +32,6 @@ export const AppProvider = ({children}) => {
 			setShowError(false)
 			}, 5000);
 	}
-
-	const rerenderBudget = () => {
-		setRenderBudget((oldKey) => oldKey + 1);
-	}
-
-	const rerenderEntry = () => {
-		setRenderEntry((oldKey) => oldKey + 1);
-	}
-
 
 	return (
 		<AppContext.Provider value={{
@@ -53,10 +49,18 @@ export const AppProvider = ({children}) => {
 			setSignedIn,
 			showError,
 			handleChange,
-			renderBudget,
-			renderEntry,
-			rerenderBudget,
-			rerenderEntry
+			budgets,
+			setBudgets,
+			activeTab,
+			setActiveTab,
+			entries, 
+			setEntries,
+			total, 
+			setTotal,
+			showGraph,
+			setShowGraph,
+			currentBudget
+
 		}}>
 			{children}
 		</AppContext.Provider>
