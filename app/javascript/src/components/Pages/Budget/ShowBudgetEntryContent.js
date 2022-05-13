@@ -13,7 +13,9 @@ const ShowBudgetEntryContent = () => {
 		setShowWarning,
 		handleChange,
 		currentBudget, 
-		setShowGraph
+		setShowGraph,
+		setBudgets,
+		budgets
 	} = useGlobalContext();
 
 	const [showBudgetEntry, setShowBudgetEntry] = useState(false);
@@ -29,6 +31,10 @@ const ShowBudgetEntryContent = () => {
 	const handleBudgetDelete = async () => {
 		try {
 			const response = await axios.delete(`/api/v1/budgets/${currentBudget.id}`, config)
+			const newBudgets = budgets.filter((thisBudget)=> {
+				thisBudget.id !== currentBudget.id
+			})
+			setBudgets(newBudgets);
 			setShowGraph(false);
 		} catch (error) {
 			console.log(error);

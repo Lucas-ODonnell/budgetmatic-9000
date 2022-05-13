@@ -27,32 +27,24 @@ The user will see the login page if they are not logged in.
 	
 Now the user is logged in and they should be seeing their first budget.
 
-<img src='https://i.imgur.com/6IrB3Gt.png'>
-
-Or maybe the user is on their phone.
-
-<img src='https://i.imgur.com/JCjCrQb.png'>
+<img src='https://i.imgur.com/kMriuyY.png'>
+<img src='https://i.imgur.com/EnYMx0i.png'>
 
 Now the user is checking the graph
 
-<img src='https://i.imgur.com/jOemYWZ.png' >
-
-Theoretically if the user had a $10,0000 ambulance ride they would see this
-
-<img src='https://i.imgur.com/nx9PgPT.png' >
-
-After deleting the theoretical medical bill the user wants to filter the results
-
-<img src='https://i.imgur.com/6SYJmj7.png' >
+<img src='https://i.imgur.com/BVa1kRw.png' >
+<img src='https://i.imgur.com/8jAV8gh.png' >
 
 The user can use tabs to switch budgets
 
-<img src='https://i.imgur.com/A2e2HKd.png' >
-<img src='https://i.imgur.com/oU6FkoP.png' >
+<img src='https://i.imgur.com/CJzV94N.png' >
+<img src='https://i.imgur.com/plonVoF.png' >
 
 If the user wants they can do standard profile stuff
 
-<img src='https://i.imgur.com/AS3qmXs.png' >
+<img src='https://i.imgur.com/DlVoAPS.png' >
+<img src='https://i.imgur.com/GCGI9GI.png' >
+<img src='https://i.imgur.com/omttF35.png' >
 
 
 **[Live Demo](https://budgetmatic9000.herokuapp.com/)**

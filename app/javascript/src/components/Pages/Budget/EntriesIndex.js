@@ -26,13 +26,14 @@ const EntriesIndex = () => {
 		start: "",
 		end: "",
 	});
+	const [render, setRender] = useState(0);
 	const config = {
 		headers: { Authorization: authorizationToken },
 	};
 
 	useEffect(() => {
 		getBudgetEntries();
-		}, [entries.length]);
+		}, [render]);
 
 	const getBudgetEntries = async () => {
 	try {
@@ -69,6 +70,7 @@ const EntriesIndex = () => {
 		.join("&");
 		thisQuery += queryFragment;
 		setQuery(thisQuery);
+		setRender((oldKey) => oldKey + 1);
 		setShowGraph(false);
 	};
 
@@ -80,6 +82,7 @@ const EntriesIndex = () => {
 			})
 			setEntries(newList);
 			setShowGraph(false);
+			setRender((oldKey) => oldKey + 1);
 		} catch (error) {
 			console.log(error);
 		}
