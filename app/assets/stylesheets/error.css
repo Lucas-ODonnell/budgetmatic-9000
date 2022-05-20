@@ -1,6 +1,6 @@
 .error {
-	background: #660000;
-	color: white;
+	background: var(--signOutBtn);
+	color: var(--textAlt);
 	font-size: 1rem;
 	padding: 1em 2em;
 	display: flex;

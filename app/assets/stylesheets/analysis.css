@@ -2,7 +2,7 @@
 	width: 100%
 }
 .analysis-content {
-	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	box-shadow: var(--shadow);
 	border-radius: 4px;
 	overflow: hidden;
 	background-color: var(--backgroundColor);
@@ -35,8 +35,8 @@
 
 .bar-content {
 	width: 40vw;
-	border-left: 3px solid white;
-	border-bottom: 3px solid white;
+	border-left: 3px solid var(--graphColor);
+	border-bottom: 3px solid var(--graphColor);
 }
 
 .graph-data {
@@ -50,4 +50,5 @@
 
 .graph-name {
 	font-weight: bold;
+	color: var(--textAlt);
 }

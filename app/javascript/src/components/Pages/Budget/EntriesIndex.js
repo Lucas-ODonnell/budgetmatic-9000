@@ -1,122 +1,139 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {useGlobalContext} from "../../../context/AppContext";
-import Entry from './Entry';
+import { useGlobalContext } from "../../../context/AppContext";
+import Entry from "./Entry";
 import Filter from "./Filter";
 import EntryTableHeader from "./EntryTableHeader";
 
 const EntriesIndex = () => {
-	const {
-		authorizationToken,
-		setSignedIn,
-		FontAwesomeIcon,
-		currentBudget, 
-		entries, 
-		setEntries, 
-		total, 
-		setTotal, 
-		setShowGraph,
-		render,
-		setRender
-	} = useGlobalContext();
+  const {
+    authorizationToken,
+    setSignedIn,
+    FontAwesomeIcon,
+    currentBudget,
+    entries,
+    setEntries,
+    total,
+    setTotal,
+    setShowGraph,
+    render,
+    setRender,
+  } = useGlobalContext();
 
-	const id = `?id=${currentBudget.id}&`;
-	const [tags, setTags] = useState([]);
-	const [query, setQuery] = useState("");
-	const [income, setIncome] = useState(0);
-	const [date, setDate] = useState({
-		start: "",
-		end: "",
-	});
-	const config = {
-		headers: { Authorization: authorizationToken },
-	};
+  const id = `?id=${currentBudget.id}&`;
+  const [tags, setTags] = useState([]);
+  const [query, setQuery] = useState("");
+  const [income, setIncome] = useState(0);
+  const [date, setDate] = useState({
+    start: "",
+    end: "",
+  });
+  const config = {
+    headers: { Authorization: authorizationToken },
+  };
 
-	useEffect(() => {
-		getBudgetEntries();
-		}, [render]);
+  useEffect(() => {
+    getBudgetEntries();
+  }, [render]);
 
-	const getBudgetEntries = async () => {
-	try {
-			setTotal(0);
-			setIncome(0);
-			const response = await axios.get(`/api/v1/budget_entries${id}${query}`, config)
-			setIncome(currentBudget.attributes.int_monthly_budget);
-			setQuery(`?id=${currentBudget.id}&`);
-			const array = [];
-			response.data.data.forEach((object) => {
-				setTotal((total) => total + object.attributes.int_price);
-				array.push(object);
-			});
-			setEntries(array);
-		} catch (err) {
-			console.error(err)
-			setSignedIn(false)
-		}
-	};
+  const getBudgetEntries = async () => {
+    try {
+      setTotal(0);
+      setIncome(0);
+      const response = await axios.get(
+        `/api/v1/budget_entries${id}${query}`,
+        config
+      );
+      setIncome(currentBudget.attributes.int_monthly_budget);
+      setQuery(`?id=${currentBudget.id}&`);
+      const array = [];
+      response.data.data.forEach((object) => {
+        setTotal((total) => total + object.attributes.int_price);
+        array.push(object);
+      });
+      setEntries(array);
+    } catch (err) {
+      console.error(err);
+      setSignedIn(false);
+    }
+  };
 
-	const handleDateChange = (e) => {
-		e.preventDefault();
-		setDate({ ...date, [e.target.name]: e.target.value });
-	};
+  const handleDateChange = (e) => {
+    e.preventDefault();
+    setDate({ ...date, [e.target.name]: e.target.value });
+  };
 
-	const handleFilterSubmit = (e) => {
-		e.preventDefault();
-		let thisQuery = "";
-		tags.forEach((tag, index) => (thisQuery += `category${index}=${tag}&`));
-		let queryFragment = Object.keys(date)
-		.map((key) => key + "=" + date[key])
-		.join("&");
-		thisQuery += queryFragment;
-		setQuery(thisQuery);
-		setRender((oldKey) => oldKey + 1);
-		setShowGraph(false);
-	};
+  const handleFilterSubmit = (e) => {
+    e.preventDefault();
+    let thisQuery = "";
+    tags.forEach((tag, index) => (thisQuery += `category${index}=${tag}&`));
+    let queryFragment = Object.keys(date)
+      .map((key) => key + "=" + date[key])
+      .join("&");
+    thisQuery += queryFragment;
+    setQuery(thisQuery);
+    setRender((oldKey) => oldKey + 1);
+    setShowGraph(false);
+  };
 
-	const handleDelete = async (id) => {
-		try {
-			const response = await axios.delete(`/api/v1/budget_entries/${id}`, config)
-			let newList = entries.filter((entry)=> {
-				entry.id !== id
-			})
-			setEntries(newList);
-			setShowGraph(false);
-			setRender((oldKey) => oldKey + 1);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-	return (
-		<section>
-			<div className="entries-container">
-				<div className="entries-content">
-					<table>
-						<EntryTableHeader />
-					<tbody>{
-							entries.map((entry) => {
-								const { category, name, price, date } = entry.attributes
-								const { id } = entry
-								return (
-									<Entry key={id} {...{category, name, price, date, handleDelete, FontAwesomeIcon, id}} />
-								);
-							})
-						}</tbody>
-					</table>
-				</div>
-			</div>
-			<Filter
-				{...{
-					total,
-					income,
-					tags,
-					setTags,
-					handleFilterSubmit,
-					handleDateChange,
-					date,
-				}}
-			/>
-		</section>
-		);
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `/api/v1/budget_entries/${id}`,
+        config
+      );
+      let newList = entries.filter((entry) => {
+        entry.id !== id;
+      });
+      setEntries(newList);
+      setShowGraph(false);
+      setRender((oldKey) => oldKey + 1);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <section>
+      <div className="entries-container">
+        <div className="entries-content">
+          <table>
+            <EntryTableHeader />
+            <tbody>
+              {entries.map((entry) => {
+                const { category, name, price, date } = entry.attributes;
+                const { id } = entry;
+                return (
+                  <Entry
+                    key={id}
+                    {...{
+                      category,
+                      name,
+                      price,
+                      date,
+                      handleDelete,
+                      FontAwesomeIcon,
+                      id,
+                    }}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <Filter
+        {...{
+          total,
+          income,
+          tags,
+          setTags,
+          handleFilterSubmit,
+          handleDateChange,
+          date,
+        }}
+      />
+    </section>
+  );
 };
 
 export default EntriesIndex;

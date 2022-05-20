@@ -7,7 +7,7 @@
 	margin-top: 5em;
 	width: 95%;
 	max-width: 70rem;
-	box-shadow: 0 2px 5px rgb(0,0,0);
+	box-shadow: var(--shadow);
 	border-radius: 4px;
 	overflow: hidden;
 	background-color: var(--backgroundColor);
@@ -21,16 +21,15 @@
 }
 
 .entry-col button {
-	background-color: transparent;
-	color: white;
+	color: var(--textAlt);
 	font-weight: bold;
 	font-size: 1rem;
 	border-radius: 4px;
 }
 
 .entry-col button:hover {
-	color: white;
-	background-color: black;
+	color: var(--textAlt);
+	background-color: var(--text);
 }
 
 .food {

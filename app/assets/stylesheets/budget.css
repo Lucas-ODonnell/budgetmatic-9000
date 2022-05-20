@@ -1,5 +1,5 @@
 .budget-content {
-	box-shadow: 0 2px 5px rgb(0,0,0);
+	box-shadow: var(--shadow);
 	border-radius: 4px;
 	overflow: hidden;
 	background-color: var(--backgroundColor);
@@ -26,7 +26,7 @@
 .budget-header h1 {
 	font-size: 3rem;
 	font-weight: bold;
-	color: white;
+	color: var(--textAlt);
 	overflow-wrap: break-word;
 	cursor: pointer;
 }
@@ -43,7 +43,7 @@
 }
 
 .budget-options button {
-	color: white;
+	color: var(--textAlt);
 	background-color: transparent;
 	border: none;
 	font-size: 1.3rem;
@@ -59,7 +59,7 @@
 	align-items: center;
 	margin-left: 3em;
 	cursor: pointer;
-	color: #a7a7a7;
+	color: var(--labelColor);
 
 }
 
@@ -69,7 +69,7 @@
 	align-items: center;
 	margin-left: 3em;
 	cursor: pointer;
-	color: #a7a7a7;
+	color: var(--labelColor);
 	margin-top: 1em;
 }
 
@@ -89,41 +89,41 @@
 	margin-left: 1em;
 	margin-right: 2em;
 	height: 2px;
-	background-color: #a7a7a7;
+	background-color: var(--labelColor);
 }
 
 .budget-signout button {
 	font-size: 1.5rem;
-	color: #FF0000;
+	color: var(--signOutBtn);
 	padding: 0.5em 1em;
 	transition: var(--transition);
 }
 
 .budget-signout button:hover {
 	padding-left: 1.5em;
-	color: #FF0000;
-	background: transparent;
+	color: var(--signOutBtn);
+	background-color: var(--textAlt);
 }
 
 .update-form button {
 	border-radius: 4px;
 	margin-right: 1em;
 	background-color: var(--buttonPrimary);
-	color: black;
+	color: var(--text);
 }
 
 @media screen and (min-width: 800px) {
 	.budget-signout button {
-		background-color: #660000;
+		background-color: var(--signOutBtn);
 		color: white;
-		border: 1px solid #660000;
+		border: 1px solid var(--signOutBtn);
 		border-radius: 4px;
 		padding: .3em .5em;
 	}
 
 	.budget-signout button:hover {
-		color: #660000;
-		background-color: white;
+		color: var(--signOutBtn);
+		background-color: var(--textAlt);
 		transition: var(--transition);
 		padding: .3em .5em;
 	}

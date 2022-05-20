@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+import axios from 'axios'
 import {useGlobalContext} from "../../../context/AppContext";
 import Tabs from "../Tabs/Tabs";
 import TabContent from "../Tabs/TabContent";
@@ -8,13 +8,13 @@ import ShowBudgetForm from "./ShowBudgetForm";
 
 const Budget = () => {
 	const { 
-		authorizationToken, 
 		setSignedIn, 
 		setBudgets, 
 		budgets, 
 		activeTab, 
 		setActiveTab, 
-		setShowGraph 
+		setShowGraph,
+		authorizationToken
 	} = useGlobalContext();
 
 	const getBudget = async () => {
@@ -22,7 +22,7 @@ const Budget = () => {
 			headers: { Authorization: authorizationToken },
 		};
 		try {
-			const response = await axios.get("/api/v1/budgets.json", config)
+			const response = await axios.get('/api/v1/budgets.json', config);
 			setBudgets([]);
 			response.data.data.forEach((object) => {
 				setBudgets((budgets) => [...budgets, object]);

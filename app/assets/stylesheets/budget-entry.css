@@ -19,18 +19,18 @@
 
 
 .budget-entry-form label {
-	color: white;
+	color: var(--textAlt);
 }
 
 .budget-entry-form input {
-	color: white;
+	color: var(--textAlt);
 }
 
 .budget-entry-form .input {
 	width: 100%;
 	background: transparent;
 	border: none;
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid var(--textAlt);
 	font-size: 1.5rem;
 }
 
@@ -45,7 +45,7 @@
 	font-size: 1rem;
 	padding: .3em .5em;
 	background-color: var(--buttonPrimary);
-	color: black;
+	color: var(--text);
 }
 
 .budget-entry-submit button:hover {

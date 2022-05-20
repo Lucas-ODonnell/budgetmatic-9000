@@ -9,7 +9,7 @@
 .profile-content {
 	width: 95%;
 	max-width: 70rem;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	box-shadow: var(--shadow);
 	border-radius: 4px;
 	overflow: hidden;
 	background-color: var(--backgroundColor);
@@ -25,12 +25,12 @@
 }
 
 .profile-base-info {
-	box-shadow: 0 2px 5px rgb(0,0,0);
+	box-shadow: var(--shadow);
 	border-radius: 4px;
 	padding: 1em 2em;
 	margin: 1em 2em;
 	width: 50%;
-	color: white;
+	color: var(--textAlt);
 	word-wrap: break-word;
 }
 
@@ -47,14 +47,14 @@
 	margin: 1em 2em;
 	border-radius: 4px;
 	font-size: 1.5rem;
-	background-color: #660000;
+	background-color: var(--signOutBtn);
 	color: white;
-	border: 1px solid #660000;
+	border: 1px solid var(--signOutBtn);
 }
 
 .delete-profile button:hover {
-	color: white;
-	background-color: black;
+	color: var(--textAlt);
+	background-color: var(--text);
 }
 
 .update-profile {
@@ -63,7 +63,7 @@
 	align-items: center;
 	margin-left: 3em;
 	cursor: pointer;
-	color: #a7a7a7;
+	color: var(--labelColor);
 	margin-top: 3em;
 }
 
@@ -84,16 +84,16 @@
 }
 
 .profile-update-form label {
-	color: white;
+	color: var(--textAlt);
 }
 
 .profile-update-form .input {
 	width: 100%;
 	background: transparent;
 	border: none;
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid var(--textAlt);
 	font-size: 1.5rem;
-	color: white;
+	color: var(--textAlt);
 }
 
 .profile-update-form .profile-update-submit {

@@ -7,10 +7,10 @@
 }
 
 .confirmation-content {
-	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	box-shadow: var(--shadow);
 	padding: 1em 2em;
 	border-radius: 4px;
-	background-color: white;
+	background-color: var(--textAlt);
 }
 
 .confirmation-content p {
@@ -30,19 +30,19 @@
 
 .confirmation-options button:nth-child(1) {
 	margin-bottom: .5em;
-	background-color: black;
+	background-color: var(--text);
 }
 
 .confirmation-options button:nth-child(1):hover {
-	color: black;
-	background-color: white;
+	color: var(--text);
+	background-color: var(--textAlt);
 }
 
 .confirmation-options button:nth-child(2) {
-	background-color: #660000;
+	background-color: var(--signOutBtn);
 }
 
 .confirmation-options button:nth-child(2):hover {
-	background-color: white;
-	color: #660000;
+	background-color: var(--textAlt);
+	color: var(--signOutBtn);
 }

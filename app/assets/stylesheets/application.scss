@@ -62,6 +62,52 @@ table {
 	border-spacing: 0;
 }
 
+:root {
+	--header: #fff;
+	--buttonSecondary: #03dac5;
+	--food: #005f73;
+	--utilities: #0a9396;
+	--housing: #660000;
+	--transportation: #94d2bd;
+	--insurance: #ee9b00;
+	--medical: #9b2226;
+	--investments: #7851a9;
+	--personal: #ca6702;
+	--entertainment: #bb3e03;
+	--misc: #ae2012;
+	--transition: all 0.3s linear;
+}
+
+.dark-theme {
+	--backgroundColor: #1f1a24;
+	--navBackground: #1f1a24;
+	--navText: #bb86fc;
+	--navTextAlt: #03dac5;
+	--mainBodyColor: #121212;
+	--buttonPrimary: #bb86fc;
+	--text: #000;
+	--textAlt: #fff;
+	--signOutBtn: #660000;
+	--graphColor: #eee;
+	--labelColor: #a7a7a7;
+	--shadow: 0 2px 5px rgb(0,0,0);
+}
+
+.light-theme {
+	--backgroundColor: #eee;
+	--navBackground: #6200ee;
+	--navText: #eee;
+	--navTextAlt: #000;
+	--mainBodyColor: #eee;
+	--buttonPrimary: #6200ee;
+	--text: #eee;
+	--textAlt: #000;
+	--signOutBtn: #b00020;
+	--graphColor: #000;
+	--labelColor: #a9a9a9;
+	--shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
+
 *, *::before, *::after {
 	box-sizing: border-box;
 }
@@ -76,23 +122,22 @@ body {
 	background-color: var(--mainBodyColor);
 }
 
+.toggle-theme {
+	position: absolute;
+	top: .3vh;
+	right: .3vw;
+	border-radius: 4px;
+	background-color: var(--buttonSecondary);
+	color: var(--textAlt);
+	padding: .3em .4em;
+}
 
-:root {
-	--backgroundColor: #1f1a24;
-	--mainBodyColor: #121212;
-	--buttonPrimary: #bb86fc;
-	--buttonSecondary: #03dac5;
-	--food: #005f73;
-	--utilities: #0a9396;
-	--housing: #001219;
-	--transportation: #94d2bd;
-	--insurance: #ee9b00;
-	--medical: #9b2226;
-	--investments: #7851a9;
-	--personal: #ca6702;
-	--entertainment: #bb3e03;
-	--misc: #ae2012;
-	--transition: all 0.3s linear;
+h3 {
+	color: var(--textAlt);
+}
+
+p {
+	color: var(--textAlt);
 }
 
 a {
@@ -101,17 +146,11 @@ a {
 
 button {
 	font-weight: bold;
-	background-color: var(--buttonColor);
-	color: white;
-	border: 1px solid var(--buttonColor);
+	border: none;
+	background: transparent;
 	transition: background-color .5s ease-out;
 	transition: color .5s ease-out;
 	cursor: pointer
-}
-
-button:hover {
-	color: var(--buttonColor);
-	background-color: white;
 }
 
 input:focus {
@@ -131,7 +170,7 @@ th, td {
 
 thead {
 	background-color: var(--mainBodyColor);
-	color: #fff;
+	color: var(--textAlt);
 	font-size: 1rem;
 	position: sticky;
 	top: 0;
@@ -139,7 +178,7 @@ thead {
 
 td {
 	border-bottom: 1px solid var(--borderColor);
-	color: white;
+	color: var(--textAlt);
 }
 
 .total-cost {
@@ -160,7 +199,7 @@ td {
 }
 
 .app-name h1 {
-	color: white;
+	color: var(--textAlt);
 	font-weight: bold;
 	font-size: 3rem;
 }
@@ -182,13 +221,13 @@ only screen and (max-width: 810px)
 	}
 
 	tr { 
-		border: 1px solid #ccc; 
+		border: 1px solid var(--graphColor); 
 	}
 
 	td { 
 		/* Behave  like a "row" */
 		border: none;
-		border-bottom: 1px solid #eee; 
+		border-bottom: 1px solid var(--graphColor); 
 		position: relative;
 		padding-left: 50%; 
 	}

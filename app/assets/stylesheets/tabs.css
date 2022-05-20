@@ -7,13 +7,13 @@
 	font-weight: bold;
 	padding: .5em 1em;
 	background-color: var(--buttonPrimary);
-	color: black;
+	color: var(--text);
 	cursor: pointer;
 }
 
 .tab-nav li.active {
-	background-color: var(--backgroundColor);
-	color: white;
+	background-color: var(--buttonSecondary);
+	color: var(--text);
 	border-bottom: transparent;
 }
 

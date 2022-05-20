@@ -1,5 +1,3 @@
-.background-form {
-}
 .devise-container {
 	display: flex;
 	justify-content: center;
@@ -12,7 +10,7 @@
 .devise-content {
 	width: 80%;
 	max-width: 70rem;
-	box-shadow: 0 2px 5px rgb(0,0,0);
+	box-shadow: var(--shadow);
 	border-radius: 4px;
 	overflow: hidden;
 	background-color: var(--backgroundColor);
@@ -30,7 +28,7 @@
 .devise-header h1 {
 	font-size: 3rem;
 	font-weight: bold;
-	color: white;
+	color: var(--textAlt);
 }
 
 .devise-form {
@@ -38,7 +36,7 @@
 }
 
 .devise-form label {
-	color: #a7a7a7;
+	color: var(--labelColor);
 }
 
 .devise-form input {
@@ -46,9 +44,9 @@
 	margin-bottom: 2em;
 	background: transparent;
 	border: none;
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid var(--textAlt);
 	font-size: 1.5rem;
-	color: white
+	color: var(--textAlt);
 }
 
 .submit-area {
@@ -62,7 +60,7 @@
 	border-radius: 4px;
 	padding: .5em 0 .5em 0;
 	background-color: var(--buttonPrimary);
-	color: black;
+	color: var(--text);
 }
 
 .submit-area button:hover {
@@ -74,5 +72,5 @@
 }
 
 .toggle a {
-	color: white;
+	color: var(--textAlt);
 }
