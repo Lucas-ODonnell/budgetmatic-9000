@@ -2,6 +2,8 @@
 
 **This app works on both computers and phones and allows you to create multiple budgets.**
 
+**[Live Demo](https://budgetmatic9000.herokuapp.com/)**
+
 * **User** can:
   * Create Budgets
 	* Create Budget entries
@@ -36,6 +38,3 @@ If the user wants they can do standard profile stuff
 <img src='https://i.imgur.com/DlVoAPS.png' >
 <img src='https://i.imgur.com/GCGI9GI.png' >
 <img src='https://i.imgur.com/omttF35.png' >
-
-**[Live Demo](https://budgetmatic9000.herokuapp.com/)**
-
