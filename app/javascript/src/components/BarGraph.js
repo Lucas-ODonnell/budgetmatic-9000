@@ -1,16 +1,10 @@
-import React, {useState } from "react";
-import colors from "../Budget/colors";
-import {useGlobalContext} from "../../../context/AppContext";
+import React, { useState } from "react";
+import { colors } from "../utils/links";
+import { useGlobalContext } from "../context/AppContext";
 
 const BarGraph = () => {
-  const { 
-		total, 
-		entries, 
-		currentBudget, 
-		showGraph, 
-		setShowGraph,
-		setRender
-	} = useGlobalContext();
+  const { total, entries, currentBudget, showGraph, setShowGraph, setRender } =
+    useGlobalContext();
 
   const [categoryTotals, setCategoryTotals] = useState({
     Food: 0,
@@ -25,8 +19,9 @@ const BarGraph = () => {
     Misc: 0,
   });
 
-		if(!currentBudget) { return };
-
+  if (!currentBudget) {
+    return;
+  }
 
   const percentageOfTotalBudget = (option) => {
     if (total === 0) return "0%";
@@ -75,7 +70,7 @@ const BarGraph = () => {
       }));
     });
     setShowGraph(!showGraph);
-		setRender((oldKey)=> oldKey + 1);
+    setRender((oldKey) => oldKey + 1);
   };
 
   const graph = Object.entries(categoryTotals).map((category, index) => {
@@ -83,21 +78,27 @@ const BarGraph = () => {
     if (price === 0) {
       return;
     }
-    return showGraph && (
-      <div key={index}>
-        <div className="graph-name">{thisCategory}</div>
-        <div
-          className={`graph-data ${colors[thisCategory]}`}
-          style={{ width: percentageOfMaxCategory(price) }}>
-          {percentageOfTotalBudget(price)}
+    return (
+      showGraph && (
+        <div key={index}>
+          <div className="graph-name">{thisCategory}</div>
+          <div
+            className={`graph-data ${colors[thisCategory]}`}
+            style={{ width: percentageOfMaxCategory(price) }}
+          >
+            {percentageOfTotalBudget(price)}
+          </div>
         </div>
-      </div>
-    )});
+      )
+    );
+  });
 
   return (
     <section>
       <div className="analysis-header">
-        <button onClick={handleClick}>{showGraph ? "Hide Chart" : "Show Chart"}</button>
+        <button onClick={handleClick}>
+          {showGraph ? "Hide Chart" : "Show Chart"}
+        </button>
       </div>
       {showGraph && (
         <div className="analysis-body">
@@ -111,7 +112,8 @@ const BarGraph = () => {
                 (total / currentBudget.attributes.int_monthly_budget) * 100 < 80
                   ? "green"
                   : "red",
-            }}>
+            }}
+          >
             You have spent{" "}
             {(
               total / currentBudget.attributes.int_monthly_budget

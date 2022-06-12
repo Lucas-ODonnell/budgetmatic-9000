@@ -4,6 +4,7 @@ import { useGlobalContext } from "./context/AppContext";
 import Router from "./routes/Router";
 import DeleteConfirmation from "./components/DeleteConfirmation";
 import Error from "./components/Error";
+import { getUserFromLocalStorage } from "./utils/localStorage";
 
 const getStorageTheme = () => {
   let theme = "light-theme";
@@ -14,8 +15,7 @@ const getStorageTheme = () => {
 };
 
 const App = () => {
-  const { setSignedIn, showError, authorizationToken, setAuthorizationToken } =
-    useGlobalContext();
+  const { setSignedIn, showError } = useGlobalContext();
 
   const [theme, setTheme] = useState(getStorageTheme());
 
@@ -30,13 +30,12 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (localStorage.Authorization !== null) {
-      const AuthorizedToken = localStorage.getItem("Authorization");
-      setAuthorizationToken(JSON.parse(AuthorizedToken));
+    const user = getUserFromLocalStorage();
+    if (user) {
       setSignedIn(true);
       navigate("/");
     }
-  }, [authorizationToken]);
+  }, []);
 
   useEffect(() => {
     document.documentElement.className = theme;

@@ -1,32 +1,28 @@
-import React from 'react';
-import axios from 'axios';
-import { useGlobalContext } from '../context/AppContext';
+import React from "react";
+import { altFetch } from "../utils/axios";
+import { useGlobalContext } from "../context/AppContext";
+import { removeUserFromLocalStorage } from "../utils/localStorage";
 
 const SignOut = () => {
-	const { setSignedIn, authorizationToken} = useGlobalContext();
-	const config = {
-		headers: { Authorization: authorizationToken }
-	}
+  const { setSignedIn } = useGlobalContext();
 
-	const handleSignOut = (e) => {
-		e.preventDefault();
-		axios.delete('/logout', config)
-			.then(response =>{
-				console.log(response)
-				setSignedIn(false);
-				localStorage.removeItem('Authorization');
-			})
-			.catch(response => {
-				console.log(response);
-				setSignedIn(false);
-			})
-	}
+  const handleSignOut = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await altFetch.delete("logout");
+      setSignedIn(false);
+      removeUserFromLocalStorage();
+      return response;
+    } catch (error) {
+      setSignedIn(false);
+    }
+  };
 
-	return (
-		<div className="budget-signout">
-			<button onClick={handleSignOut}>Sign Out</button>
-		</div>
-	)
-}
+  return (
+    <div className="budget-signout">
+      <button onClick={handleSignOut}>Sign Out</button>
+    </div>
+  );
+};
 
 export default SignOut;

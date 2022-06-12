@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGlobalContext } from "../../../context/AppContext";
+import { useGlobalContext } from "../context/AppContext";
 import CreateBudget from "./CreateBudget";
 
 const ShowBudgetForm = () => {
@@ -23,7 +23,7 @@ const ShowBudgetForm = () => {
         </div>
         <p>New Budget</p>
       </div>
-      {showBudgetForm && <CreateBudget /> }
+      {showBudgetForm && <CreateBudget />}
     </section>
   );
 };

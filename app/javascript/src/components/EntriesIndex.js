@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useGlobalContext } from "../../../context/AppContext";
+import { customFetch } from "../utils/axios";
+import { useGlobalContext } from "../context/AppContext";
 import Entry from "./Entry";
 import Filter from "./Filter";
 import EntryTableHeader from "./EntryTableHeader";
+import { removeUserFromLocalStorage } from "../utils/localStorage";
 
 const EntriesIndex = () => {
   const {
-    authorizationToken,
     setSignedIn,
     FontAwesomeIcon,
     currentBudget,
@@ -28,9 +28,6 @@ const EntriesIndex = () => {
     start: "",
     end: "",
   });
-  const config = {
-    headers: { Authorization: authorizationToken },
-  };
 
   useEffect(() => {
     getBudgetEntries();
@@ -40,10 +37,7 @@ const EntriesIndex = () => {
     try {
       setTotal(0);
       setIncome(0);
-      const response = await axios.get(
-        `/api/v1/budget_entries${id}${query}`,
-        config
-      );
+      const response = await customFetch.get(`budget_entries${id}${query}`);
       setIncome(currentBudget.attributes.int_monthly_budget);
       setQuery(`?id=${currentBudget.id}&`);
       const array = [];
@@ -53,8 +47,8 @@ const EntriesIndex = () => {
       });
       setEntries(array);
     } catch (err) {
-      console.error(err);
       setSignedIn(false);
+      removeUserFromLocalStorage();
     }
   };
 
@@ -78,16 +72,14 @@ const EntriesIndex = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(
-        `/api/v1/budget_entries/${id}`,
-        config
-      );
+      const response = await customFetch.delete(`budget_entries/${id}`);
       let newList = entries.filter((entry) => {
         entry.id !== id;
       });
       setEntries(newList);
       setShowGraph(false);
       setRender((oldKey) => oldKey + 1);
+      return response;
     } catch (error) {
       console.log(error);
     }

@@ -2,10 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import SharedLayout from "./SharedLayout";
 import ProtectedRoutes from "./ProtectedRoutes";
-import Main from "../components/Pages/MainPage/Main";
-import Devise from "../components/Pages/Devise/Devise";
-import Profile from "../components/Pages/Profile/Profile";
-import ErrorPage from "../components/Pages/ErrorPage";
+import { Main, Devise, Profile, ErrorPage } from "../pages";
 
 const Router = () => {
   return (

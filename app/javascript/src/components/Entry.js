@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import colors from "./colors";
+import { colors } from "../utils/links";
 
 const Entry = ({
   category,
