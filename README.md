@@ -23,8 +23,12 @@
 	* Gives you a warning if you have spent over 80% of your monthly budget
 
 ## **Sample**
-The user will see the login page if they are not logged in.
+The user will see the landing page if they are not logged in.
+<img src="https://i.imgur.com/ibd5PNH.png">
+<img src="https://imgur.com/ZSNUF69">
+From there they can go to the signin page
 <img src="https://i.imgur.com/38olEyk.png">
+<img src="https://i.imgur.com/VkSM9Cn.png">
 Now the user is logged in and they should be seeing their first budget.
 <img src='https://i.imgur.com/kMriuyY.png'>
 <img src='https://i.imgur.com/EnYMx0i.png'>
