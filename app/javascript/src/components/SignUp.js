@@ -65,30 +65,31 @@ const SignUp = ({ toggleSignUp }) => {
           type="text"
           name="name"
           value={newUserData.name}
-          onChange={handleChange}
+          handleChange={handleChange}
           labelText="Name"
         />
         <FormRow
           type="email"
           name="email"
           value={newUserData.email}
-          onChange={handleChange}
+          handleChange={handleChange}
           labelText="Email"
         />
         <FormRow
           type="password"
           name="password"
           value={newUserData.password}
-          onChange={handleChange}
+          handleChange={handleChange}
           labelText="Password"
         />
         <FormRow
           type="password"
           name="password_confirmation"
           value={newUserData.password_confirmation}
-          onChange={handleChange}
+          handleChange={handleChange}
           labelText="Password Confirmation"
         />
+
         <div className="submit-area">
           <button className="submit" type="submit">
             Sign Up

@@ -1,53 +1,37 @@
 .budget-entry-container {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .budget-entry-content {
-	height: 25vh;
-	width: 80%;
-	max-width: 50rem;
+  height: 25vh;
+  width: 80%;
+  max-width: 50rem;
 }
 
 .budget-entry-form .field {
-	margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
-.budget-entry-form .category-row{
-	margin-bottom: .2em;
-}
-
-
-.budget-entry-form label {
-	color: var(--textAlt);
-}
-
-.budget-entry-form input {
-	color: var(--textAlt);
-}
-
-.budget-entry-form .input {
-	width: 100%;
-	background: transparent;
-	border: none;
-	border-bottom: 1px solid var(--textAlt);
-	font-size: 1.5rem;
+.budget-entry-form .category-row {
+  margin-bottom: 0.2em;
+  display: flex;
 }
 
 .budget-entry-submit {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 3em;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3em;
 }
 
 .budget-entry-submit button {
-	border-radius: 4px;
-	font-size: 1rem;
-	padding: .3em .5em;
-	background-color: var(--buttonPrimary);
-	color: var(--text);
+  border-radius: 4px;
+  font-size: 1rem;
+  padding: 0.3em 0.5em;
+  background-color: var(--buttonPrimary);
+  color: var(--text);
 }
 
 .budget-entry-submit button:hover {
-	background-color: var(--buttonSecondary);
+  background-color: var(--buttonSecondary);
 }

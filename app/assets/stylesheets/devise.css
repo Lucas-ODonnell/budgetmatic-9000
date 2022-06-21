@@ -1,76 +1,75 @@
 .devise-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	background-color: var(--mainBodyColor);
-	margin-top: -2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--mainBodyColor);
+  margin-top: -2em;
 }
 
 .devise-content {
-	width: 80%;
-	max-width: 70rem;
-	box-shadow: var(--shadow);
-	border-radius: 4px;
-	overflow: hidden;
-	background-color: var(--backgroundColor);
-	height: 80vh;
-	overflow: auto;
+  width: 80%;
+  max-width: 70rem;
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--backgroundColor);
+  height: 80vh;
+  overflow: auto;
 }
 
 .devise-header {
-	display: flex;
-	justify-content: center;
-	padding-top: 3em;
-	padding-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  padding-top: 3em;
+  padding-bottom: 1em;
 }
 
 .devise-header h1 {
-	font-size: 3rem;
-	font-weight: bold;
-	color: var(--textAlt);
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--textAlt);
 }
 
 .devise-form {
-	padding: 5em 2em .5em 2em;
+  padding: 5em 2em 0.5em 2em;
 }
 
 .devise-form label {
-	color: var(--labelColor);
+  color: var(--labelColor);
 }
 
 .devise-form input {
-	width: 100%;
-	margin-bottom: 2em;
-	background: transparent;
-	border: none;
-	border-bottom: 1px solid var(--textAlt);
-	font-size: 1.5rem;
-	color: var(--textAlt);
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--textAlt);
+  font-size: 1.5rem;
+  color: var(--textAlt);
 }
 
 .submit-area {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .submit-area button {
-	width: 80%;
-	font-size: 2rem;
-	border-radius: 4px;
-	padding: .5em 0 .5em 0;
-	background-color: var(--buttonPrimary);
-	color: var(--text);
+  width: 80%;
+  font-size: 2rem;
+  border-radius: 4px;
+  padding: 0.5em 0 0.5em 0;
+  background-color: var(--buttonPrimary);
+  color: var(--text);
 }
 
 .submit-area button:hover {
-	background-color: var(--buttonSecondary);
+  background-color: var(--buttonSecondary);
 }
 
 .toggle {
-	margin-top: 5em;
+  margin-top: 5em;
 }
 
 .toggle a {
-	color: var(--textAlt);
+  color: var(--textAlt);
 }

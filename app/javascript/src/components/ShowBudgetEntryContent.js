@@ -20,8 +20,8 @@ const ShowBudgetEntryContent = () => {
   const [showBudgetEntry, setShowBudgetEntry] = useState(false);
   const [editBudget, setEditBudget] = useState(false);
   const [update, setUpdate] = useState({
-    name: `${currentBudget.attributes.name}`,
-    monthly_budget: `${currentBudget.attributes.monthly_budget}`,
+    name: "",
+    monthly_budget: "",
   });
 
   const handleChange = (e) => {
@@ -95,19 +95,21 @@ const ShowBudgetEntryContent = () => {
               name="name"
               value={update.name}
               handleChange={handleChange}
-              labelText="Name"
+              labelText="Update name"
             />
             <div className="field">
-              <label>Update Monthly Income </label>
               <NumberFormat
                 className="input"
                 name="monthly_budget"
+                id="monthly_budget"
                 value={update.monthly_budget}
                 thousandSeparator={true}
                 decimalScale={2}
                 prefix={"$"}
                 onChange={handleChange}
+                placeholder="Update monthly income"
               />
+              <label htmlFor="monthly_budget">Update monthly income </label>
             </div>
             <button onClick={() => setEditBudget(false)}>Cancel</button>
             <button className="update" type="submit">

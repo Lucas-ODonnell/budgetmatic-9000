@@ -18,238 +18,367 @@ v2.0 | 20110126
 License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 :root {
-	--header: #fff;
-	--buttonSecondary: #03dac5;
-	--food: #005f73;
-	--utilities: #0a9396;
-	--housing: #660000;
-	--transportation: #94d2bd;
-	--insurance: #ee9b00;
-	--medical: #9b2226;
-	--investments: #7851a9;
-	--personal: #ca6702;
-	--entertainment: #bb3e03;
-	--misc: #ae2012;
-	--transition: all 0.3s linear;
+  --header: #fff;
+  --buttonSecondary: #03dac5;
+  --food: #005f73;
+  --utilities: #0a9396;
+  --housing: #660000;
+  --transportation: #94d2bd;
+  --insurance: #ee9b00;
+  --medical: #9b2226;
+  --investments: #7851a9;
+  --personal: #ca6702;
+  --entertainment: #bb3e03;
+  --misc: #ae2012;
+  --transition: all 0.3s linear;
 }
 
 .dark-theme {
-	--backgroundColor: #1f1a24;
-	--navBackground: #1f1a24;
-	--navText: #bb86fc;
-	--navTextAlt: #03dac5;
-	--mainBodyColor: #121212;
-	--buttonPrimary: #bb86fc;
-	--text: #000;
-	--textAlt: #fff;
-	--signOutBtn: #660000;
-	--graphColor: #eee;
-	--labelColor: #a7a7a7;
-	--shadow: 0 2px 5px rgb(0,0,0);
+  --backgroundColor: #1f1a24;
+  --navBackground: #1f1a24;
+  --navText: #bb86fc;
+  --navTextAlt: #03dac5;
+  --mainBodyColor: #121212;
+  --buttonPrimary: #bb86fc;
+  --text: #000;
+  --textAlt: #eee;
+  --signOutBtn: #660000;
+  --graphColor: #eee;
+  --labelColor: #a7a7a7;
+  --shadow: 0 2px 5px rgb(0, 0, 0);
 }
 
 .light-theme {
-	--backgroundColor: #eee;
-	--navBackground: #6200ee;
-	--navText: #eee;
-	--navTextAlt: #000;
-	--mainBodyColor: #eee;
-	--buttonPrimary: #6200ee;
-	--text: #eee;
-	--textAlt: #000;
-	--signOutBtn: #b00020;
-	--graphColor: #000;
-	--labelColor: #a9a9a9;
-	--shadow: 0 2px 5px rgba(0,0,0,0.7);
+  --backgroundColor: #eee;
+  --navBackground: #6200ee;
+  --navText: #eee;
+  --navTextAlt: #000;
+  --mainBodyColor: #eee;
+  --buttonPrimary: #6200ee;
+  --text: #eee;
+  --textAlt: #000;
+  --signOutBtn: #b00020;
+  --graphColor: #000;
+  --labelColor: #a9a9a9;
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-*, *::before, *::after {
-	box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap");
 
 html {
-	font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 62.5%;
 }
 
 body {
-	background-color: var(--mainBodyColor);
+  background-color: var(--mainBodyColor);
 }
 
 .toggle-theme {
-	position: absolute;
-	top: .3vh;
-	right: .3vw;
-	border-radius: 4px;
-	background-color: var(--buttonSecondary);
-	color: var(--textAlt);
-	padding: .3em .4em;
+  position: absolute;
+  top: 0.3vh;
+  right: 0.3vw;
+  border-radius: 4px;
+  background-color: var(--buttonSecondary);
+  color: var(--textAlt);
+  padding: 0.3em 0.4em;
 }
 
 h3 {
-	color: var(--textAlt);
+  color: var(--textAlt);
 }
 
 p {
-	color: var(--textAlt);
+  color: var(--textAlt);
 }
 
 a {
-	color: black;
+  color: black;
 }
 
 button {
-	font-weight: bold;
-	border: none;
-	background: transparent;
-	transition: background-color .5s ease-out;
-	transition: color .5s ease-out;
-	cursor: pointer
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  transition: background-color 0.5s ease-out;
+  transition: color 0.5s ease-out;
+  cursor: pointer;
+}
+
+input {
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: var(--textAlt);
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--textAlt);
+  width: 90%;
+  display: block;
 }
 
 input:focus {
-	outline: none;
+  outline: none;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid green;
+}
+
+input:focus:invalid {
+  border-bottom: 3px solid #660000;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+  color: var(--textAlt);
+}
+
+input:placeholder-shown + label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4rem);
 }
 
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
 }
 
-th, td {
-	padding: .7em .9em;
-	vertical-align: middle;
+th,
+td {
+  padding: 0.7em 0.9em;
+  vertical-align: middle;
 }
 
 thead {
-	background-color: var(--mainBodyColor);
-	color: var(--textAlt);
-	font-size: 1rem;
-	position: sticky;
-	top: 0;
+  background-color: var(--mainBodyColor);
+  color: var(--textAlt);
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
 }
 
 td {
-	border-bottom: 1px solid var(--borderColor);
-	color: var(--textAlt);
+  border-bottom: 1px solid var(--borderColor);
+  color: var(--textAlt);
 }
 
 .total-cost {
-	display: flex;
-	justify-content: flex-end;
-	margin-right: 1em;
-	padding: 1em 0 1em 0;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1em;
+  padding: 1em 0 1em 0;
 }
 
 .background-form {
-	background-color: var(--borderColor);
+  background-color: var(--borderColor);
 }
 
 .app-name {
-	display: flex;
-	justify-content: center;
-	padding-top: 2em;
+  display: flex;
+  justify-content: center;
+  padding-top: 2em;
 }
 
 .app-name h1 {
-	color: var(--textAlt);
-	font-weight: bold;
-	font-size: 3rem;
+  color: var(--textAlt);
+  font-weight: bold;
+  font-size: 3rem;
 }
 
-@media 
-only screen and (max-width: 810px)
-{
+@media only screen and (max-width: 810px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
 
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
 
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
+  tr {
+    border: 1px solid var(--graphColor);
+  }
 
-	tr { 
-		border: 1px solid var(--graphColor); 
-	}
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid var(--graphColor);
+    position: relative;
+    padding-left: 50%;
+  }
 
-	td { 
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid var(--graphColor); 
-		position: relative;
-		padding-left: 50%; 
-	}
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
 
-	td:before { 
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-	}
-
-/*
+  /*
 Label the data
 	*/
-	td:nth-of-type(1):before { content: "Category"; }
-	td:nth-of-type(2):before { content: "Name"; }
-	td:nth-of-type(3):before { content: "Price"; }
-	td:nth-of-type(4):before { content: "Month"; }
+  td:nth-of-type(1):before {
+    content: "Category";
+  }
+  td:nth-of-type(2):before {
+    content: "Name";
+  }
+  td:nth-of-type(3):before {
+    content: "Price";
+  }
+  td:nth-of-type(4):before {
+    content: "Month";
+  }
 }
 
 @media screen and (min-width: 800px) {
@@ -275,4 +404,3 @@ Label the data
     line-height: 1;
   }
 }
-

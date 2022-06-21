@@ -45,16 +45,19 @@ const CreateBudget = () => {
               labelText="Name"
             />
             <div className="field">
-              <label htmlFor="monthly_budget">Monthly Income </label>
               <NumberFormat
                 className="input"
                 name="monthly_budget"
+                id="monthly_budget"
                 value={budget.monthly_budget}
                 thousandSeparator={true}
                 decimalScale={2}
                 prefix={"$"}
                 onChange={handleChange}
+                placeholder="Monthly Income"
+                required
               />
+              <label htmlFor="monthly_budget">Monthly Income </label>
             </div>
             <div className="budget-entry-submit">
               <button className="submit" type="submit">

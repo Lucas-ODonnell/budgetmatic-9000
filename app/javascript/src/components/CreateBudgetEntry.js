@@ -142,16 +142,18 @@ const CreateBudgetEntry = () => {
               labelText="Name"
             />
             <div className="field">
-              <label>Price </label>
               <NumberFormat
                 className="input"
                 name="price"
+                id="price"
                 value={budgetEntry.price}
                 thousandSeparator={true}
                 decimalScale={2}
                 prefix={"$"}
                 onChange={(e) => handleChange(e, setBudgetEntry, budgetEntry)}
+                placeholder="Price"
               />
+              <label htmlFor="price">Price </label>
             </div>
             <div className="budget-entry-submit">
               <button className="submit" type="submit">

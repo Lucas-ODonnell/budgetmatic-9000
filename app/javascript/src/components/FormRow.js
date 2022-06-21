@@ -3,7 +3,6 @@ import React from "react";
 const FormRow = ({ type, name, value, handleChange, labelText }) => {
   return (
     <div className="field">
-      <label htmlFor={name}>{labelText || name}</label>
       <input
         id={name}
         className="input"
@@ -11,7 +10,10 @@ const FormRow = ({ type, name, value, handleChange, labelText }) => {
         value={value}
         name={name}
         onChange={handleChange}
+        placeholder={labelText || name}
+        required
       />
+      <label htmlFor={name}>{labelText || name}</label>
     </div>
   );
 };

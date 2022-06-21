@@ -59,12 +59,15 @@ const Filter = ({
                 </div>
               ))}
               <input
-                placeholder={"Filter Categories"}
+                placeholder="Filter Categories"
+                id="category"
                 value={input}
                 onKeyDown={onKeyDown}
                 onKeyUp={onKeyUp}
                 onChange={onChange}
+                required
               />
+              <label htmlFor="category">Category</label>
             </div>
             <div className="total">
               <div>
@@ -93,6 +96,7 @@ const Filter = ({
           <div className="filter-months">
             <input
               type="date"
+              id="start"
               name="start"
               value={date.start}
               onChange={handleDateChange}
@@ -100,6 +104,7 @@ const Filter = ({
             <input
               type="date"
               name="end"
+              id="end"
               value={date.end}
               onChange={handleDateChange}
             />

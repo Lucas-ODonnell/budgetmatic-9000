@@ -1,130 +1,128 @@
 .budget-content {
-	box-shadow: var(--shadow);
-	border-radius: 4px;
-	overflow: hidden;
-	background-color: var(--backgroundColor);
-	overflow-y: scroll;
-	height: 80vh;
-	margin: .5em 1em 0 1em;
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--backgroundColor);
+  overflow-y: scroll;
+  height: 80vh;
+  margin: 0.5em 1em 0 1em;
 }
 
 .budget-nav {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-
 .budget-header {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	padding-top: 3em;
-	padding-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 3em;
+  padding-bottom: 1em;
 }
 
 .budget-header h1 {
-	font-size: 3rem;
-	font-weight: bold;
-	color: var(--textAlt);
-	overflow-wrap: break-word;
-	cursor: pointer;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--textAlt);
+  overflow-wrap: break-word;
+  cursor: pointer;
 }
 
 .budget-header h1:hover {
-	font-size: 3.5rem;
+  font-size: 3.5rem;
 }
 
 .budget-options {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	margin-left: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 1em;
 }
 
 .budget-options button {
-	color: var(--textAlt);
-	background-color: transparent;
-	border: none;
-	font-size: 1.3rem;
+  color: var(--textAlt);
+  background-color: transparent;
+  border: none;
+  font-size: 1.3rem;
 }
 
 .budget-options button:hover {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 .budget-entry {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-left: 3em;
-	cursor: pointer;
-	color: var(--labelColor);
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3em;
+  cursor: pointer;
+  color: var(--labelColor);
 }
 
 .new-budget {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-left: 3em;
-	cursor: pointer;
-	color: var(--labelColor);
-	margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3em;
+  cursor: pointer;
+  color: var(--labelColor);
+  margin-top: 1em;
 }
 
 .new-budget .icon {
-	font-size: 1.5rem;
-	margin-right: .5em;
+  font-size: 1.5rem;
+  margin-right: 0.5em;
 }
 
 .budget-entry .icon {
-	font-size: 1.5rem;
-	margin-right: .5em;
+  font-size: 1.5rem;
+  margin-right: 0.5em;
 }
 
 .budget-entry::after {
-	content: '';
-	flex: 1;
-	margin-left: 1em;
-	margin-right: 2em;
-	height: 2px;
-	background-color: var(--labelColor);
+  content: "";
+  flex: 1;
+  margin-left: 1em;
+  margin-right: 2em;
+  height: 2px;
+  background-color: var(--labelColor);
 }
 
 .budget-signout button {
-	font-size: 1.5rem;
-	color: var(--signOutBtn);
-	padding: 0.5em 1em;
-	transition: var(--transition);
+  font-size: 1.5rem;
+  color: var(--signOutBtn);
+  padding: 0.5em 1em;
+  transition: var(--transition);
 }
 
 .budget-signout button:hover {
-	padding-left: 1.5em;
-	color: var(--signOutBtn);
-	background-color: var(--textAlt);
+  padding-left: 1.5em;
+  color: var(--signOutBtn);
+  background-color: var(--textAlt);
 }
 
 .update-form button {
-	border-radius: 4px;
-	margin-right: 1em;
-	background-color: var(--buttonPrimary);
-	color: var(--text);
+  border-radius: 4px;
+  margin-right: 1em;
+  background-color: var(--buttonPrimary);
+  color: var(--text);
 }
 
 @media screen and (min-width: 800px) {
-	.budget-signout button {
-		background-color: var(--signOutBtn);
-		color: white;
-		border: 1px solid var(--signOutBtn);
-		border-radius: 4px;
-		padding: .3em .5em;
-	}
+  .budget-signout button {
+    background-color: var(--signOutBtn);
+    color: white;
+    border: 1px solid var(--signOutBtn);
+    border-radius: 4px;
+    padding: 0.3em 0.5em;
+  }
 
-	.budget-signout button:hover {
-		color: var(--signOutBtn);
-		background-color: var(--textAlt);
-		transition: var(--transition);
-		padding: .3em .5em;
-	}
+  .budget-signout button:hover {
+    color: var(--signOutBtn);
+    background-color: var(--textAlt);
+    transition: var(--transition);
+    padding: 0.3em 0.5em;
+  }
 }
