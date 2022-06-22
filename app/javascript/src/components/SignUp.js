@@ -97,7 +97,7 @@ const SignUp = ({ toggleSignUp }) => {
         </div>
         <div className="toggle">
           <a href="#" onClick={toggleSignUp}>
-            Sign In{" "}
+            Sign In &rarr;
           </a>
         </div>
       </form>

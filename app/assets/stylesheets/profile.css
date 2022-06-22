@@ -7,13 +7,14 @@
 }
 
 .profile-content {
+  padding: 3rem 5rem;
   width: 95%;
   max-width: 70rem;
   box-shadow: var(--shadow);
   border-radius: 4px;
   overflow: hidden;
   background-color: var(--backgroundColor);
-  height: 95vh;
+  height: 65vh;
   overflow-y: scroll;
 }
 
@@ -27,15 +28,15 @@
 .profile-base-info {
   box-shadow: var(--shadow);
   border-radius: 4px;
-  padding: 1em 2em;
-  margin: 1em 2em;
+  padding: 1rem 2rem;
+  margin: 1rem 2rem;
   width: 50%;
   color: var(--textAlt);
   word-wrap: break-word;
 }
 
 .profile-base-info p {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .profile-base-info span {
@@ -43,18 +44,13 @@
 }
 
 .delete-profile button {
-  padding: 1em 2em;
-  margin: 1em 2em;
+  padding: 1rem 2rem;
+  margin: 1rem 2rem;
   border-radius: 4px;
   font-size: 1.5rem;
   background-color: var(--signOutBtn);
   color: white;
   border: 1px solid var(--signOutBtn);
-}
-
-.delete-profile button:hover {
-  color: var(--textAlt);
-  background-color: var(--text);
 }
 
 .update-profile {
@@ -65,6 +61,11 @@
   cursor: pointer;
   color: var(--labelColor);
   margin-top: 3em;
+}
+
+.update-profile .icon,
+.update-profile p {
+  font-size: 1.6rem;
 }
 
 .profile-update-container {
@@ -91,6 +92,6 @@
 .profile-update-form .profile-update-submit button {
   background-color: var(--buttonPrimary);
   border-radius: 4px;
-  font-size: 1rem;
-  padding: 0.3em 0.5em;
+  font-size: 1.6rem;
+  padding: 0.3rem 0.5rem;
 }

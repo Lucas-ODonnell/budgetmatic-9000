@@ -1,48 +1,39 @@
 .confirmation-container {
-	z-index: 999;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+  z-index: 999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .confirmation-content {
-	box-shadow: var(--shadow);
-	padding: 1em 2em;
-	border-radius: 4px;
-	background-color: var(--textAlt);
+  box-shadow: var(--shadow);
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  background-color: var(--textAlt);
 }
 
 .confirmation-content p {
-	margin-bottom: 1em;
-	font-weight: bold;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .confirmation-options {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .confirmation-options button {
-	padding: 1em 2em;
-	border-radius: 4px;
+  padding: 1rem 2rem;
+  border-radius: 4px;
 }
 
 .confirmation-options button:nth-child(1) {
-	margin-bottom: .5em;
-	background-color: var(--text);
-}
-
-.confirmation-options button:nth-child(1):hover {
-	color: var(--text);
-	background-color: var(--textAlt);
+  margin-bottom: 0.5rem;
+  background-color: var(--text);
+  color: var(--textAlt);
 }
 
 .confirmation-options button:nth-child(2) {
-	background-color: var(--signOutBtn);
-}
-
-.confirmation-options button:nth-child(2):hover {
-	background-color: var(--textAlt);
-	color: var(--signOutBtn);
+  background-color: var(--signOutBtn);
 }

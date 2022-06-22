@@ -1,103 +1,102 @@
 nav {
-	background: var(--navBackground);
-	box-shadow: var(--shadow);
+  background: var(--navBackground);
+  box-shadow: var(--shadow);
 }
 
 .nav-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .nav-toggle {
-	font-size: 1.5rem;
-	color: var(--navText);
-	background: transparent;
-	border-color: transparent;
-	transition: var(--transition);
-	cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--navText);
+  background: transparent;
+  border-color: transparent;
+  transition: var(--transition);
+  cursor: pointer;
 }
 
 .nav-toggle:hover {
-	color: var(--navTextAlt);
-	background: transparent;
-	transform: rotate(90deg);
+  color: var(--navTextAlt);
+  background: transparent;
+  transform: rotate(90deg);
 }
 
 .logo {
-	font-size: 3rem;
-	color: var(--header);
-	font-weight: bold;
+  font-size: 3rem;
+  color: var(--header);
+  font-weight: bold;
 }
 
 .links-container {
-	height: 0;
-	overflow: hidden;
-	transition: var(--transition);
+  height: 0;
+  overflow: hidden;
+  transition: var(--transition);
 }
 
 .links a {
-	color: var(--navText);
-	font-size: 1.5rem;
-	text-transform: capitalize;
-	display: block;
-	padding: 0.5em 1em;
-	transition: var(--transition);
-	text-decoration: none;
+  color: var(--navText);
+  font-size: 2rem;
+  text-transform: capitalize;
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: var(--transition);
+  text-decoration: none;
 }
 
 .links a:hover {
-	color: var(--navTextAlt);
-	padding-left: 1.5em;
+  color: var(--navTextAlt);
+  padding-left: 1.5rem;
 }
 
 .signout-btn {
-	display: none;
+  display: none;
 }
 
 .show-container {
-	height: 10rem;
+  height: 10rem;
 }
 
-
 @media screen and (min-width: 800px) {
-	.nav-center {
-		max-width: 1170px;
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 1em;
-	}
+  .nav-center {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
 
-	.nav-header {
-		padding: 0;
-	}
+  .nav-header {
+    padding: 0;
+  }
 
-	.nav-toggle {
-		display: none;
-	}
+  .nav-toggle {
+    display: none;
+  }
 
-	.links-container {
-		height: auto !important;
-	}
+  .links-container {
+    height: auto !important;
+  }
 
-	.links {
-		display: flex;
-	}
+  .links {
+    display: flex;
+  }
 
-	.links a {
-		padding: 0;
-		margin: 0 0.5em;
-	}
+  .links a {
+    padding: 0;
+    margin: 0 0.5rem;
+  }
 
-	.links a:hover {
-		padding: 0;
-		background: transparent;
-	}
+  .links a:hover {
+    padding: 0;
+    background: transparent;
+  }
 
-	.signout-btn {
-		display: flex;
-	}
+  .signout-btn {
+    display: flex;
+  }
 }

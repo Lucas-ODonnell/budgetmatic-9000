@@ -4,7 +4,7 @@
   align-items: center;
   height: 100vh;
   background-color: var(--mainBodyColor);
-  margin-top: -2em;
+  margin-top: -2rem;
 }
 
 .devise-content {
@@ -14,15 +14,15 @@
   border-radius: 4px;
   overflow: hidden;
   background-color: var(--backgroundColor);
-  height: 80vh;
-  overflow: auto;
+  height: 70vh;
+  position: relative;
 }
 
 .devise-header {
   display: flex;
   justify-content: center;
-  padding-top: 3em;
-  padding-bottom: 1em;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
 }
 
 .devise-header h1 {
@@ -31,8 +31,12 @@
   color: var(--textAlt);
 }
 
+.field {
+  margin-bottom: 5rem;
+}
+
 .devise-form {
-  padding: 5em 2em 0.5em 2em;
+  padding: 5rem 2rem 0.5rem 2rem;
 }
 
 .devise-form label {
@@ -44,7 +48,7 @@
   background: transparent;
   border: none;
   border-bottom: 1px solid var(--textAlt);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--textAlt);
 }
 
@@ -57,7 +61,7 @@
   width: 80%;
   font-size: 2rem;
   border-radius: 4px;
-  padding: 0.5em 0 0.5em 0;
+  padding: 0.5rem 0 0.5rem 0;
   background-color: var(--buttonPrimary);
   color: var(--text);
 }
@@ -67,9 +71,14 @@
 }
 
 .toggle {
-  margin-top: 5em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 2rem 3rem;
 }
 
 .toggle a {
   color: var(--textAlt);
+  text-decoration: none;
+  font-size: 1.6rem;
 }

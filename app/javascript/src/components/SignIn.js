@@ -75,7 +75,7 @@ const SignIn = ({ toggleSignUp }) => {
         </div>
         <div className="toggle">
           <a href="#" onClick={toggleSignUp}>
-            Sign Up
+            Sign Up &rarr;
           </a>
         </div>
       </form>

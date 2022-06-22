@@ -44,8 +44,9 @@ const Wrapper = styled.main`
     justify-content: center;
   }
   h1 {
+    font-size: 3rem;
     animation: moveInLeft 1s ease-out;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     font-weight: bold;
     color: var(--buttonPrimary);
     span {
@@ -55,9 +56,9 @@ const Wrapper = styled.main`
   p {
     animation: moveInRight 1s ease-out;
     color: var(--textAlt);
-    margin-bottom: 1.5rem;
-    max-width: 40em;
-    font: 1rem;
+    margin-bottom: 2rem;
+    max-width: 40rem;
+    font-size: 1.6rem;
   }
   .landing-img {
     display: none;
@@ -69,7 +70,8 @@ const Wrapper = styled.main`
     padding: 0.375rem 0.75rem;
     text-transform: capitalize;
     display: inline-block;
-    font-size: 1.25rem;
+    font-size: 3rem;
+    font-weight: bold;
     padding: 0.5rem 1.25rem;
     text-align: center;
     animation: moveInBottom 0.5s ease-out 0.75s;

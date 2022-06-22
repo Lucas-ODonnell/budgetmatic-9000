@@ -1,54 +1,49 @@
 .analysis-container {
-	width: 100%
+  width: 100%;
 }
 .analysis-content {
-	box-shadow: var(--shadow);
-	border-radius: 4px;
-	overflow: hidden;
-	background-color: var(--backgroundColor);
-	overflow-y: scroll;
-	color: white;
-	height: 80vh;
-	margin: .5em 1em 2em 1em;
-	display: flex;
-	justify-content: center;
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--backgroundColor);
+  overflow-y: scroll;
+  color: white;
+  height: 80vh;
+  margin: 0.5rem 1rem 2rem 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .analysis-header {
-	display: flex;
-	justify-content: center;
-	margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .analysis-header button {
-	color: var(--buttonSecondary);
-}
-
-.analysis-header button:hover {
-	background-color: transparent;
-	color: var(--buttonPrimary);
+  color: var(--buttonSecondary);
 }
 
 .analysis-body {
-	padding-bottom: 1em;
+  padding-bottom: 1rem;
 }
 
 .bar-content {
-	width: 40vw;
-	border-left: 3px solid var(--graphColor);
-	border-bottom: 3px solid var(--graphColor);
+  width: 40vw;
+  border-left: 3px solid var(--graphColor);
+  border-bottom: 3px solid var(--graphColor);
 }
 
 .graph-data {
-	height: 2rem;
-	margin-bottom: .5em;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	padding-left: 5em;
+  height: 2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: 5rem;
 }
 
 .graph-name {
-	font-weight: bold;
-	color: var(--textAlt);
+  font-weight: bold;
+  color: var(--textAlt);
 }

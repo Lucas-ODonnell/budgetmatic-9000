@@ -76,6 +76,10 @@
   margin-right: 0.5em;
 }
 
+.new-budget p {
+  font-size: 1.6rem;
+}
+
 .budget-entry .icon {
   font-size: 1.5rem;
   margin-right: 0.5em;
@@ -97,12 +101,6 @@
   transition: var(--transition);
 }
 
-.budget-signout button:hover {
-  padding-left: 1.5em;
-  color: var(--signOutBtn);
-  background-color: var(--textAlt);
-}
-
 .update-form button {
   border-radius: 4px;
   margin-right: 1em;
@@ -116,13 +114,6 @@
     color: white;
     border: 1px solid var(--signOutBtn);
     border-radius: 4px;
-    padding: 0.3em 0.5em;
-  }
-
-  .budget-signout button:hover {
-    color: var(--signOutBtn);
-    background-color: var(--textAlt);
-    transition: var(--transition);
     padding: 0.3em 0.5em;
   }
 }

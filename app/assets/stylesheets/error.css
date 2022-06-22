@@ -1,9 +1,9 @@
 .error {
-	background: var(--signOutBtn);
-	color: var(--textAlt);
-	font-size: 1rem;
-	padding: 1em 2em;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  background: var(--signOutBtn);
+  color: var(--textAlt);
+  font-size: 1.6rem;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
