@@ -18,6 +18,7 @@ const Entry = ({
     <td className="entry-col">{moment(date).format("dddd Do, MMM YYYY")}</td>
     <td className="entry-col delete">
       <button
+        className="btn"
         onClick={() => {
           handleDelete(id);
         }}

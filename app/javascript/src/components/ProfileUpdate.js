@@ -61,7 +61,7 @@ const ProfileUpdate = ({ currentUser, fetchProfile, setShowUpdateForm }) => {
               labelText="Email"
             />
             <div className="profile-update-submit">
-              <button className="submit" type="submit">
+              <button className="btn submit" type="submit">
                 Update
               </button>
             </div>

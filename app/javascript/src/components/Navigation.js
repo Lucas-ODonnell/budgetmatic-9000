@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/AppContext";
 import { NavData } from "../utils/links";
 import SignOut from "./SignOut";
+import Theme from "./Theme";
 
 const Navigation = () => {
   const [size, setSize] = useState(window.innerWidth);
@@ -57,10 +58,18 @@ const Navigation = () => {
               );
             })}
             {size < 800 && <SignOut />}
+            {size < 800 && (
+              <div className="toggle-theme toggle-theme-small">
+                <Theme />
+              </div>
+            )}
           </ul>
         </div>
         <div className="signout-btn">
           <SignOut />
+        </div>
+        <div className="toggle-theme toggle-theme-large">
+          <Theme />
         </div>
       </div>
     </nav>

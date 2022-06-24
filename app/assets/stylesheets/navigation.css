@@ -11,7 +11,7 @@ nav {
 }
 
 .nav-toggle {
-  font-size: 1.5rem;
+  font-size: 3rem;
   color: var(--navText);
   background: transparent;
   border-color: transparent;
@@ -56,6 +56,27 @@ nav {
   display: none;
 }
 
+.toggle-theme-large button {
+  display: none;
+}
+
+.toggle-theme button {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.toggle-theme-small button {
+  display: flex;
+}
+
+.toggle-theme-small button {
+  color: var(--buttonSecondary);
+}
+
+.toggle-theme-large button {
+  display: none;
+}
+
 .show-container {
   height: 10rem;
 }
@@ -68,6 +89,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
+    height: 10vh;
   }
 
   .nav-header {
@@ -98,5 +120,24 @@ nav {
 
   .signout-btn {
     display: flex;
+  }
+
+  .toggle-theme {
+    position: absolute;
+    top: 3.5vh;
+    right: 2%;
+  }
+
+  .toggle-theme button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background-color: var(--buttonSecondary);
+    color: var(--textAlt);
+    padding: 0.3em 0.4em;
+  }
+
+  .toggle-theme-large button {
+    display: flex;
+    align-items: center;
   }
 }

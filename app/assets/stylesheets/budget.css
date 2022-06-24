@@ -59,6 +59,7 @@
   margin-left: 3em;
   cursor: pointer;
   color: var(--labelColor);
+  font-size: 1.6rem;
 }
 
 .new-budget {

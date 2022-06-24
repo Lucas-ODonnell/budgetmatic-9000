@@ -48,6 +48,7 @@ const Profile = () => {
             </div>
             <div className="delete-profile">
               <button
+                className="btn"
                 onClick={() => {
                   setShowWarning(true);
                   setDeleteFunction(() => () => handleDelete());

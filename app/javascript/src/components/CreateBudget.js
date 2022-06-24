@@ -60,7 +60,7 @@ const CreateBudget = () => {
               <label htmlFor="monthly_budget">Monthly Income </label>
             </div>
             <div className="budget-entry-submit">
-              <button className="submit" type="submit">
+              <button className="btn submit" type="submit">
                 Submit
               </button>
             </div>

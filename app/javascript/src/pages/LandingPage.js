@@ -17,7 +17,7 @@ const LandingPage = () => {
             Dolorem nostrum perspiciatis sunt nisi dolore? At tempore ut ipsam
             tempora commodi?
           </p>
-          <Link to="/signin" className="btn btn-landing">
+          <Link to="/signin" className="btn btn-alt">
             Signin/Register
           </Link>
         </div>
@@ -63,7 +63,7 @@ const Wrapper = styled.main`
   .landing-img {
     display: none;
   }
-  .btn {
+  .btn-alt {
     cursor: pointer;
     background-color: var(--buttonPrimary);
     border-radius: 100px;
@@ -77,15 +77,15 @@ const Wrapper = styled.main`
     animation: moveInBottom 0.5s ease-out 0.75s;
     animation-fill-mode: backwards;
   }
-  .btn:link {
+  .btn-alt:link {
     text-decoration: none;
   }
 
-  .btn:hover {
+  .btn-alt:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgb(0, 0, 0);
   }
-  .btn:active {
+  .btn-alt:active {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgb(0, 0, 0);
   }

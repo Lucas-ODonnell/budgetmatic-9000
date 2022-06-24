@@ -91,7 +91,7 @@ const SignUp = ({ toggleSignUp }) => {
         />
 
         <div className="submit-area">
-          <button className="submit" type="submit">
+          <button className="btn submit" type="submit">
             Sign Up
           </button>
         </div>

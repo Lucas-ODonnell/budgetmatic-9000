@@ -73,6 +73,7 @@ const ShowBudgetEntryContent = () => {
             </h1>
             <div className="budget-options">
               <button
+                className="btn"
                 onClick={() => {
                   setShowWarning(true);
                   setDeleteFunction(() => () => handleBudgetDelete());
@@ -111,8 +112,10 @@ const ShowBudgetEntryContent = () => {
               />
               <label htmlFor="monthly_budget">Update monthly income </label>
             </div>
-            <button onClick={() => setEditBudget(false)}>Cancel</button>
-            <button className="update" type="submit">
+            <button className="btn" onClick={() => setEditBudget(false)}>
+              Cancel
+            </button>
+            <button className="btn update" type="submit">
               Update
             </button>
           </form>

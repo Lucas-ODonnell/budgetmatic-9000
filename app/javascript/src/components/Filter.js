@@ -108,7 +108,7 @@ const Filter = ({
               value={date.end}
               onChange={handleDateChange}
             />
-            <button className="submit" type="submit">
+            <button className="btn submit" type="submit">
               Filter
             </button>
           </div>

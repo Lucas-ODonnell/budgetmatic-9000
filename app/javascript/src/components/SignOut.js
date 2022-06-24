@@ -20,7 +20,9 @@ const SignOut = () => {
 
   return (
     <div className="budget-signout">
-      <button onClick={handleSignOut}>Sign Out</button>
+      <button className="btn" onClick={handleSignOut}>
+        Sign Out
+      </button>
     </div>
   );
 };

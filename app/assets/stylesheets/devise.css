@@ -66,10 +66,6 @@
   color: var(--text);
 }
 
-.submit-area button:hover {
-  background-color: var(--buttonSecondary);
-}
-
 .toggle {
   position: absolute;
   bottom: 0;

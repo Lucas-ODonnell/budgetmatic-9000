@@ -206,16 +206,6 @@ body {
   background-color: var(--mainBodyColor);
 }
 
-.toggle-theme {
-  position: absolute;
-  top: 0.3vh;
-  right: 0.3vw;
-  border-radius: 4px;
-  background-color: var(--buttonSecondary);
-  color: var(--textAlt);
-  padding: 0.3em 0.4em;
-}
-
 h3 {
   color: var(--textAlt);
 }
@@ -228,7 +218,7 @@ a {
   color: black;
 }
 
-button {
+.btn {
   font-weight: bold;
   border: none;
   background: transparent;
@@ -237,18 +227,31 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgb(0, 0, 0);
 }
 
-button:active {
+.btn:active {
   transform: translateY(-1px);
   box-shadow: 0 5px 10px rgb(0, 0, 0);
 }
 
+.btn-alt {
+  background-color: transparent;
+  border: none;
+}
+
+.btn-alt:hover {
+  transform: translateY(-3px);
+}
+
+.btn-alt:active {
+  transform: translateY(-1px);
+}
+
 input {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-family: inherit;
   color: var(--textAlt);
   padding: 1rem 2rem;
@@ -333,6 +336,10 @@ td {
   color: var(--textAlt);
   font-weight: bold;
   font-size: 3rem;
+}
+
+.extra-space {
+  height: 5rem;
 }
 
 @media only screen and (max-width: 810px) {

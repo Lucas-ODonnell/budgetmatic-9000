@@ -69,7 +69,7 @@ const SignIn = ({ toggleSignUp }) => {
           labelText="Password"
         />
         <div className="submit-area">
-          <button className="submit" type="submit">
+          <button className="btn submit" type="submit">
             Sign In
           </button>
         </div>
