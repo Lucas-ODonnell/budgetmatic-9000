@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "./context/AppContext";
 import Router from "./routes/Router";
@@ -7,9 +7,14 @@ import Error from "./components/Error";
 import { getUserFromLocalStorage } from "./utils/localStorage";
 
 const App = () => {
-  const { setSignedIn, showError } = useGlobalContext();
+  const { setSignedIn, showError, theme } = useGlobalContext();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const user = getUserFromLocalStorage();

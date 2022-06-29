@@ -6,6 +6,14 @@ library.add(fas);
 
 const AppContext = React.createContext();
 
+const getStorageTheme = () => {
+  let theme = "dark-theme";
+  if (localStorage.getItem("theme")) {
+    theme = localStorage.getItem("theme");
+  }
+  return theme;
+};
+
 export const AppProvider = ({ children }) => {
   const [signedIn, setSignedIn] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
@@ -21,6 +29,14 @@ export const AppProvider = ({ children }) => {
   const [showGraph, setShowGraph] = useState(false);
   const [render, setRender] = useState(0);
   const currentBudget = budgets[activeTab];
+  const [theme, setTheme] = useState(getStorageTheme());
+  const toggleTheme = () => {
+    if (theme === "dark-theme") {
+      setTheme("light-theme");
+    } else {
+      setTheme("dark-theme");
+    }
+  };
 
   const errorShow = () => {
     setShowError(true);
@@ -56,6 +72,8 @@ export const AppProvider = ({ children }) => {
         currentBudget,
         render,
         setRender,
+        theme,
+        toggleTheme,
       }}
     >
       {children}
